@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STUDY CEE — вступ, перебування, житло в SK · CZ · PL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #EEF1F0;
+    --paper: #FFFFFF;
+    --ink: #172038;
+    --ink-soft: #4C5568;
+    --ink-faint: #7C8598;
+    --line: #D7DCE1;
+    --accent: #B8863A;
+    --accent-soft: #EFE2C8;
+    --stamp: #8A2E2B;
+    --stamp-soft: #F3DEDC;
+    --deep: #101B33;
+    --deep-2: #16233F;
+    --on-deep: #EDEFEC;
+    --on-deep-soft: #AEB7CC;
+    --map-a: #DCE7E3;
+    --map-b: #EFE2C8;
+    --map-c: #E4DCEF;
+    --font-serif: 'Spectral', Georgia, 'Times New Roman', serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  :root:not([data-theme="light"]){
+    @media (prefers-color-scheme: dark){
+      --bg: #10141F; --paper: #171C29; --ink: #EDEFEC; --ink-soft: #C3C9D6; --ink-faint: #8892A5;
+      --line: #2A3040; --accent: #D9A65B; --accent-soft: #2C2417; --stamp: #D97B76; --stamp-soft: #2C1917;
+      --deep: #0A0F1A; --deep-2: #0D1526; --on-deep: #EDEFEC; --on-deep-soft: #9BA5BC;
+      --map-a: #1B2823; --map-b: #2C2417; --map-c: #241F2C;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #10141F; --paper: #171C29; --ink: #EDEFEC; --ink-soft: #C3C9D6; --ink-faint: #8892A5;
+    --line: #2A3040; --accent: #D9A65B; --accent-soft: #2C2417; --stamp: #D97B76; --stamp-soft: #2C1917;
+    --deep: #0A0F1A; --deep-2: #0D1526; --on-deep: #EDEFEC; --on-deep-soft: #9BA5BC;
+    --map-a: #1B2823; --map-b: #2C2417; --map-c: #241F2C;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font-sans); line-height:1.55; -webkit-font-smoothing:antialiased;}
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- header / logo ---------- */
+  header{position:sticky; top:0; z-index:40; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  .header-row{display:flex; align-items:center; justify-content:space-between; padding:16px 0; gap:16px;}
+  .brand{display:flex; align-items:center; gap:11px; text-decoration:none; color:var(--ink);}
+  .brand-mark{flex-shrink:0;}
+  .brand-text{display:flex; flex-direction:column; line-height:1.1;}
+  .brand-word{font-family:var(--font-serif); font-size:19px; font-weight:700; display:flex; align-items:baseline; gap:6px;}
+  .brand-word .cee{
+    font-family:var(--font-sans); font-size:11px; font-weight:700; letter-spacing:0.04em;
+    background:var(--deep); color:var(--on-deep); padding:2px 7px; border-radius:4px; transform:translateY(-1px);
+  }
+  .brand-tagline{font-size:11px; color:var(--ink-faint); margin-top:2px; letter-spacing:0.01em;}
+  .lang-switch{display:flex; flex-wrap:wrap; gap:4px; border:1px solid var(--line); border-radius:999px; padding:3px;}
+  .lang-switch button{
+    border:none; background:transparent; color:var(--ink-soft); font-family:var(--font-sans); font-size:12px; font-weight:600;
+    padding:6px 11px; cursor:pointer; border-radius:999px; transition:background .2s, color .2s;
+  }
+  .lang-switch button.active{background:var(--deep); color:var(--on-deep);}
+
+  /* ---------- hero ---------- */
+  .hero{padding:60px 0 52px;}
+  .hero-grid{display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center;}
+  .hero h1{font-family:var(--font-serif); font-weight:600; font-size:clamp(30px, 4.2vw, 48px); line-height:1.12; margin:0 0 22px; max-width:16ch;}
+  .hero p.lede{font-size:18px; color:var(--ink-soft); max-width:46ch; margin:0 0 30px;}
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{display:inline-flex; align-items:center; gap:8px; padding:13px 24px; border-radius:8px; font-size:15px; font-weight:600; text-decoration:none; cursor:pointer; border:1.5px solid transparent; transition:transform .15s ease, background .2s ease, border-color .2s ease;}
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--deep); color:var(--on-deep);}
+  .btn-primary:hover{background:var(--deep-2);}
+  .btn-ghost{border-color:var(--line); color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--accent);}
+  .stamp-figure{position:relative; aspect-ratio:1/1; max-width:320px; margin:0 auto;}
+  .stamp-figure svg{width:100%; height:100%;}
+  .countries-row{display:flex; gap:10px; margin-top:34px; flex-wrap:wrap;}
+  .country-chip{border:1px solid var(--line); border-radius:999px; padding:7px 14px; font-size:13px; color:var(--ink-soft); font-weight:500;}
+
+  section{padding:60px 0;}
+  .section-head{max-width:640px; margin-bottom:38px;}
+  .section-head h2{font-family:var(--font-serif); font-weight:600; font-size:clamp(24px, 3vw, 34px); line-height:1.2; margin:0 0 12px;}
+  .section-head p{color:var(--ink-soft); font-size:16px; margin:0; max-width:56ch;}
+
+  /* ---------- problem ---------- */
+  .problem{background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .problem-list{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:12px; overflow:hidden;}
+  .problem-item{background:var(--paper); padding:24px 26px;}
+  .problem-item h3{font-size:16px; margin:0 0 8px; font-weight:600;}
+  .problem-item p{margin:0; color:var(--ink-soft); font-size:14.5px;}
+
+  /* ---------- map ---------- */
+  .map-section{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
+  .map-visual{position:relative;}
+  .map-visual svg{width:100%; height:auto;}
+  .map-cards{display:flex; flex-direction:column; gap:16px;}
+  .map-card{border:1px solid var(--line); background:var(--paper); border-radius:12px; padding:18px 20px; display:flex; gap:14px; align-items:flex-start;}
+  .map-dot{width:10px; height:10px; border-radius:50%; margin-top:6px; flex-shrink:0;}
+  .map-card h3{margin:0 0 4px; font-size:15.5px; font-weight:600; font-family:var(--font-serif);}
+  .map-card p{margin:0; font-size:13.5px; color:var(--ink-soft);}
+
+  /* ---------- services ---------- */
+  .services-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .service-card{background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:30px 26px; display:flex; flex-direction:column; gap:14px;}
+  .service-icon{width:44px; height:44px; border-radius:10px; background:var(--accent-soft); color:var(--accent); display:flex; align-items:center; justify-content:center;}
+  .service-card h3{font-family:var(--font-serif); font-size:20px; margin:0; font-weight:600;}
+  .service-card p{margin:0; color:var(--ink-soft); font-size:14.5px;}
+
+  /* ---------- process ---------- */
+  .process{background:var(--deep); color:var(--on-deep);}
+  .process .section-head h2{color:var(--on-deep);}
+  .process .section-head p{color:var(--on-deep-soft);}
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative;}
+  .step{padding:0 20px 0 0; position:relative;}
+  .step:not(:last-child)::after{content:""; position:absolute; top:20px; right:0; width:100%; height:1px; background:color-mix(in srgb, var(--on-deep) 18%, transparent);}
+  .step-num{font-family:var(--font-serif); font-size:15px; color:var(--accent); border:1px solid color-mix(in srgb, var(--accent) 60%, transparent); width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:18px; position:relative; z-index:1; background:var(--deep);}
+  .step h3{font-size:16.5px; margin:0 0 8px; font-weight:600;}
+  .step p{margin:0; font-size:14px; color:var(--on-deep-soft);}
+
+  /* ---------- pricing ---------- */
+  .pricing-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:stretch;}
+  .price-card{border:1px solid var(--line); border-radius:14px; padding:30px 26px; display:flex; flex-direction:column; background:var(--paper); position:relative;}
+  .price-card.featured{border-color:var(--accent); box-shadow:0 0 0 1px var(--accent);}
+  .price-tag{position:absolute; top:-13px; left:26px; background:var(--accent); color:var(--deep); font-size:12px; font-weight:700; padding:4px 12px; border-radius:999px;}
+  .price-card h3{font-family:var(--font-serif); font-size:19px; margin:0 0 6px; font-weight:600;}
+  .price-card .price{font-family:var(--font-serif); font-size:32px; font-weight:600; margin:6px 0 4px;}
+  .price-card .price small{font-family:var(--font-sans); font-size:13px; font-weight:500; color:var(--ink-faint);}
+  .price-card .price-desc{font-size:13.5px; color:var(--ink-soft); margin:0 0 20px;}
+  .price-card ul{list-style:none; padding:0; margin:0 0 24px; flex-grow:1;}
+  .price-card li{font-size:14px; color:var(--ink-soft); padding:9px 0; border-top:1px solid var(--line); display:flex; gap:10px;}
+  .price-card li:first-child{border-top:none;}
+  .price-card li::before{content:"—"; color:var(--accent); flex-shrink:0;}
+  .price-note{margin-top:22px; font-size:13.5px; color:var(--ink-faint);}
+
+  /* ---------- trust ---------- */
+  .trust{background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .trust-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:32px;}
+  .trust-item h3{font-family:var(--font-serif); font-size:18px; margin:0 0 8px; font-weight:600;}
+  .trust-item p{margin:0; color:var(--ink-soft); font-size:14.5px;}
+
+  /* ---------- reviews ---------- */
+  .reviews-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .review-card{background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:26px; display:flex; flex-direction:column; gap:16px;}
+  .review-quote{font-size:14.5px; color:var(--ink-soft); margin:0; flex-grow:1;}
+  .review-quote::before{content:"\201C"; color:var(--accent); font-family:var(--font-serif); font-size:22px;}
+  .review-by{display:flex; align-items:center; gap:12px;}
+  .review-avatar{width:38px; height:38px; border-radius:50%; background:var(--deep); color:var(--on-deep); display:flex; align-items:center; justify-content:center; font-family:var(--font-serif); font-weight:600; font-size:15px; flex-shrink:0;}
+  .review-name{font-size:14px; font-weight:600; margin:0;}
+  .review-meta{font-size:12.5px; color:var(--ink-faint); margin:0;}
+
+  /* ---------- contact ---------- */
+  .contact{background:var(--deep); color:var(--on-deep);}
+  .contact-grid{display:grid; grid-template-columns:0.95fr 1.05fr; gap:48px; align-items:start;}
+  .contact .section-head h2{color:var(--on-deep);}
+  .contact .section-head p{color:var(--on-deep-soft);}
+  .contact-note{border:1px solid color-mix(in srgb, var(--on-deep) 20%, transparent); border-radius:12px; padding:22px; font-size:14px; color:var(--on-deep-soft); margin-bottom:22px;}
+  .contact-note strong{color:var(--on-deep); display:block; margin-bottom:8px; font-size:15px;}
+  .contact-channels{display:flex; flex-direction:column; gap:12px;}
+  .channel{display:flex; align-items:center; gap:14px; border:1px solid color-mix(in srgb, var(--on-deep) 20%, transparent); border-radius:10px; padding:14px 16px; text-decoration:none; color:var(--on-deep); transition:border-color .2s;}
+  .channel:hover{border-color:var(--accent);}
+  .channel-icon{width:34px; height:34px; border-radius:8px; background:color-mix(in srgb, var(--on-deep) 10%, transparent); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:15px;}
+  .channel strong{display:block; font-size:14px;}
+  .channel span{display:block; font-size:12.5px; color:var(--on-deep-soft);}
+
+  .contact-form{background:var(--paper); color:var(--ink); border-radius:14px; padding:28px; border:1px solid color-mix(in srgb, var(--on-deep) 15%, transparent);}
+  .form-row{margin-bottom:16px;}
+  .form-row label{display:block; font-size:13px; font-weight:600; margin-bottom:6px; color:var(--ink-soft);}
+  .form-row input, .form-row select, .form-row textarea{
+    width:100%; border:1px solid var(--line); border-radius:8px; padding:11px 13px; font-family:var(--font-sans);
+    font-size:14px; color:var(--ink); background:var(--paper);
+  }
+  .form-row textarea{resize:vertical; min-height:90px;}
+  .form-row input:focus, .form-row select:focus, .form-row textarea:focus{outline:2px solid var(--accent); outline-offset:1px;}
+  .form-submit-row{display:flex; align-items:center; gap:14px; flex-wrap:wrap;}
+  .form-success{font-size:13.5px; color:var(--accent); display:none; margin:0;}
+  .form-success.show{display:block;}
+
+  footer{padding:30px 0; text-align:center; font-size:13px; color:var(--ink-faint);}
+
+  @media (max-width: 860px){
+    .hero-grid{grid-template-columns:1fr; gap:36px;}
+    .hero-grid .stamp-figure{order:-1; max-width:220px;}
+    .problem-list{grid-template-columns:1fr;}
+    .services-grid, .pricing-grid, .trust-grid, .reviews-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr 1fr; row-gap:28px;}
+    .step:nth-child(2)::after{display:none;}
+    .contact-grid{grid-template-columns:1fr;}
+    .map-section{grid-template-columns:1fr;}
+    .header-row{flex-wrap:wrap;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <a class="brand" href="#top">
+      <span class="brand-mark">
+        <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="18" stroke="var(--accent)" stroke-width="1.5"/>
+          <path d="M12 24 L20 14 L28 24" stroke="var(--ink)" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="12" cy="24" r="3" fill="var(--accent)"/>
+          <circle cx="20" cy="14" r="3" fill="var(--ink)"/>
+          <circle cx="28" cy="24" r="3" fill="var(--accent)"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <span class="brand-word">STUDY <span class="cee">CEE</span></span>
+        <span class="brand-tagline" data-i18n="brand_tagline">Навчання в Центральній Європі</span>
+      </span>
+    </a>
+    <div class="lang-switch" id="lang-switch">
+      <button data-lang="ua" class="active">UA</button>
+      <button data-lang="ru">RU</button>
+      <button data-lang="en">EN</button>
+      <button data-lang="kk">KK</button>
+      <button data-lang="uz">UZ</button>
+      <button data-lang="ka">KA</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <h1 data-i18n="hero_h1">Вступ і переїзд на навчання — без блукання в чужій бюрократії</h1>
+      <p class="lede" data-i18n="hero_lede">Коли не знаєш країну, кожен крок перетворюється на окремий квест. Ми проходимо його за вас.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary" data-i18n="hero_cta_primary">Отримати консультацію</a>
+        <a href="#pricing" class="btn btn-ghost" data-i18n="hero_cta_secondary">Переглянути ціни</a>
+      </div>
+      <div class="countries-row">
+        <span class="country-chip">🇸🇰 <span data-i18n="chip_sk">Словаччина</span></span>
+        <span class="country-chip">🇨🇿 <span data-i18n="chip_cz">Чехія</span></span>
+        <span class="country-chip">🇵🇱 <span data-i18n="chip_pl">Польща</span></span>
+      </div>
+    </div>
+    <div class="stamp-figure" aria-hidden="true">
+      <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="150" cy="150" r="130" fill="none" stroke="var(--stamp)" stroke-width="2"/>
+        <circle cx="150" cy="150" r="112" fill="none" stroke="var(--stamp)" stroke-width="1.2" stroke-dasharray="2 5"/>
+        <path id="curveTop" d="M 45,150 A 105,105 0 0 1 255,150" fill="none"/>
+        <path id="curveBottom" d="M 255,150 A 105,105 0 0 1 45,150" fill="none"/>
+        <text font-family="Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="4" fill="var(--stamp)">
+          <textPath href="#curveTop" startOffset="50%" text-anchor="middle">SK · CZ · PL</textPath>
+        </text>
+        <text font-family="Inter, sans-serif" font-size="11" font-weight="600" letter-spacing="3" fill="var(--stamp)">
+          <textPath href="#curveBottom" startOffset="50%" text-anchor="middle">STUDY · STAY · LIVE</textPath>
+        </text>
+        <line x1="105" y1="150" x2="140" y2="185" stroke="var(--stamp)" stroke-width="6" stroke-linecap="round"/>
+        <line x1="140" y1="185" x2="205" y2="115" stroke="var(--stamp)" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="150" cy="150" r="3" fill="var(--stamp)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-i18n="problem_heading">Коли не знаєш країну, дрібниці стають перешкодами</h2>
+      <p data-i18n="problem_sub">Абітурієнти найчастіше застрягають не на іспитах, а на організаційних питаннях.</p>
+    </div>
+    <div class="problem-list">
+      <div class="problem-item"><h3 data-i18n="problem1_title">Мовний бар'єр</h3><p data-i18n="problem1_desc">—</p></div>
+      <div class="problem-item"><h3 data-i18n="problem2_title">Дедлайни, що не збігаються</h3><p data-i18n="problem2_desc">—</p></div>
+      <div class="problem-item"><h3 data-i18n="problem3_title">Вимоги до документів змінюються</h3><p data-i18n="problem3_desc">—</p></div>
+      <div class="problem-item"><h3 data-i18n="problem4_title">Житло наосліп</h3><p data-i18n="problem4_desc">—</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="map" id="map">
+  <div class="wrap map-section">
+    <div class="map-visual" aria-hidden="true">
+      <svg viewBox="0 0 420 380" xmlns="http://www.w3.org/2000/svg">
+        <path d="M40,60 Q60,30 130,35 Q230,20 340,50 Q400,65 390,110 Q395,145 350,150 L90,150 Q30,140 40,60 Z" fill="var(--map-b)" stroke="var(--line)" stroke-width="1.5"/>
+        <path d="M45,150 L200,150 Q220,150 218,175 L210,250 Q205,280 170,278 L70,270 Q35,265 35,225 L38,175 Q38,155 45,150 Z" fill="var(--map-a)" stroke="var(--line)" stroke-width="1.5"/>
+        <path d="M210,150 L355,150 Q375,150 372,175 L360,245 Q355,275 320,272 L230,265 Q200,258 200,225 L202,175 Q203,155 210,150 Z" fill="var(--map-c)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="215" y="90" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="var(--ink)">PL</text>
+        <text x="115" y="205" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="var(--ink)">CZ</text>
+        <text x="285" y="205" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="var(--ink)">SK</text>
+        <g>
+          <circle cx="230" cy="75" r="5" fill="var(--stamp)"/>
+          <text x="240" y="79" font-family="Inter, sans-serif" font-size="11.5" fill="var(--ink-soft)">Warszawa</text>
+          <circle cx="150" cy="95" r="4" fill="var(--stamp)"/>
+          <text x="158" y="99" font-family="Inter, sans-serif" font-size="11" fill="var(--ink-soft)">Kraków</text>
+          <circle cx="105" cy="195" r="5" fill="var(--stamp)"/>
+          <text x="60" y="212" font-family="Inter, sans-serif" font-size="11.5" fill="var(--ink-soft)">Praha</text>
+          <circle cx="280" cy="240" r="5" fill="var(--stamp)"/>
+          <text x="228" y="257" font-family="Inter, sans-serif" font-size="11.5" fill="var(--ink-soft)">Bratislava</text>
+        </g>
+        <path d="M230,80 L150,95" stroke="var(--ink-faint)" stroke-width="1" stroke-dasharray="3 4"/>
+        <path d="M150,95 L105,195" stroke="var(--ink-faint)" stroke-width="1" stroke-dasharray="3 4"/>
+        <path d="M105,195 L280,240" stroke="var(--ink-faint)" stroke-width="1" stroke-dasharray="3 4"/>
+      </svg>
+    </div>
+    <div>
+      <div class="section-head" style="margin-bottom:22px;">
+        <h2 data-i18n="map_heading">Де можна навчатися з нами</h2>
+        <p data-i18n="map_sub">Три сусідні країни, три системи освіти, один контакт для вас.</p>
+      </div>
+      <div class="map-cards">
+        <div class="map-card"><span class="map-dot" style="background:var(--map-b);border:1.5px solid var(--accent);"></span><div><h3 data-i18n="map_pl_title">Польща</h3><p data-i18n="map_pl_desc">—</p></div></div>
+        <div class="map-card"><span class="map-dot" style="background:var(--map-a);border:1.5px solid #6d9a8c;"></span><div><h3 data-i18n="map_cz_title">Чехія</h3><p data-i18n="map_cz_desc">—</p></div></div>
+        <div class="map-card"><span class="map-dot" style="background:var(--map-c);border:1.5px solid #9c86b8;"></span><div><h3 data-i18n="map_sk_title">Словаччина</h3><p data-i18n="map_sk_desc">—</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-i18n="services_heading">Ми беремо весь процес на себе</h2>
+      <p data-i18n="services_sub">Три напрямки, які визначають, чи вдасться переїзд без зривів.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M7 11v5c0 1.5 2.5 3 5 3s5-1.5 5-3v-5"/></svg></div>
+        <h3 data-i18n="service1_title">Вступ до виш­у</h3>
+        <p data-i18n="service1_desc">—</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 2v4M16 2v4M4 10h16"/></svg></div>
+        <h3 data-i18n="service2_title">Дозвіл на перебування</h3>
+        <p data-i18n="service2_desc">—</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></div>
+        <h3 data-i18n="service3_title">Житло</h3>
+        <p data-i18n="service3_desc">—</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-i18n="process_heading">Як це відбувається</h2>
+      <p data-i18n="process_sub">Чотири етапи від першої розмови до життя в новому місті.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><h3 data-i18n="step1_title">Консультація</h3><p data-i18n="step1_desc">—</p></div>
+      <div class="step"><div class="step-num">2</div><h3 data-i18n="step2_title">Документи</h3><p data-i18n="step2_desc">—</p></div>
+      <div class="step"><div class="step-num">3</div><h3 data-i18n="step3_title">Подання заявок</h3><p data-i18n="step3_desc">—</p></div>
+      <div class="step"><div class="step-num">4</div><h3 data-i18n="step4_title">Приїзд і заселення</h3><p data-i18n="step4_desc">—</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-i18n="pricing_heading">Ціни</h2>
+      <p data-i18n="pricing_sub">Обирайте окрему послугу або повний супровід.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3 data-i18n="pkg1_name">Вступ</h3>
+        <div class="price">250 € <small data-i18n="price_from">від</small></div>
+        <p class="price-desc" data-i18n="pkg1_desc">—</p>
+        <ul>
+          <li data-i18n="pkg1_f1">—</li>
+          <li data-i18n="pkg1_f2">—</li>
+          <li data-i18n="pkg1_f3">—</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost" data-i18n="price_cta">Дізнатися більше</a>
+      </div>
+      <div class="price-card featured">
+        <span class="price-tag" data-i18n="pkg2_tag">Найпопулярніше</span>
+        <h3 data-i18n="pkg2_name">Перебування</h3>
+        <div class="price">300 € <small data-i18n="price_from">від</small></div>
+        <p class="price-desc" data-i18n="pkg2_desc">—</p>
+        <ul>
+          <li data-i18n="pkg2_f1">—</li>
+          <li data-i18n="pkg2_f2">—</li>
+          <li data-i18n="pkg2_f3">—</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary" data-i18n="price_cta">Дізнатися більше</a>
+      </div>
+      <div class="price-card">
+        <h3 data-i18n="pkg3_name">Повний супровід</h3>
+        <div class="price">650 € <small data-i18n="price_from">від</small></div>
+        <p class="price-desc" data-i18n="pkg3_desc">—</p>
+        <ul>
+          <li data-i18n="pkg3_f1">—</li>
+          <li data-i18n="pkg3_f2">—</li>
+          <li data-i18n="pkg3_f3">—</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost" data-i18n="price_cta">Дізнатися більше</a>
+      </div>
+    </div>
+    <p class="price-note" data-i18n="price_note">Вказані ціни орієнтовні.</p>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap">
+    <div class="trust-grid">
+      <div class="trust-item"><h3 data-i18n="trust1_title">3 країни, один партнер</h3><p data-i18n="trust1_desc">—</p></div>
+      <div class="trust-item"><h3 data-i18n="trust2_title">Супровід рідною мовою</h3><p data-i18n="trust2_desc">—</p></div>
+      <div class="trust-item"><h3 data-i18n="trust3_title">Від заявки до заселення</h3><p data-i18n="trust3_desc">—</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-i18n="reviews_heading">Що кажуть студенти</h2>
+      <p data-i18n="reviews_sub">Кілька відгуків від студентів, яким ми допомогли.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <p class="review-quote" data-i18n="review1_text">—</p>
+        <div class="review-by">
+          <div class="review-avatar">O</div>
+          <div><p class="review-name" data-i18n="review1_name">Олена</p><p class="review-meta" data-i18n="review1_meta">—</p></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <p class="review-quote" data-i18n="review2_text">—</p>
+        <div class="review-by">
+          <div class="review-avatar">A</div>
+          <div><p class="review-name" data-i18n="review2_name">Айбек</p><p class="review-meta" data-i18n="review2_meta">—</p></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <p class="review-quote" data-i18n="review3_text">—</p>
+        <div class="review-by">
+          <div class="review-avatar">N</div>
+          <div><p class="review-name" data-i18n="review3_name">Ніно</p><p class="review-meta" data-i18n="review3_meta">—</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="section-head">
+        <h2 data-i18n="contact_heading">Заповніть форму — і ми з вами зв'яжемося</h2>
+        <p data-i18n="contact_sub">Розкажіть, яку країну та спеціальність розглядаєте.</p>
+      </div>
+      <div class="contact-note">
+        <strong data-i18n="contact_note_title">Що написати в першому повідомленні</strong>
+        <span data-i18n="contact_note_desc">—</span>
+      </div>
+      <div class="contact-channels">
+        <a class="channel" href="mailto:info@your-domain.example">
+          <span class="channel-icon">✉️</span>
+          <span><strong>Email</strong><span>info@your-domain.example</span></span>
+        </a>
+        <a class="channel" href="https://t.me/your_telegram">
+          <span class="channel-icon">✈️</span>
+          <span><strong>Telegram</strong><span>@your_telegram</span></span>
+        </a>
+        <a class="channel" href="https://wa.me/000000000000">
+          <span class="channel-icon">💬</span>
+          <span><strong>WhatsApp</strong><span>+000 000 000 000</span></span>
+        </a>
+      </div>
+    </div>
+    <form class="contact-form" id="lead-form">
+      <div class="form-row">
+        <label for="f-name" data-i18n="form_name_label">Ім'я</label>
+        <input id="f-name" name="name" type="text" required data-i18n-placeholder="form_name_placeholder" placeholder="Ваше ім'я">
+      </div>
+      <div class="form-row">
+        <label for="f-contact" data-i18n="form_contact_label">Контакт (email або Telegram)</label>
+        <input id="f-contact" name="contact" type="text" required data-i18n-placeholder="form_contact_placeholder" placeholder="you@example.com або @username">
+      </div>
+      <div class="form-row">
+        <label for="f-country" data-i18n="form_country_label">Країна, яка цікавить</label>
+        <select id="f-country" name="country">
+          <option value="sk" data-i18n="chip_sk">Словаччина</option>
+          <option value="cz" data-i18n="chip_cz">Чехія</option>
+          <option value="pl" data-i18n="chip_pl">Польща</option>
+          <option value="other" data-i18n="form_country_opt_other">Ще не визначився/лась</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label for="f-message" data-i18n="form_message_label">Повідомлення</label>
+        <textarea id="f-message" name="message" data-i18n-placeholder="form_message_placeholder" placeholder="Яку програму розглядаєте і коли плануєте почати навчання?"></textarea>
+      </div>
+      <div class="form-submit-row">
+        <button type="submit" class="btn btn-primary" data-i18n="form_submit">Надіслати заявку</button>
+        <p class="form-success" id="form-success" data-i18n="form_success">Дякуємо!</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" data-i18n="footer_text">© 2026 [Назва організації]. Супровід студентів у SK · CZ · PL.</div>
+</footer>
+
+<script>
+var translations = {
+ua:{brand_tagline:"Навчання в Центральній Європі",hero_h1:"Вступ і переїзд на навчання — без блукання в чужій бюрократії",hero_lede:"Коли не знаєш країну, кожен крок — від подання документів у виш до запису в чужинецькій поліції — перетворюється на окремий квест. Ми проходимо його за вас: від вступу до заселення.",hero_cta_primary:"Отримати консультацію",hero_cta_secondary:"Переглянути ціни",chip_sk:"Словаччина",chip_cz:"Чехія",chip_pl:"Польща",problem_heading:"Коли не знаєш країну, дрібниці стають перешкодами",problem_sub:"Абітурієнти найчастіше застрягають не на вступних іспитах, а на організаційних питаннях, про які ніхто не попереджає заздалегідь.",problem1_title:"Мовний бар'єр",problem1_desc:"Спілкування з приймальною комісією виш­у та з чужинецькою поліцією часто відбувається лише місцевою мовою.",problem2_title:"Дедлайни, що не збігаються",problem2_desc:"Термін подачі у виш, термін запису на дозвіл на перебування і термін оренди житла рідко узгоджені між собою.",problem3_title:"Вимоги до документів змінюються",problem3_desc:"Список довідок, легалізацій і перекладів щороку трохи інший, і помилка коштує втраченого семестру.",problem4_title:"Житло наосліп",problem4_desc:"Шукати кімнату чи гуртожиток з іншої країни, не маючи змоги оглянути помешкання, — окремий стрес.",map_heading:"Де можна навчатися з нами",map_sub:"Три сусідні країни, три системи освіти, один контакт для вас.",map_pl_title:"Польща",map_pl_desc:"Варшава, Краків, Вроцлав — великі державні університети та програми англійською.",map_cz_title:"Чехія",map_cz_desc:"Прага, Брно, Оломоуц — сильні технічні та медичні виш­и.",map_sk_title:"Словаччина",map_sk_desc:"Братислава, Кошице — доступна вартість навчання та велика слов'янськомовна спільнота студентів.",services_heading:"Ми беремо весь процес на себе",services_sub:"Три напрямки, які найчастіше визначають, чи вдасться переїзд на навчання без зривів.",service1_title:"Вступ до виш­у",service1_desc:"Підбір програми та університету під ваш профіль, переклад і легалізація документів, подання заявки й супровід до самого зарахування.",service2_title:"Дозвіл на перебування",service2_desc:"Повний супровід оформлення в чужинецькій поліції: запис на прийом, збір пакета документів, переклад, супровід на співбесіду.",service3_title:"Житло",service3_desc:"Перевірене помешкання поруч із виш­ом — гуртожиток або приватна оренда, підписання договору, допомога з заселенням.",process_heading:"Як це відбувається",process_sub:"Чотири етапи від першої розмови до життя в новому місті.",step1_title:"Консультація",step1_desc:"Обираємо країну, виш і програму під ваші цілі та бюджет.",step2_title:"Документи",step2_desc:"Збираємо, перекладаємо й легалізуємо потрібний пакет.",step3_title:"Подання заявок",step3_desc:"Подаємо документи у виш і на дозвіл на перебування.",step4_title:"Приїзд і заселення",step4_desc:"Зустрічаємо на місці й допомагаємо влаштуватися.",pricing_heading:"Ціни",pricing_sub:"Обирайте окрему послугу або повний супровід — від подачі документів до заселення.",price_from:"від",pkg1_name:"Вступ",pkg1_desc:"Підбір виш­у та подання документів на навчання",pkg1_f1:"Підбір університету та програми",pkg1_f2:"Переклад і легалізація документів",pkg1_f3:"Подання заявки до виш­у",pkg2_tag:"Найпопулярніше",pkg2_name:"Перебування",pkg2_desc:"Оформлення дозволу в чужинецькій поліції",pkg2_f1:"Запис на прийом і збір документів",pkg2_f2:"Переклад необхідних довідок",pkg2_f3:"Супровід на співбесіду",pkg3_name:"Повний супровід",pkg3_desc:"Вступ + дозвіл на перебування + житло",pkg3_f1:"Усі послуги пакетів «Вступ» і «Перебування»",pkg3_f2:"Підбір і бронювання житла",pkg3_f3:"Зустріч і допомога із заселенням",price_cta:"Дізнатися більше",price_note:"Вказані ціни орієнтовні. Остаточна вартість залежить від країни, обраного виш­у та переліку послуг — уточнюємо на безкоштовній консультації.",trust1_title:"3 країни, один партнер",trust1_desc:"Словаччина, Чехія та Польща — знаємо процедури й вимоги кожної країни зсередини.",trust2_title:"Супровід рідною мовою",trust2_desc:"Спілкуємося вашою мовою — жодних непорозумінь на важливих етапах.",trust3_title:"Від заявки до заселення",trust3_desc:"Не передаємо вас між посередниками — один контакт на весь процес.",reviews_heading:"Що кажуть студенти",reviews_sub:"Кілька відгуків від студентів, яким ми допомогли — імена вказані за їхньою згодою.",review1_text:"Я не розуміла жодного листа від приймальної комісії, поки мені все не почали перекладати й пояснювати крок за кроком. Сам лише дозвіл на перебування я б оформлювала тижнями.",review1_name:"Олена",review1_meta:"Україна → Братислава, медицина",review2_text:"Мені знайшли кімнату в гуртожитку ще до приїзду і зустріли в аеропорту. Мені не довелося перейматися жодним бланком.",review2_name:"Айбек",review2_meta:"Казахстан → Краків, інформатика",review3_text:"Найбільше я боявся співбесіди в чужинецькій поліції — зі мною поїхали й узяли на себе всю розмову.",review3_name:"Ніно",review3_meta:"Грузія → Прага, бізнес",contact_heading:"Заповніть форму — і ми з вами зв'яжемося",contact_sub:"Розкажіть, яку країну та спеціальність розглядаєте — відповімо протягом одного робочого дня.",contact_note_title:"Що написати в першому повідомленні",contact_note_desc:"Країна, яку розглядаєте, бажана спеціальність і рік вступу — цього достатньо для першої відповіді.",form_name_label:"Ім'я",form_name_placeholder:"Ваше ім'я",form_contact_label:"Контакт (email або Telegram)",form_contact_placeholder:"you@example.com або @username",form_country_label:"Країна, яка цікавить",form_country_opt_other:"Ще не визначився/лась",form_message_label:"Повідомлення",form_message_placeholder:"Яку програму розглядаєте і коли плануєте почати навчання?",form_submit:"Надіслати заявку",form_success:"Дякуємо! Має відкритися ваш поштовий клієнт із готовим листом — якщо ні, напишіть нам напряму за адресою нижче.",footer_text:"© 2026 [Назва організації]. Супровід студентів у Словаччині, Чехії та Польщі."},
+ru:{brand_tagline:"Учёба в Центральной Европе",hero_h1:"Поступление и переезд на учёбу — без блуждания в чужой бюрократии",hero_lede:"Когда не знаешь страну, каждый шаг — от подачи документов в вуз до записи в полиции по делам иностранцев — превращается в отдельный квест. Мы проходим его за вас: от поступления до заселения.",hero_cta_primary:"Получить консультацию",hero_cta_secondary:"Посмотреть цены",chip_sk:"Словакия",chip_cz:"Чехия",chip_pl:"Польша",problem_heading:"Когда не знаешь страну, мелочи становятся препятствиями",problem_sub:"Абитуриенты чаще всего застревают не на вступительных экзаменах, а на организационных вопросах, о которых никто не предупреждает заранее.",problem1_title:"Языковой барьер",problem1_desc:"Общение с приёмной комиссией вуза и полицией по делам иностранцев часто ведётся только на местном языке.",problem2_title:"Несовпадающие дедлайны",problem2_desc:"Сроки подачи в вуз, записи на разрешение на пребывание и аренды жилья редко согласованы между собой.",problem3_title:"Требования к документам меняются",problem3_desc:"Список справок, легализаций и переводов каждый год немного другой, и ошибка стоит потерянного семестра.",problem4_title:"Жильё вслепую",problem4_desc:"Искать комнату или общежитие из другой страны, не имея возможности осмотреть жильё, — отдельный стресс.",map_heading:"Где можно учиться с нами",map_sub:"Три соседние страны, три системы образования, один контакт для вас.",map_pl_title:"Польша",map_pl_desc:"Варшава, Краков, Вроцлав — крупные государственные университеты и программы на английском.",map_cz_title:"Чехия",map_cz_desc:"Прага, Брно, Оломоуц — сильные технические и медицинские вузы.",map_sk_title:"Словакия",map_sk_desc:"Братислава, Кошице — доступная стоимость обучения и большое славяноязычное студенческое сообщество.",services_heading:"Мы берём весь процесс на себя",services_sub:"Три направления, которые чаще всего определяют, получится ли переезд на учёбу без срывов.",service1_title:"Поступление в вуз",service1_desc:"Подбор программы и университета под ваш профиль, перевод и легализация документов, подача заявки и сопровождение до самого зачисления.",service2_title:"Разрешение на пребывание",service2_desc:"Полное сопровождение оформления в полиции по делам иностранцев: запись на приём, сбор пакета документов, перевод, сопровождение на собеседование.",service3_title:"Жильё",service3_desc:"Проверенное жильё рядом с вузом — общежитие или частная аренда, подписание договора, помощь с заселением.",process_heading:"Как это происходит",process_sub:"Четыре этапа от первого разговора до жизни в новом городе.",step1_title:"Консультация",step1_desc:"Выбираем страну, вуз и программу под ваши цели и бюджет.",step2_title:"Документы",step2_desc:"Собираем, переводим и легализуем нужный пакет.",step3_title:"Подача заявок",step3_desc:"Подаём документы в вуз и на разрешение на пребывание.",step4_title:"Приезд и заселение",step4_desc:"Встречаем на месте и помогаем обустроиться.",pricing_heading:"Цены",pricing_sub:"Выбирайте отдельную услугу или полное сопровождение — от подачи документов до заселения.",price_from:"от",pkg1_name:"Поступление",pkg1_desc:"Подбор вуза и подача документов на учёбу",pkg1_f1:"Подбор университета и программы",pkg1_f2:"Перевод и легализация документов",pkg1_f3:"Подача заявки в вуз",pkg2_tag:"Популярнее всего",pkg2_name:"Пребывание",pkg2_desc:"Оформление разрешения в полиции по делам иностранцев",pkg2_f1:"Запись на приём и сбор документов",pkg2_f2:"Перевод необходимых справок",pkg2_f3:"Сопровождение на собеседование",pkg3_name:"Полное сопровождение",pkg3_desc:"Поступление + разрешение на пребывание + жильё",pkg3_f1:"Все услуги пакетов «Поступление» и «Пребывание»",pkg3_f2:"Подбор и бронирование жилья",pkg3_f3:"Встреча и помощь с заселением",price_cta:"Узнать больше",price_note:"Указанные цены ориентировочные. Итоговая стоимость зависит от страны, выбранного вуза и перечня услуг — уточняем на бесплатной консультации.",trust1_title:"3 страны, один партнёр",trust1_desc:"Словакия, Чехия и Польша — знаем процедуры и требования каждой страны изнутри.",trust2_title:"Сопровождение на вашем языке",trust2_desc:"Общаемся на вашем языке — никаких недопониманий на важных этапах.",trust3_title:"От заявки до заселения",trust3_desc:"Не передаём вас между посредниками — один контакт на весь процесс.",reviews_heading:"Что говорят студенты",reviews_sub:"Несколько отзывов от студентов, которым мы помогли — имена указаны с их согласия.",review1_text:"Я не понимала ни одного письма от приёмной комиссии, пока мне всё не начали переводить и объяснять шаг за шагом. Одно только разрешение на пребывание я бы оформляла неделями.",review1_name:"Елена",review1_meta:"Украина → Братислава, медицина",review2_text:"Мне нашли комнату в общежитии ещё до приезда и встретили в аэропорту. Мне не пришлось переживать ни за один бланк.",review2_name:"Айбек",review2_meta:"Казахстан → Краков, информатика",review3_text:"Больше всего я боялся собеседования в полиции по делам иностранцев — со мной поехали и взяли на себя весь разговор.",review3_name:"Нино",review3_meta:"Грузия → Прага, бизнес",contact_heading:"Заполните форму — и мы с вами свяжемся",contact_sub:"Расскажите, какую страну и специальность рассматриваете — ответим в течение одного рабочего дня.",contact_note_title:"Что написать в первом сообщении",contact_note_desc:"Страна, которую рассматриваете, желаемая специальность и год поступления — этого достаточно для первого ответа.",form_name_label:"Имя",form_name_placeholder:"Ваше имя",form_contact_label:"Контакт (email или Telegram)",form_contact_placeholder:"you@example.com или @username",form_country_label:"Интересующая страна",form_country_opt_other:"Ещё не решил(а)",form_message_label:"Сообщение",form_message_placeholder:"Какую программу рассматриваете и когда планируете начать учёбу?",form_submit:"Отправить заявку",form_success:"Спасибо! Должен открыться ваш почтовый клиент с готовым письмом — если нет, напишите нам напрямую по адресу ниже.",footer_text:"© 2026 [Название организации]. Сопровождение студентов в Словакии, Чехии и Польше."},
+en:{brand_tagline:"Study in Central Europe",hero_h1:"Start studying in Central Europe — without getting lost in someone else's bureaucracy",hero_lede:"When you don't know the country, every step — from university applications to registering with the foreigners' police — becomes its own ordeal. We handle it for you, from application to move-in.",hero_cta_primary:"Get a consultation",hero_cta_secondary:"See pricing",chip_sk:"Slovakia",chip_cz:"Czechia",chip_pl:"Poland",problem_heading:"When you don't know the country, small things become obstacles",problem_sub:"Applicants usually get stuck not on entrance exams, but on the organisational questions nobody warns them about.",problem1_title:"Language barrier",problem1_desc:"Admissions offices and the foreigners' police often communicate only in the local language.",problem2_title:"Deadlines that don't line up",problem2_desc:"University, residence-permit and housing deadlines are rarely coordinated with each other.",problem3_title:"Requirements keep changing",problem3_desc:"The list of certificates, legalisations and translations shifts every year, and a mistake can cost you a semester.",problem4_title:"Housing, blind",problem4_desc:"Looking for a room or dorm from another country, with no way to view it in person, is its own kind of stress.",map_heading:"Where you can study with us",map_sub:"Three neighbouring countries, three university systems, one point of contact.",map_pl_title:"Poland",map_pl_desc:"Warsaw, Kraków, Wrocław — large public universities and English-taught programmes.",map_cz_title:"Czechia",map_cz_desc:"Prague, Brno, Olomouc — strong technical and medical schools.",map_sk_title:"Slovakia",map_sk_desc:"Bratislava, Košice — affordable tuition and a large Slavic-speaking student community.",services_heading:"We take the whole process off your hands",services_sub:"Three areas that usually decide whether a move abroad for study goes smoothly.",service1_title:"University admission",service1_desc:"Matching you with a programme and university, translating and legalising documents, submitting the application, support all the way to enrolment.",service2_title:"Residence permit",service2_desc:"Full support with the foreigners' police: booking the appointment, preparing the document package, translation, and accompanying you to the interview.",service3_title:"Housing",service3_desc:"Verified accommodation near your university — dorm or private rental, lease signing, move-in support.",process_heading:"How it works",process_sub:"Four stages from the first conversation to settling into your new city.",step1_title:"Consultation",step1_desc:"We choose the country, university and programme that fit your goals and budget.",step2_title:"Documents",step2_desc:"We gather, translate and legalise the required package.",step3_title:"Applications",step3_desc:"We submit your university application and your residence-permit application.",step4_title:"Arrival & move-in",step4_desc:"We meet you on arrival and help you get settled.",pricing_heading:"Pricing",pricing_sub:"Choose a single service or full support — from paperwork to move-in.",price_from:"from",pkg1_name:"Admission",pkg1_desc:"University matching and application submission",pkg1_f1:"University and programme matching",pkg1_f2:"Document translation and legalisation",pkg1_f3:"Submitting the university application",pkg2_tag:"Most popular",pkg2_name:"Residence permit",pkg2_desc:"Processing your permit with the foreigners' police",pkg2_f1:"Appointment booking and document collection",pkg2_f2:"Translation of required certificates",pkg2_f3:"Support at the interview",pkg3_name:"Full support",pkg3_desc:"Admission + residence permit + housing",pkg3_f1:"Everything in Admission and Residence permit",pkg3_f2:"Housing search and booking",pkg3_f3:"Meet-and-greet and move-in help",price_cta:"Learn more",price_note:"Prices shown are indicative. The final cost depends on the country, university and chosen services — we confirm it during a free consultation.",trust1_title:"3 countries, one partner",trust1_desc:"Slovakia, Czechia and Poland — we know each country's procedures and requirements from the inside.",trust2_title:"Support in your language",trust2_desc:"We speak your language — no misunderstandings at the stages that matter.",trust3_title:"From application to move-in",trust3_desc:"You're not passed between middlemen — one point of contact for the whole process.",reviews_heading:"What students say",reviews_sub:"A few notes from students we've supported — names shared with permission.",review1_text:"I didn't understand a word of the university's emails until they started translating and explaining every step. The residence permit alone would have taken me weeks on my own.",review1_name:"Olena",review1_meta:"Ukraine → Bratislava, Medicine",review2_text:"They found me a dorm room before I even landed and picked me up from the airport. I didn't have to worry about a single form.",review2_name:"Aibek",review2_meta:"Kazakhstan → Kraków, Computer Science",review3_text:"The foreigners' police appointment was the part I dreaded most — they came with me and handled the whole conversation.",review3_name:"Nino",review3_meta:"Georgia → Prague, Business",contact_heading:"Fill in the form and we'll get back to you",contact_sub:"Tell us which country and field you're considering — we reply within one business day.",contact_note_title:"What to include",contact_note_desc:"The country you're considering, your intended field of study and the year you plan to start — that's enough for a first, useful reply.",form_name_label:"Name",form_name_placeholder:"Your name",form_contact_label:"Contact (email or Telegram)",form_contact_placeholder:"you@example.com or @username",form_country_label:"Country of interest",form_country_opt_other:"Not sure yet",form_message_label:"Message",form_message_placeholder:"Which programme are you considering, and when do you plan to start?",form_submit:"Send request",form_success:"Thank you! Your email app should have opened with your message — if not, write to us directly at the address below.",footer_text:"© 2026 [Organisation name]. Support for students in Slovakia, Czechia and Poland."},
+kk:{brand_tagline:"Орталық Еуропада оқу",hero_h1:"Орталық Еуропада оқуды бастаңыз — бөтен елдің бюрократиясында адаспай",hero_lede:"Елді білмегенде, университетке құжат тапсырудан бастап шетелдіктер полициясында тіркелуге дейінгі әр қадам жеке сынаққа айналады. Біз мұның бәрін сіз үшін жасаймыз — оқуға түсуден баспанаға қоныстануға дейін.",hero_cta_primary:"Кеңес алу",hero_cta_secondary:"Бағаларды көру",chip_sk:"Словакия",chip_cz:"Чехия",chip_pl:"Польша",problem_heading:"Елді білмегенде, кішкентай нәрселер кедергіге айналады",problem_sub:"Талапкерлер көбіне емтиханда емес, ешкім алдын ала ескертпейтін ұйымдастыру мәселелерінде тоқтап қалады.",problem1_title:"Тіл кедергісі",problem1_desc:"Қабылдау комиссиясы мен шетелдіктер полициясы көбіне тек жергілікті тілде сөйлеседі.",problem2_title:"Сәйкес келмейтін мерзімдер",problem2_desc:"Университетке, тұруға рұқсатқа және баспанаға қатысты мерзімдер бір-бірімен сирек сәйкес келеді.",problem3_title:"Құжат талаптары өзгеріп тұрады",problem3_desc:"Анықтамалар, аудармалар мен заңдастыру тізімі жыл сайын өзгереді, ал қате бір семестрді жоғалтуға әкелуі мүмкін.",problem4_title:"Баспананы көрмей іздеу",problem4_desc:"Бөлме немесе жатақхананы басқа елден, көрмей іздеу — жеке стресс.",map_heading:"Бізбен қай жерде оқуға болады",map_sub:"Үш көрші ел, үш білім беру жүйесі, сіз үшін бір байланыс.",map_pl_title:"Польша",map_pl_desc:"Варшава, Краков, Вроцлав — ірі мемлекеттік университеттер және ағылшын тіліндегі бағдарламалар.",map_cz_title:"Чехия",map_cz_desc:"Прага, Брно, Оломоуц — күшті техникалық және медициналық жоғары оқу орындары.",map_sk_title:"Словакия",map_sk_desc:"Братислава, Кошице — қолжетімді оқу ақысы және славян тілдес студенттердің үлкен қауымдастығы.",services_heading:"Барлық процесті өзімізге аламыз",services_sub:"Шетелде оқудың сәтті болуын анықтайтын үш бағыт.",service1_title:"Университетке түсу",service1_desc:"Сіздің бейініңізге сай бағдарлама мен университетті таңдау, құжаттарды аудару және заңдастыру, өтінім тапсыру, қабылданғанға дейінгі сүйемелдеу.",service2_title:"Тұруға рұқсат",service2_desc:"Шетелдіктер полициясында толық сүйемелдеу: қабылдауға жазылу, құжат пакетін жинау, аударма, сұхбатқа сүйемелдеу.",service3_title:"Баспана",service3_desc:"Университетке жақын тексерілген баспана — жатақхана немесе жеке жалдау, шарт жасасу, қоныстануға көмек.",process_heading:"Бұл қалай жүреді",process_sub:"Алғашқы сөйлесуден жаңа қалаға орналасуға дейінгі төрт кезең.",step1_title:"Кеңес",step1_desc:"Мақсатыңыз бен бюджетіңізге сай ел, университет және бағдарламаны таңдаймыз.",step2_title:"Құжаттар",step2_desc:"Қажетті пакетті жинаймыз, аударамыз және заңдастырамыз.",step3_title:"Өтінімдер",step3_desc:"Университетке және тұруға рұқсатқа құжат тапсырамыз.",step4_title:"Келу және қоныстану",step4_desc:"Сізді орнында қарсы аламыз және орналасуға көмектесеміз.",pricing_heading:"Бағалар",pricing_sub:"Жеке қызметті немесе толық сүйемелдеуді таңдаңыз — құжаттан бастап қоныстануға дейін.",price_from:"бастап",pkg1_name:"Түсу",pkg1_desc:"Университетті таңдау және оқуға құжат тапсыру",pkg1_f1:"Университет пен бағдарламаны таңдау",pkg1_f2:"Құжаттарды аудару және заңдастыру",pkg1_f3:"Университетке өтінім тапсыру",pkg2_tag:"Ең танымал",pkg2_name:"Тұру рұқсаты",pkg2_desc:"Шетелдіктер полициясында рұқсатты рәсімдеу",pkg2_f1:"Қабылдауға жазылу және құжат жинау",pkg2_f2:"Қажетті анықтамаларды аудару",pkg2_f3:"Сұхбатқа сүйемелдеу",pkg3_name:"Толық сүйемелдеу",pkg3_desc:"Түсу + тұру рұқсаты + баспана",pkg3_f1:"«Түсу» және «Тұру рұқсаты» пакеттерінің барлық қызметтері",pkg3_f2:"Баспана іздеу және брондау",pkg3_f3:"Қарсы алу және қоныстануға көмек",price_cta:"Толығырақ білу",price_note:"Көрсетілген бағалар шамамен алынған. Түпкілікті құны елге, таңдалған университетке және қызметтер тізіміне байланысты — тегін кеңесте нақтылаймыз.",trust1_title:"3 ел, бір серіктес",trust1_desc:"Словакия, Чехия және Польша — әр елдің рәсімдері мен талаптарын ішінара білеміз.",trust2_title:"Өз тіліңізде сүйемелдеу",trust2_desc:"Сізбен өз тіліңізде сөйлесеміз — маңызды кезеңдерде түсінбеушілік болмайды.",trust3_title:"Өтінімнен қоныстануға дейін",trust3_desc:"Сізді делдалдар арасында ауыстырмаймыз — бүкіл процеске бір байланыс.",reviews_heading:"Студенттер не дейді",reviews_sub:"Біз көмектескен студенттердің бірнеше пікірі — есімдер олардың келісімімен көрсетілген.",review1_text:"Маған әр қадамды аудара және түсіндіре бастағанша, қабылдау комиссиясының хаттарын түсінбедім. Тұруға рұқсатты өзім жалғыз апталап рәсімдер едім.",review1_name:"Олена",review1_meta:"Украина → Братислава, медицина",review2_text:"Маған келгенге дейін жатақханадан бөлме тауып, әуежайдан қарсы алды. Бірде-бір құжатқа алаңдамадым.",review2_name:"Айбек",review2_meta:"Қазақстан → Краков, информатика",review3_text:"Ең қатты шетелдіктер полициясындағы сұхбаттан қорықтым — олар менімен бірге барып, әңгіменің бәрін өз мойнына алды.",review3_name:"Нино",review3_meta:"Грузия → Прага, бизнес",contact_heading:"Форманы толтырыңыз — біз сізбен байланысамыз",contact_sub:"Қай елді және мамандықты қарастырып жатқаныңызды жазыңыз — бір жұмыс күні ішінде жауап береміз.",contact_note_title:"Алғашқы хабарламаға не жазу керек",contact_note_desc:"Қарастырып жатқан ел, қалаған мамандық және түсу жылы — алғашқы пайдалы жауап үшін жеткілікті.",form_name_label:"Аты",form_name_placeholder:"Атыңыз",form_contact_label:"Байланыс (email немесе Telegram)",form_contact_placeholder:"you@example.com немесе @username",form_country_label:"Қызығушылық танытқан ел",form_country_opt_other:"Әлі шешілмеген",form_message_label:"Хабарлама",form_message_placeholder:"Қандай бағдарламаны қарастырып жатырсыз және қашан бастауды жоспарлайсыз?",form_submit:"Өтінім жіберу",form_success:"Рақмет! Электрондық пошта қосымшаңыз дайын хатпен ашылуы керек — ашылмаса, төмендегі мекенжайға тікелей жазыңыз.",footer_text:"© 2026 [Ұйым атауы]. Словакия, Чехия және Польшадағы студенттерге қолдау."},
+uz:{brand_tagline:"Markaziy Yevropada ta'lim",hero_h1:"Markaziy Yevropada o'qishni boshlang — begona byurokratiyada adashmasdan",hero_lede:"Mamlakatni bilmasangiz, universitetga hujjat topshirishdan tortib, chet elliklar politsiyasida ro'yxatdan o'tishgacha bo'lgan har bir qadam alohida sinovga aylanadi. Biz buning barchasini siz uchun bajaramiz — o'qishga kirishdan turar joyga joylashishgacha.",hero_cta_primary:"Konsultatsiya olish",hero_cta_secondary:"Narxlarni ko'rish",chip_sk:"Slovakiya",chip_cz:"Chexiya",chip_pl:"Polsha",problem_heading:"Mamlakatni bilmasangiz, mayda narsalar to'siqqa aylanadi",problem_sub:"Abituriyentlar ko'pincha imtihonlarda emas, hech kim oldindan ogohlantirmaydigan tashkiliy masalalarda qiynaladi.",problem1_title:"Til to'sig'i",problem1_desc:"Qabul komissiyasi va chet elliklar politsiyasi ko'pincha faqat mahalliy tilda muloqot qiladi.",problem2_title:"Mos kelmaydigan muddatlar",problem2_desc:"Universitetga, turar joyga ruxsatnomaga va uy-joyga oid muddatlar kamdan-kam bir-biriga mos keladi.",problem3_title:"Hujjat talablari o'zgarib turadi",problem3_desc:"Ma'lumotnomalar, tarjimalar va legalizatsiya ro'yxati har yili biroz o'zgaradi, xato esa bir semestrni yo'qotishga olib kelishi mumkin.",problem4_title:"Uy-joyni ko'rmasdan izlash",problem4_desc:"Boshqa mamlakatdan xona yoki yotoqxonani ko'rmasdan izlash — alohida stress.",map_heading:"Biz bilan qayerda o'qish mumkin",map_sub:"Uchta qo'shni mamlakat, uchta ta'lim tizimi, siz uchun bitta aloqa.",map_pl_title:"Polsha",map_pl_desc:"Varshava, Krakov, Vrotslav — yirik davlat universitetlari va ingliz tilidagi dasturlar.",map_cz_title:"Chexiya",map_cz_desc:"Praga, Brno, Olomouts — kuchli texnika va tibbiyot oliy o'quv yurtlari.",map_sk_title:"Slovakiya",map_sk_desc:"Bratislava, Koshitse — arzon o'qish narxi va slavyan tilida so'zlashuvchi talabalarning katta jamoasi.",services_heading:"Butun jarayonni o'z zimmamizga olamiz",services_sub:"Chet elda o'qishga ko'chishning muvaffaqiyatli o'tishini belgilaydigan uchta yo'nalish.",service1_title:"Universitetga kirish",service1_desc:"Sizning profilingizga mos dastur va universitetni tanlash, hujjatlarni tarjima qilish va legalizatsiya qilish, ariza topshirish, qabul qilinguncha hamrohlik.",service2_title:"Turar joy uchun ruxsatnoma",service2_desc:"Chet elliklar politsiyasida to'liq hamrohlik: qabulga yozilish, hujjatlar to'plamini yig'ish, tarjima, suhbatga hamrohlik.",service3_title:"Uy-joy",service3_desc:"Universitetga yaqin tekshirilgan turar joy — yotoqxona yoki xususiy ijara, shartnoma tuzish, joylashishga yordam.",process_heading:"Bu qanday amalga oshadi",process_sub:"Birinchi suhbatdan yangi shaharga joylashishgacha to'rt bosqich.",step1_title:"Konsultatsiya",step1_desc:"Maqsad va byudjetingizga mos mamlakat, universitet va dasturni tanlaymiz.",step2_title:"Hujjatlar",step2_desc:"Kerakli to'plamni yig'amiz, tarjima qilamiz va legalizatsiya qilamiz.",step3_title:"Arizalar",step3_desc:"Universitetga va turar joy ruxsatnomasiga hujjat topshiramiz.",step4_title:"Kelish va joylashish",step4_desc:"Joyida sizni kutib olamiz va joylashishga yordam beramiz.",pricing_heading:"Narxlar",pricing_sub:"Alohida xizmatni yoki to'liq hamrohlikni tanlang — hujjatdan joylashishgacha.",price_from:"dan",pkg1_name:"Kirish",pkg1_desc:"Universitet tanlash va o'qishga hujjat topshirish",pkg1_f1:"Universitet va dasturni tanlash",pkg1_f2:"Hujjatlarni tarjima va legalizatsiya qilish",pkg1_f3:"Universitetga ariza topshirish",pkg2_tag:"Eng mashhur",pkg2_name:"Turar joy ruxsatnomasi",pkg2_desc:"Chet elliklar politsiyasida ruxsatnomani rasmiylashtirish",pkg2_f1:"Qabulga yozilish va hujjat yig'ish",pkg2_f2:"Kerakli ma'lumotnomalarni tarjima qilish",pkg2_f3:"Suhbatga hamrohlik",pkg3_name:"To'liq hamrohlik",pkg3_desc:"Kirish + turar joy ruxsatnomasi + uy-joy",pkg3_f1:"«Kirish» va «Turar joy ruxsatnomasi» paketlarining barcha xizmatlari",pkg3_f2:"Uy-joy izlash va bron qilish",pkg3_f3:"Kutib olish va joylashishga yordam",price_cta:"Batafsil bilish",price_note:"Ko'rsatilgan narxlar taxminiy. Yakuniy narx mamlakat, tanlangan universitet va xizmatlar ro'yxatiga bog'liq — bepul konsultatsiyada aniqlashtiramiz.",trust1_title:"3 mamlakat, bitta hamkor",trust1_desc:"Slovakiya, Chexiya va Polsha — har bir mamlakatning tartib-qoidalari va talablarini ichkaridan bilamiz.",trust2_title:"O'z tilingizda hamrohlik",trust2_desc:"Siz bilan o'z tilingizda gaplashamiz — muhim bosqichlarda tushunmovchiliklar bo'lmaydi.",trust3_title:"Arizadan joylashishgacha",trust3_desc:"Sizni vositachilar orasida uzatmaymiz — butun jarayon uchun bitta aloqa.",reviews_heading:"Talabalar nima deydi",reviews_sub:"Biz yordam bergan talabalarning bir nechta fikri — ismlar ularning roziligi bilan ko'rsatilgan.",review1_text:"Har bir qadamni tarjima qilib, tushuntira boshlashguncha qabul komissiyasining xatlarini tushunmasdim. Turar joy ruxsatnomasining o'zini yolg'iz rasmiylashtirsam, haftalab vaqt ketardi.",review1_name:"Olena",review1_meta:"Ukraina → Bratislava, tibbiyot",review2_text:"Men kelgunimcha yotoqxonadan xona topib qo'yishdi va aeroportdan kutib olishdi. Bironta ham blankdan xavotirlanishim shart bo'lmadi.",review2_name:"Aybek",review2_meta:"Qozog'iston → Krakov, informatika",review3_text:"Eng ko'p chet elliklar politsiyasidagi suhbatdan qo'rqardim — ular men bilan borib, butun suhbatni o'z zimmalariga olishdi.",review3_name:"Nino",review3_meta:"Gruziya → Praga, biznes",contact_heading:"Formani to'ldiring — biz siz bilan bog'lanamiz",contact_sub:"Qaysi mamlakat va mutaxassislikni ko'rib chiqayotganingizni yozing — bir ish kuni ichida javob beramiz.",contact_note_title:"Birinchi xabarga nima yozish kerak",contact_note_desc:"Ko'rib chiqayotgan mamlakat, istalgan mutaxassislik va o'qishni boshlash yili — birinchi foydali javob uchun yetarli.",form_name_label:"Ism",form_name_placeholder:"Ismingiz",form_contact_label:"Aloqa (email yoki Telegram)",form_contact_placeholder:"you@example.com yoki @username",form_country_label:"Qiziqtirgan mamlakat",form_country_opt_other:"Hali aniq emas",form_message_label:"Xabar",form_message_placeholder:"Qaysi dasturni ko'rib chiqayapsiz va qachon boshlamoqchisiz?",form_submit:"Ariza yuborish",form_success:"Rahmat! Elektron pochta ilovangiz tayyor xat bilan ochilishi kerak — agar ochilmasa, quyidagi manzilga to'g'ridan-to'g'ri yozing.",footer_text:"© 2026 [Tashkilot nomi]. Slovakiya, Chexiya va Polshadagi talabalarga yordam."},
+ka:{brand_tagline:"სწავლა ცენტრალურ ევროპაში",hero_h1:"დაიწყეთ სწავლა ცენტრალურ ევროპაში — უცხო ქვეყნის ბიუროკრატიაში დაბნევის გარეშე",hero_lede:"როცა ქვეყანას არ იცნობთ, ყოველი ნაბიჯი — უნივერსიტეტში დოკუმენტების შეტანიდან უცხოელთა პოლიციაში რეგისტრაციამდე — ცალკე გამოწვევად იქცევა. ჩვენ ამას თქვენ მაგივრად ვაკეთებთ.",hero_cta_primary:"კონსულტაციის მიღება",hero_cta_secondary:"ფასების ნახვა",chip_sk:"სლოვაკეთი",chip_cz:"ჩეხეთი",chip_pl:"პოლონეთი",problem_heading:"როცა ქვეყანას არ იცნობთ, წვრილმანები დაბრკოლებად იქცევა",problem_sub:"აბიტურიენტები ყველაზე ხშირად ჩერდებიან ორგანიზაციულ საკითხებზე, რომლებზეც წინასწარ არავინ გაფრთხილებთ.",problem1_title:"ენობრივი ბარიერი",problem1_desc:"მისაღები კომისია და უცხოელთა პოლიცია ხშირად მხოლოდ ადგილობრივ ენაზე საუბრობენ.",problem2_title:"ვადები, რომლებიც არ ემთხვევა",problem2_desc:"უნივერსიტეტის, ბინადრობის ნებართვისა და საცხოვრებლის ვადები იშვიათად ემთხვევა ერთმანეთს.",problem3_title:"დოკუმენტების მოთხოვნები იცვლება",problem3_desc:"ცნობების, თარგმანებისა და ლეგალიზაციის სია ყოველწლიურად იცვლება, შეცდომა კი სემესტრის დაკარგვას ნიშნავს.",problem4_title:"საცხოვრებლის ძებნა უნახავად",problem4_desc:"ოთახის ან საერთო საცხოვრებლის ძებნა სხვა ქვეყნიდან, დათვალიერების გარეშე — ცალკე სტრესია.",map_heading:"სად შეგიძლიათ ჩვენთან სწავლა",map_sub:"სამი მეზობელი ქვეყანა, სამი საგანმანათლებლო სისტემა, ერთი საკონტაქტო პირი თქვენთვის.",map_pl_title:"პოლონეთი",map_pl_desc:"ვარშავა, კრაკოვი, ვროცლავი — დიდი სახელმწიფო უნივერსიტეტები და ინგლისურენოვანი პროგრამები.",map_cz_title:"ჩეხეთი",map_cz_desc:"პრაღა, ბრნო, ოლომოუცი — ძლიერი ტექნიკური და სამედიცინო უნივერსიტეტები.",map_sk_title:"სლოვაკეთი",map_sk_desc:"ბრატისლავა, კოშიცე — ხელმისაწვდომი სწავლის ღირებულება და სლავურენოვანი სტუდენტების დიდი საზოგადოება.",services_heading:"მთელ პროცესს ჩვენ ვიღებთ თავზე",services_sub:"სამი მიმართულება, რომელიც განსაზღვრავს საზღვარგარეთ სწავლაზე გადასვლის წარმატებას.",service1_title:"უნივერსიტეტში ჩარიცხვა",service1_desc:"თქვენს პროფილზე მორგებული პროგრამისა და უნივერსიტეტის შერჩევა, დოკუმენტების თარგმნა და ლეგალიზაცია, განაცხადის შეტანა, თანხლება ჩარიცხვამდე.",service2_title:"ბინადრობის ნებართვა",service2_desc:"სრული თანხლება უცხოელთა პოლიციაში: ვიზიტზე ჩაწერა, დოკუმენტების პაკეტის შეგროვება, თარგმანი, გასაუბრებაზე თანხლება.",service3_title:"საცხოვრებელი",service3_desc:"უნივერსიტეტთან ახლოს შემოწმებული საცხოვრებელი — საერთო საცხოვრებელი ან კერძო ქირავნობა, ხელშეკრულების გაფორმება, დასახლებაში დახმარება.",process_heading:"როგორ მიმდინარეობს ეს",process_sub:"ოთხი ეტაპი პირველი საუბრიდან ახალ ქალაქში დასახლებამდე.",step1_title:"კონსულტაცია",step1_desc:"ვირჩევთ ქვეყანას, უნივერსიტეტსა და პროგრამას თქვენი მიზნებისა და ბიუჯეტის მიხედვით.",step2_title:"დოკუმენტები",step2_desc:"ვაგროვებთ, ვთარგმნით და ვალეგალიზებთ საჭირო პაკეტს.",step3_title:"განაცხადები",step3_desc:"ვაბარებთ დოკუმენტებს უნივერსიტეტსა და ბინადრობის ნებართვაზე.",step4_title:"ჩამოსვლა და დასახლება",step4_desc:"გხვდებით ადგილზე და გეხმარებით მოწყობაში.",pricing_heading:"ფასები",pricing_sub:"აირჩიეთ ცალკეული სერვისი ან სრული თანხლება — დოკუმენტებიდან დასახლებამდე.",price_from:"დან",pkg1_name:"ჩარიცხვა",pkg1_desc:"უნივერსიტეტის შერჩევა და სასწავლო დოკუმენტების შეტანა",pkg1_f1:"უნივერსიტეტისა და პროგრამის შერჩევა",pkg1_f2:"დოკუმენტების თარგმნა და ლეგალიზაცია",pkg1_f3:"განაცხადის შეტანა უნივერსიტეტში",pkg2_tag:"ყველაზე პოპულარული",pkg2_name:"ბინადრობის ნებართვა",pkg2_desc:"ნებართვის გაფორმება უცხოელთა პოლიციაში",pkg2_f1:"ვიზიტზე ჩაწერა და დოკუმენტების შეგროვება",pkg2_f2:"საჭირო ცნობების თარგმნა",pkg2_f3:"გასაუბრებაზე თანხლება",pkg3_name:"სრული თანხლება",pkg3_desc:"ჩარიცხვა + ბინადრობის ნებართვა + საცხოვრებელი",pkg3_f1:"«ჩარიცხვა» და «ბინადრობის ნებართვა» პაკეტების ყველა სერვისი",pkg3_f2:"საცხოვრებლის ძებნა და დაჯავშნა",pkg3_f3:"დახვედრა და დასახლებაში დახმარება",price_cta:"გაიგეთ მეტი",price_note:"მითითებული ფასები ორიენტირებულია. საბოლოო ღირებულება დამოკიდებულია ქვეყანაზე, არჩეულ უნივერსიტეტსა და სერვისების ჩამონათვალზე — დავაზუსტებთ უფასო კონსულტაციაზე.",trust1_title:"3 ქვეყანა, ერთი პარტნიორი",trust1_desc:"სლოვაკეთი, ჩეხეთი და პოლონეთი — ვიცნობთ თითოეული ქვეყნის პროცედურებსა და მოთხოვნებს შიგნიდან.",trust2_title:"თანხლება თქვენს ენაზე",trust2_desc:"ვესაუბრებით თქვენს ენაზე — მნიშვნელოვან ეტაპებზე გაუგებრობის გარეშე.",trust3_title:"განაცხადიდან დასახლებამდე",trust3_desc:"არ გადაგცემთ შუამავლებს შორის — ერთი საკონტაქტო პირი მთელი პროცესისთვის.",reviews_heading:"რას ამბობენ სტუდენტები",reviews_sub:"რამდენიმე მიმოხილვა სტუდენტებისგან, რომლებსაც დავეხმარეთ — სახელები მითითებულია მათი თანხმობით.",review1_text:"მისაღები კომისიის წერილები არაფერი გამეგებინა, სანამ ყველაფერი არ დამითარგმნეს და ნაბიჯ-ნაბიჯ არ ამიხსნეს. მარტო ბინადრობის ნებართვას თვითონ კვირობით ვაფორმებდი.",review1_name:"ოლენა",review1_meta:"უკრაინა → ბრატისლავა, მედიცინა",review2_text:"ჩამოსვლამდე უკვე მქონდა ნაპოვნი ოთახი საერთო საცხოვრებელში და აეროპორტში დამხვდნენ. არცერთ ფურცელზე არ მომიწია ფიქრი.",review2_name:"აიბეკი",review2_meta:"ყაზახეთი → კრაკოვი, ინფორმატიკა",review3_text:"ყველაზე მეშინოდა უცხოელთა პოლიციაში გასაუბრება — ჩემთან ერთად წავიდნენ და მთელი საუბარი თავად აიღეს.",review3_name:"ნინო",review3_meta:"საქართველო → პრაღა, ბიზნესი",contact_heading:"შეავსეთ ფორმა — ჩვენ დაგიკავშირდებით",contact_sub:"მოგვწერეთ, რომელ ქვეყანას და სპეციალობას განიხილავთ — პასუხს გავცემთ ერთი სამუშაო დღის განმავლობაში.",contact_note_title:"რა დავწეროთ პირველ შეტყობინებაში",contact_note_desc:"ქვეყანა, რომელსაც განიხილავთ, სასურველი სპეციალობა და ჩარიცხვის წელი — ეს საკმარისია პირველი სასარგებლო პასუხისთვის.",form_name_label:"სახელი",form_name_placeholder:"თქვენი სახელი",form_contact_label:"კონტაქტი (email ან Telegram)",form_contact_placeholder:"you@example.com ან @username",form_country_label:"საინტერესო ქვეყანა",form_country_opt_other:"ჯერ არ გადამიწყვეტია",form_message_label:"შეტყობინება",form_message_placeholder:"რომელ პროგრამას განიხილავთ და როდის აპირებთ დაწყებას?",form_submit:"განაცხადის გაგზავნა",form_success:"მადლობა! თქვენი ელფოსტის აპლიკაცია უნდა გაიხსნას მზა წერილით — თუ არა, მოგვწერეთ პირდაპირ ქვემოთ მითითებულ მისამართზე.",footer_text:"© 2026 [ორგანიზაციის სახელი]. სტუდენტების თანხლება სლოვაკეთში, ჩეხეთში და პოლონეთში."}
+};
+
+function applyLang(lang){
+  var dict = translations[lang] || translations.ua;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) el.textContent = dict[key];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el){
+    var key = el.getAttribute('data-i18n-placeholder');
+    if (dict[key] !== undefined) el.setAttribute('placeholder', dict[key]);
+  });
+  document.querySelectorAll('#lang-switch button').forEach(function(btn){
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+  document.documentElement.setAttribute('lang', lang === 'ua' ? 'uk' : lang);
+  try { localStorage.setItem('site-lang', lang); } catch(e) {}
+}
+
+document.getElementById('lang-switch').addEventListener('click', function(e){
+  var btn = e.target.closest('button[data-lang]');
+  if (btn) applyLang(btn.getAttribute('data-lang'));
+});
+
+(function(){
+  var saved = 'ua';
+  try { var s = localStorage.getItem('site-lang'); if (s && translations[s]) saved = s; } catch(e) {}
+  applyLang(saved);
+})();
+
+var form = document.getElementById('lead-form');
+var successMsg = document.getElementById('form-success');
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = document.getElementById('f-name').value;
+  var contact = document.getElementById('f-contact').value;
+  var country = document.getElementById('f-country').value;
+  var message = document.getElementById('f-message').value;
+  var subject = 'STUDY CEE — nova ziadost / nova zayavka';
+  var body = 'Meno / Imya: ' + name + '\n' +
+             'Kontakt: ' + contact + '\n' +
+             'Krajina / Strana: ' + country + '\n' +
+             'Sprava / Soobshchenie: ' + message;
+  var mailto = 'mailto:info@your-domain.example?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  window.location.href = mailto;
+  successMsg.classList.add('show');
+});
+</script>
+
+</body>
+</html>
