@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STUDY CEE — Study. Apply. Move.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F6F6; --paper:#FFFFFF; --ink:#14213D; --ink-soft:#4C5568; --ink-faint:#7C8598;
+  --line:#DEE3E6; --accent:#1E8F6E; --accent-soft:#DFF1EA; --accent2:#2D6CDF; --accent2-soft:#E2EAFB;
+  --deep:#0F1B33; --deep-2:#152341; --on-deep:#EDEFEC; --on-deep-soft:#AEB7CC; --danger:#B8452E;
+  --font-serif:'Spectral',Georgia,serif; --font-sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+:root:not([data-theme="light"]){ @media (prefers-color-scheme: dark){
+  --bg:#0E121B; --paper:#171C29; --ink:#EDEFEC; --ink-soft:#C3C9D6; --ink-faint:#8892A5; --line:#2A3040;
+  --accent:#3FBE95; --accent-soft:#12332A; --accent2:#5B8CF2; --accent2-soft:#17233F;
+  --deep:#0A0F1A; --deep-2:#0D1526; --on-deep:#EDEFEC; --on-deep-soft:#9BA5BC;
+}}
+:root[data-theme="dark"]{
+  --bg:#0E121B; --paper:#171C29; --ink:#EDEFEC; --ink-soft:#C3C9D6; --ink-faint:#8892A5; --line:#2A3040;
+  --accent:#3FBE95; --accent-soft:#12332A; --accent2:#5B8CF2; --accent2-soft:#17233F;
+  --deep:#0A0F1A; --deep-2:#0D1526; --on-deep:#EDEFEC; --on-deep-soft:#9BA5BC;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-sans);line-height:1.55;-webkit-font-smoothing:antialiased;padding-bottom:0;}
+img{max-width:100%;display:block;}
+a{color:inherit;}
+button{font-family:inherit;}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+section{padding:56px 0;}
+.section-head{max-width:640px;margin-bottom:34px;}
+.section-head h2{font-family:var(--font-serif);font-weight:600;font-size:clamp(23px,3vw,32px);line-height:1.2;margin:0 0 10px;}
+.section-head p{color:var(--ink-soft);font-size:15.5px;margin:0;max-width:56ch;}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.04em;color:var(--accent);text-transform:uppercase;margin:0 0 8px;}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+.header-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:14px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);}
+.brand-word{font-family:var(--font-serif);font-size:19px;font-weight:700;display:flex;align-items:baseline;gap:6px;}
+.brand-word .cee{font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:.04em;background:var(--accent);color:#fff;padding:2px 7px;border-radius:4px;transform:translateY(-1px);}
+.brand-slogan{font-size:10.5px;color:var(--ink-faint);letter-spacing:.03em;margin-top:1px;}
+.header-actions{display:flex;align-items:center;gap:10px;}
+.lang-switch{display:flex;gap:3px;border:1px solid var(--line);border-radius:999px;padding:3px;position:relative;}
+.lang-switch button{border:none;background:transparent;color:var(--ink-soft);font-size:12px;font-weight:600;padding:6px 10px;cursor:pointer;border-radius:999px;}
+.lang-switch button.active{background:var(--deep);color:var(--on-deep);}
+.lang-more-wrap{position:relative;}
+.lang-more-panel{display:none;position:absolute;top:calc(100% + 6px);right:0;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:6px;box-shadow:0 10px 30px rgba(0,0,0,.12);z-index:60;min-width:110px;}
+.lang-more-panel.open{display:block;}
+.lang-more-panel button{display:block;width:100%;text-align:left;padding:7px 10px;font-size:12.5px;font-weight:600;}
+.header-cta{display:none;}
+@media (min-width:760px){.header-cta{display:inline-flex;}}
+.header-nav{display:none;gap:22px;}
+.header-nav a{font-size:13.5px;font-weight:600;color:var(--ink-soft);text-decoration:none;}
+.header-nav a:hover{color:var(--ink);}
+@media (min-width:980px){.header-nav{display:flex;}}
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:8px;font-size:14.5px;font-weight:600;text-decoration:none;cursor:pointer;border:1.5px solid transparent;transition:transform .15s,background .2s,border-color .2s;}
+.btn:hover{transform:translateY(-1px);}
+.btn-primary{background:var(--accent);color:#fff;}
+.btn-primary:hover{filter:brightness(0.92);}
+.btn-deep{background:var(--deep);color:var(--on-deep);}
+.btn-deep:hover{background:var(--deep-2);}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:transparent;}
+.btn-ghost:hover{border-color:var(--accent);}
+.btn-sm{padding:8px 14px;font-size:13px;}
+.btn-block{width:100%;justify-content:center;}
+
+/* hero */
+.hero{padding:52px 0 46px;}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;}
+.hero h1{font-family:var(--font-serif);font-weight:600;font-size:clamp(29px,4vw,45px);line-height:1.14;margin:0 0 18px;max-width:15ch;}
+.hero p.lede{font-size:17px;color:var(--ink-soft);max-width:44ch;margin:0 0 22px;}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
+.hero-micro{font-size:12.5px;color:var(--ink-faint);}
+.countries-row{display:flex;gap:9px;margin-top:22px;flex-wrap:wrap;}
+.country-chip{border:1px solid var(--line);border-radius:999px;padding:6px 13px;font-size:12.5px;color:var(--ink-soft);font-weight:500;}
+
+.hero-mock{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 20px 50px -18px rgba(15,27,51,.28);}
+.hero-mock-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.hero-mock-dots{display:flex;gap:5px;}
+.hero-mock-dots span{width:7px;height:7px;border-radius:50%;background:var(--line);}
+.hero-mock-dots span.on{background:var(--accent);}
+.hero-mock-badge{font-size:11px;font-weight:700;color:var(--accent);background:var(--accent-soft);padding:3px 9px;border-radius:999px;}
+.hero-mock h4{font-family:var(--font-serif);font-size:16px;margin:0 0 14px;font-weight:600;}
+.hero-mock-pills{display:flex;gap:8px;flex-wrap:wrap;}
+.hero-mock-pills span{border:1.5px solid var(--line);border-radius:8px;padding:9px 13px;font-size:13px;font-weight:600;color:var(--ink-soft);}
+.hero-mock-pills span.sel{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);}
+
+/* finder */
+.finder-wrap{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:34px;max-width:680px;margin:0 auto;}
+.finder-progress{display:flex;gap:6px;margin-bottom:24px;}
+.finder-progress i{flex:1;height:4px;border-radius:2px;background:var(--line);}
+.finder-progress i.done{background:var(--accent);}
+.finder-step{display:none;}
+.finder-step.active{display:block;}
+.finder-q{font-family:var(--font-serif);font-size:20px;font-weight:600;margin:0 0 18px;}
+.finder-options{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:22px;}
+.finder-opt{border:1.5px solid var(--line);border-radius:10px;padding:14px 16px;font-size:14.5px;font-weight:600;color:var(--ink);cursor:pointer;text-align:left;background:var(--paper);transition:border-color .15s,background .15s;}
+.finder-opt:hover{border-color:var(--accent);}
+.finder-opt.sel{border-color:var(--accent);background:var(--accent-soft);color:var(--accent);}
+.finder-nav{display:flex;justify-content:space-between;align-items:center;}
+.finder-result{display:none;}
+.finder-result.active{display:block;}
+.finder-summary{background:var(--accent-soft);border-radius:12px;padding:18px 20px;margin-bottom:20px;font-size:15px;font-weight:600;color:var(--ink);}
+.finder-need-list{list-style:none;padding:0;margin:0 0 24px;}
+.finder-need-list li{padding:9px 0;border-top:1px solid var(--line);font-size:14.5px;color:var(--ink-soft);display:flex;gap:10px;}
+.finder-need-list li:first-child{border-top:none;}
+.finder-need-list li::before{content:"✓";color:var(--accent);font-weight:700;flex-shrink:0;}
+.finder-result-ctas{display:flex;gap:10px;flex-wrap:wrap;}
+
+/* university finder */
+.uni-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;}
+.uni-filters .flt{border:1px solid var(--line);border-radius:999px;padding:7px 15px;font-size:13px;font-weight:600;color:var(--ink-soft);cursor:pointer;background:var(--paper);}
+.uni-filters .flt.active{background:var(--deep);color:var(--on-deep);border-color:var(--deep);}
+.uni-filter-group{margin-bottom:14px;}
+.uni-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px;}
+.uni-card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--paper);}
+.uni-card h4{margin:0 0 4px;font-family:var(--font-serif);font-size:16.5px;font-weight:600;}
+.uni-card .uni-city{font-size:12.5px;color:var(--ink-faint);margin:0 0 10px;}
+.uni-card .uni-tags{display:flex;gap:6px;flex-wrap:wrap;}
+.uni-card .uni-tags span{font-size:11px;font-weight:600;background:var(--accent2-soft);color:var(--accent2);padding:3px 9px;border-radius:999px;}
+.uni-note{font-size:13px;color:var(--ink-faint);margin-top:16px;}
+
+/* comparison */
+.compare-table{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+.compare-table th,.compare-table td{padding:14px 16px;text-align:left;font-size:14px;border-bottom:1px solid var(--line);}
+.compare-table th{background:var(--bg);font-weight:700;color:var(--ink-soft);font-size:12.5px;text-transform:uppercase;letter-spacing:.02em;}
+.compare-table tr:last-child td{border-bottom:none;}
+.compare-table td:first-child{font-weight:600;color:var(--ink-soft);width:28%;}
+
+/* timeline */
+.timeline-wrap{background:var(--deep);color:var(--on-deep);}
+.timeline-wrap .section-head h2{color:var(--on-deep);}
+.timeline-wrap .section-head p{color:var(--on-deep-soft);}
+.timeline{display:flex;flex-direction:column;gap:0;}
+.tl-item{display:grid;grid-template-columns:130px 24px 1fr;gap:0;align-items:center;padding:16px 0;}
+.tl-month{font-family:var(--font-serif);font-size:14px;color:var(--accent);font-weight:600;}
+.tl-dot-col{display:flex;flex-direction:column;align-items:center;height:100%;align-self:stretch;}
+.tl-dot{width:11px;height:11px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+.tl-line{width:1.5px;flex:1;background:color-mix(in srgb,var(--on-deep) 20%,transparent);}
+.tl-title{font-size:15px;font-weight:600;}
+
+/* services */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.service-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;gap:12px;}
+.service-icon{width:42px;height:42px;border-radius:10px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;}
+.service-card h3{font-family:var(--font-serif);font-size:19px;margin:0;font-weight:600;}
+.service-card p{margin:0;color:var(--ink-soft);font-size:14px;}
+.svc-details{display:none;list-style:none;padding:0;margin:6px 0 0;}
+.svc-details.open{display:block;}
+.svc-details li{font-size:13.5px;color:var(--ink-soft);padding:7px 0;border-top:1px solid var(--line);display:flex;gap:8px;}
+.svc-details li::before{content:"—";color:var(--accent);}
+.svc-toggle{background:none;border:none;color:var(--accent);font-weight:600;font-size:13.5px;padding:0;cursor:pointer;text-align:left;margin-top:4px;}
+
+/* calculator */
+.calc-box{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+.calc-controls .form-row{margin-bottom:16px;}
+.calc-controls label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--ink-soft);}
+.calc-controls select{width:100%;border:1px solid var(--line);border-radius:8px;padding:11px 13px;font-size:14px;background:var(--paper);color:var(--ink);}
+.calc-result h4{font-family:var(--font-serif);font-size:16px;margin:0 0 12px;font-weight:600;}
+.calc-row{display:flex;justify-content:space-between;font-size:13.5px;padding:7px 0;border-top:1px solid var(--line);color:var(--ink-soft);}
+.calc-row:first-of-type{border-top:none;}
+.calc-total{display:flex;justify-content:space-between;font-size:16px;font-weight:700;padding-top:12px;margin-top:6px;border-top:1.5px solid var(--ink);}
+.calc-note{font-size:12px;color:var(--ink-faint);margin-top:12px;}
+@media (max-width:760px){.calc-box{grid-template-columns:1fr;}}
+
+/* trust */
+.trust{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.trust-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:22px;}
+.trust-item{display:flex;gap:12px;}
+.trust-item .tick{width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--accent);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;}
+.trust-item h3{font-size:15px;margin:0 0 4px;font-weight:600;}
+.trust-item p{margin:0;font-size:13.5px;color:var(--ink-soft);}
+.trust-meta{border:1px dashed var(--line);border-radius:10px;padding:16px 18px;font-size:13px;color:var(--ink-faint);}
+.trust-meta strong{color:var(--ink-soft);}
+
+/* team */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.team-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px;text-align:center;}
+.team-avatar{width:56px;height:56px;border-radius:50%;background:var(--deep);color:var(--on-deep);display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);font-size:19px;font-weight:600;margin:0 auto 12px;}
+.team-card h4{margin:0 0 3px;font-size:15px;font-weight:700;}
+.team-role{font-size:12.5px;color:var(--accent);font-weight:600;margin:0 0 6px;}
+.team-card p{margin:0;font-size:13px;color:var(--ink-soft);}
+
+/* stats */
+.stats-strip{background:var(--deep);color:var(--on-deep);}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center;}
+.stat-num{font-family:var(--font-serif);font-size:30px;font-weight:700;color:var(--accent);}
+.stat-label{font-size:12.5px;color:var(--on-deep-soft);margin-top:4px;}
+.stats-note{text-align:center;font-size:11.5px;color:var(--on-deep-soft);margin-top:20px;opacity:.75;}
+
+/* pricing */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch;}
+.price-card{border:1px solid var(--line);border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;background:var(--paper);position:relative;}
+.price-card.featured{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent);}
+.price-tag{position:absolute;top:-13px;left:24px;background:var(--accent);color:#fff;font-size:11.5px;font-weight:700;padding:4px 12px;border-radius:999px;}
+.price-card h3{font-family:var(--font-serif);font-size:18px;margin:0 0 6px;font-weight:600;}
+.price-card .price{font-family:var(--font-serif);font-size:29px;font-weight:600;margin:6px 0 4px;}
+.price-card .price small{font-family:var(--font-sans);font-size:12.5px;font-weight:500;color:var(--ink-faint);}
+.price-card .price-desc{font-size:13px;color:var(--ink-soft);margin:0 0 18px;}
+.price-card ul{list-style:none;padding:0;margin:0 0 22px;flex-grow:1;}
+.price-card li{font-size:13.5px;color:var(--ink-soft);padding:8px 0;border-top:1px solid var(--line);display:flex;gap:9px;}
+.price-card li:first-child{border-top:none;}
+.price-card li::before{content:"—";color:var(--accent);flex-shrink:0;}
+.price-note{margin-top:20px;font-size:13px;color:var(--ink-faint);}
+
+/* faq */
+.faq-list{border-top:1px solid var(--line);}
+.faq-item{border-bottom:1px solid var(--line);}
+.faq-q{width:100%;text-align:left;background:none;border:none;padding:18px 4px;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--ink);}
+.faq-q .plus{color:var(--accent);font-size:18px;transition:transform .2s;flex-shrink:0;margin-left:12px;}
+.faq-item.open .plus{transform:rotate(45deg);}
+.faq-a{display:none;padding:0 4px 18px;font-size:14px;color:var(--ink-soft);max-width:70ch;}
+.faq-item.open .faq-a{display:block;}
+
+/* chat cta */
+.chat-cta{background:var(--accent2-soft);border:1px solid color-mix(in srgb,var(--accent2) 30%,transparent);border-radius:16px;padding:30px 32px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;}
+.chat-cta h3{font-family:var(--font-serif);font-size:19px;margin:0 0 4px;font-weight:600;}
+.chat-cta p{margin:0;font-size:13.5px;color:var(--ink-soft);}
+.chat-cta-btns{display:flex;gap:10px;flex-wrap:wrap;}
+
+/* contact / multi-step form */
+.contact{background:var(--deep);color:var(--on-deep);}
+.contact .section-head h2{color:var(--on-deep);}
+.contact .section-head p{color:var(--on-deep-soft);}
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:start;}
+.contact-channels{display:flex;flex-direction:column;gap:12px;margin-top:18px;}
+.channel{display:flex;align-items:center;gap:14px;border:1px solid color-mix(in srgb,var(--on-deep) 20%,transparent);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--on-deep);transition:border-color .2s;}
+.channel:hover{border-color:var(--accent);}
+.channel-icon{width:34px;height:34px;border-radius:8px;background:color-mix(in srgb,var(--on-deep) 10%,transparent);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;}
+.channel strong{display:block;font-size:14px;}
+.channel span{display:block;font-size:12.5px;color:var(--on-deep-soft);}
+.mform{background:var(--paper);color:var(--ink);border-radius:14px;padding:26px;}
+.mform-progress{font-size:12px;color:var(--ink-faint);margin-bottom:14px;font-weight:600;}
+.mform-step{display:none;}
+.mform-step.active{display:block;}
+.mform-q{font-family:var(--font-serif);font-size:17px;font-weight:600;margin:0 0 14px;}
+.mform-opts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;}
+.mform-opt{border:1.5px solid var(--line);border-radius:8px;padding:10px 15px;font-size:13.5px;font-weight:600;cursor:pointer;background:var(--paper);color:var(--ink);}
+.mform-opt.sel{border-color:var(--accent);background:var(--accent-soft);color:var(--accent);}
+.mform-nav{display:flex;justify-content:space-between;}
+.mform-row{margin-bottom:14px;}
+.mform-row label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--ink-soft);}
+.mform-row input,.mform-row textarea{width:100%;border:1px solid var(--line);border-radius:8px;padding:11px 13px;font-family:var(--font-sans);font-size:14px;color:var(--ink);background:var(--paper);}
+.mform-success{display:none;font-size:14px;color:var(--accent);font-weight:600;}
+.mform-success.show{display:block;}
+
+footer{padding:26px 0 90px;text-align:center;font-size:12.5px;color:var(--ink-faint);}
+@media (min-width:760px){footer{padding-bottom:26px;}}
+
+/* sticky mobile bar */
+.sticky-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;background:var(--paper);border-top:1px solid var(--line);padding:10px 14px;gap:8px;box-shadow:0 -6px 20px rgba(0,0,0,.08);}
+.sticky-bar a{flex:1;text-align:center;padding:11px 6px;border-radius:9px;font-size:13px;font-weight:700;text-decoration:none;}
+.sticky-bar .sb-tg{background:#2AABEE;color:#fff;}
+.sticky-bar .sb-wa{background:#25D366;color:#fff;}
+.sticky-bar .sb-start{background:var(--deep);color:var(--on-deep);}
+@media (max-width:759px){.sticky-bar{display:flex;} body{padding-bottom:64px;}}
+
+@media (max-width:860px){
+  .hero-grid{grid-template-columns:1fr;gap:32px;}
+  .hero-grid .hero-mock{order:-1;max-width:360px;margin:0 auto;}
+  .services-grid,.pricing-grid,.team-grid,.uni-grid,.trust-grid{grid-template-columns:1fr;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);row-gap:22px;}
+  .finder-options{grid-template-columns:1fr;}
+  .compare-table{font-size:13px;}
+  .contact-grid{grid-template-columns:1fr;}
+  .tl-item{grid-template-columns:96px 20px 1fr;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <a class="brand" href="#top">
+      <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="18" stroke="var(--accent)" stroke-width="1.5"/>
+        <path d="M12 24 L20 14 L28 24" stroke="var(--ink)" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="12" cy="24" r="3" fill="var(--accent)"/><circle cx="20" cy="14" r="3" fill="var(--ink)"/><circle cx="28" cy="24" r="3" fill="var(--accent)"/>
+      </svg>
+      <span>
+        <span class="brand-word">STUDY <span class="cee">CEE</span></span>
+        <div class="brand-slogan">Study. Apply. Move.</div>
+      </span>
+    </a>
+    <nav class="header-nav">
+      <a href="#universities" data-i18n="nav_universities">Університети</a>
+      <a href="#services" data-i18n="nav_services">Послуги</a>
+      <a href="#pricing" data-i18n="nav_pricing">Ціни</a>
+      <a href="#faq" data-i18n="nav_faq">FAQ</a>
+    </nav>
+    <div class="header-actions">
+      <a href="#finder" class="btn btn-primary btn-sm header-cta" data-i18n="hero_cta_primary">Знайти свої варіанти</a>
+      <div class="lang-switch" id="lang-switch">
+        <button data-lang="ua" class="active">UA</button>
+        <button data-lang="en">EN</button>
+        <div class="lang-more-wrap">
+          <button type="button" id="lang-more-btn" data-i18n="lang_more">Ще</button>
+          <div class="lang-more-panel" id="lang-more-panel">
+            <button data-lang="ru">Русский (RU)</button>
+            <button data-lang="kk">Қазақша (KK)</button>
+            <button data-lang="uz">O'zbekcha (UZ)</button>
+            <button data-lang="ka">ქართული (KA)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <h1 data-i18n="hero_h1">Знайди свій шлях до навчання в Центральній Європі</h1>
+      <p class="lede" data-i18n="hero_lede">Вступ, дозвіл на перебування та житло — в одному місці.</p>
+      <div class="hero-ctas">
+        <a href="#finder" class="btn btn-primary" data-i18n="hero_cta_primary">Знайти свої варіанти</a>
+        <a href="#pricing" class="btn btn-ghost" data-i18n="hero_cta_secondary">Переглянути ціни</a>
+      </div>
+      <p class="hero-micro" data-i18n="hero_micro">Безкоштовно · 60 секунд</p>
+      <div class="countries-row">
+        <span class="country-chip">🇸🇰 <span data-i18n="chip_sk">Словаччина</span></span>
+        <span class="country-chip">🇨🇿 <span data-i18n="chip_cz">Чехія</span></span>
+        <span class="country-chip">🇵🇱 <span data-i18n="chip_pl">Польща</span></span>
+      </div>
+    </div>
+    <div class="hero-mock" aria-hidden="true">
+      <div class="hero-mock-top">
+        <div class="hero-mock-dots"><span class="on"></span><span></span><span></span><span></span></div>
+        <span class="hero-mock-badge" data-i18n="hero_micro">Безкоштовно · 60 секунд</span>
+      </div>
+      <h4 data-i18n="finder_step1_q">Куди хочеш вступити?</h4>
+      <div class="hero-mock-pills">
+        <span class="sel">🇸🇰 <span data-i18n="chip_sk">Словаччина</span></span>
+        <span>🇨🇿 <span data-i18n="chip_cz">Чехія</span></span>
+        <span>🇵🇱 <span data-i18n="chip_pl">Польща</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="finder" id="finder">
+  <div class="wrap">
+    <div class="section-head" style="text-align:center;margin:0 auto 30px;">
+      <p class="eyebrow" data-i18n="finder_eyebrow">Інтерактивний підбір</p>
+      <h2 data-i18n="finder_heading">Дізнайся за 60 секунд, що тобі потрібно</h2>
+      <p data-i18n="finder_sub">Дай відповідь на кілька запитань — покажемо орієнтовний план.</p>
+    </div>
+    <div class="finder-wrap">
+      <div class="finder-progress" id="finder-progress"></div>
+
+      <div class="finder-step active" data-step="0">
+        <p class="finder-q" data-i18n="finder_step1_q">Куди хочеш вступити?</p>
+        <div class="finder-options" data-group="country">
+          <button class="finder-opt" data-value="sk"><span data-i18n="chip_sk">Словаччина</span></button>
+          <button class="finder-opt" data-value="cz"><span data-i18n="chip_cz">Чехія</span></button>
+          <button class="finder-opt" data-value="pl"><span data-i18n="chip_pl">Польща</span></button>
+          <button class="finder-opt" data-value="notsure"><span data-i18n="finder_opt_notsure">Ще не знаю</span></button>
+        </div>
+      </div>
+
+      <div class="finder-step" data-step="1">
+        <p class="finder-q" data-i18n="finder_step2_q">Що хочеш вивчати?</p>
+        <div class="finder-options" data-group="field">
+          <button class="finder-opt" data-value="medicine"><span data-i18n="finder_field_medicine">Медицина</span></button>
+          <button class="finder-opt" data-value="it"><span data-i18n="finder_field_it">IT</span></button>
+          <button class="finder-opt" data-value="business"><span data-i18n="finder_field_business">Бізнес</span></button>
+          <button class="finder-opt" data-value="engineering"><span data-i18n="finder_field_engineering">Інженерія</span></button>
+          <button class="finder-opt" data-value="economics"><span data-i18n="finder_field_economics">Економіка</span></button>
+          <button class="finder-opt" data-value="other"><span data-i18n="finder_field_other">Інше</span></button>
+        </div>
+      </div>
+
+      <div class="finder-step" data-step="2">
+        <p class="finder-q" data-i18n="finder_step3_q">Коли плануєш починати?</p>
+        <div class="finder-options" data-group="year">
+          <button class="finder-opt" data-value="2027">2027</button>
+          <button class="finder-opt" data-value="2028">2028</button>
+          <button class="finder-opt" data-value="notsure"><span data-i18n="finder_year_notsure">Ще не знаю</span></button>
+        </div>
+      </div>
+
+      <div class="finder-step" data-step="3">
+        <p class="finder-q" data-i18n="finder_step4_q">Орієнтовний бюджет на перший рік</p>
+        <div class="finder-options" data-group="budget">
+          <button class="finder-opt" data-value="b1">€3 000–5 000</button>
+          <button class="finder-opt" data-value="b2">€5 000–8 000</button>
+          <button class="finder-opt" data-value="b3">€8 000–12 000</button>
+          <button class="finder-opt" data-value="b4">€12 000+</button>
+        </div>
+      </div>
+
+      <div class="finder-nav" id="finder-nav">
+        <button class="btn btn-ghost btn-sm" id="finder-back" data-i18n="finder_back" style="visibility:hidden;">Назад</button>
+        <button class="btn btn-primary btn-sm" id="finder-next" data-i18n="finder_next" disabled>Далі</button>
+      </div>
+
+      <div class="finder-result" id="finder-result">
+        <p class="finder-summary" id="finder-summary-text"></p>
+        <p id="finder-budget-line" style="font-size:14px;color:var(--ink-soft);margin:-10px 0 20px;"></p>
+        <p style="font-weight:600;margin-bottom:10px;" data-i18n="finder_result_need_heading">Тобі, ймовірно, знадобиться:</p>
+        <ul class="finder-need-list">
+          <li data-i18n="finder_need_1">Подання документів до виш­у</li>
+          <li data-i18n="finder_need_2">Визнання попередньої освіти</li>
+          <li data-i18n="finder_need_3">Переклад документів</li>
+          <li data-i18n="finder_need_4">Оформлення дозволу на перебування</li>
+          <li data-i18n="finder_need_5">Пошук житла</li>
+        </ul>
+        <div class="finder-result-ctas">
+          <a href="#contact" class="btn btn-primary" data-i18n="finder_result_cta">Отримати безкоштовну консультацію</a>
+          <button class="btn btn-ghost" id="finder-restart" data-i18n="finder_restart">Почати заново</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="unifinder" id="universities">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-i18n="uni_heading">Знайди університет</h2>
+      <p data-i18n="uni_sub">Обери країну та напрям — покажемо приклади університетів.</p>
+    </div>
+    <div class="uni-filter-group">
+      <div class="uni-filters" id="uni-country-filters">
+        <button class="flt active" data-country="all" data-i18n="uni_filter_all_country">Усі країни</button>
+        <button class="flt" data-country="sk" data-i18n="chip_sk">Словаччина</button>
+        <button class="flt" data-country="cz" data-i18n="chip_cz">Чехія</button>
+        <button class="flt" data-country="pl" data-i18n="chip_pl">Польща</button>
+      </div>
+      <div class="uni-filters" id="uni-field-filters">
+        <button class="flt active" data-field="all" data-i18n="uni_filter_all_field">Усі напрями</button>
+        <button class="flt" data-field="medicine" data-i18n="finder_field_medicine">Медицина</button>
+        <button class="flt" data-field="it" data-i18n="finder_field_it">IT</button>
+        <button class="flt" data-field="business" data-i18n="finder_field_business">Бізнес</button>
+        <button class="flt" data-field="engineering" data-i18n="finder_field_engineering">Інженерія</button>
+        <button class="flt" data-field="economics" data-i18n="finder_field_economics">Економіка</button>
+      </div>
+      <div class="uni-filters" id="uni-language-filters">
+        <button class="flt active" data-language="all" data-i18n="uni_filter_all_language">Усі мови</button>
+        <button class="flt" data-language="en" data-i18n="lang_filter_en">Англійська</button>
+        <button class="flt" data-language="sk" data-i18n="lang_filter_sk">Словацька</button>
+        <button class="flt" data-language="cz" data-i18n="lang_filter_cz">Чеська</button>
+        <button class="flt" data-language="pl" data-i18n="lang_filter_pl">Польська</button>
+      </div>
+      <div class="uni-filters" id="uni-degree-filters">
+        <button class="flt active" data-degree="all" data-i18n="uni_filter_all_degree">Усі рівні</button>
+        <button class="flt" data-degree="bachelor" data-i18n="degree_bachelor">Бакалавр</button>
+        <button class="flt" data-degree="master" data-i18n="degree_master">Магістр</button>
+        <button class="flt" data-degree="phd" data-i18n="degree_phd">PhD</button>
+      </div>
+    </div>
+    <div class="uni-grid" id="uni-grid"></div>
+    <p class="uni-note" data-i18n="uni_note">Список орієнтовний і не є вичерпним.</p>
+  </div>
+</section>
+
+<section class="compare">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-i18n="compare_heading">Словаччина, Чехія чи Польща?</h2>
+      <p data-i18n="compare_sub">Швидке порівняння, щоб було легше обрати.</p>
+    </div>
+    <table class="compare-table">
+      <thead><tr><th></th><th>🇸🇰 <span data-i18n="chip_sk">Словаччина</span></th><th>🇨🇿 <span data-i18n="chip_cz">Чехія</span></th><th>🇵🇱 <span data-i18n="chip_pl">Польща</span></th></tr></thead>
+      <tbody>
+        <tr><td data-i18n="compare_row_tuition">Вартість навчання</td><td>€€</td><td>€€–€€€</td><td>€€</td></tr>
+        <tr><td data-i18n="compare_row_living">Вартість життя</td><td>€€</td><td>€€€</td><td>€€</td></tr>
+        <tr><td data-i18n="compare_row_english">Програми англійською</td><td data-i18n="compare_yes">✓ Доступні</td><td data-i18n="compare_yes">✓ Доступні</td><td data-i18n="compare_yes">✓ Доступні</td></tr>
+        <tr><td data-i18n="compare_row_cities">Студентські міста</td><td data-i18n="compare_cities_sk">Братислава, Кошице</td><td data-i18n="compare_cities_cz">Прага, Брно, Оломоуц</td><td data-i18n="compare_cities_pl">Варшава, Краків, Вроцлав</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="timeline-wrap">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-i18n="timeline_heading">Як виглядає рік вступу</h2>
+      <p data-i18n="timeline_sub">Орієнтовний календар — від вибору університету до переїзду.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item"><span class="tl-month" data-i18n="timeline_m1_month">Вересень</span><div class="tl-dot-col"><span class="tl-dot"></span><span class="tl-line"></span></div><span class="tl-title" data-i18n="timeline_m1_title">Вибір університету</span></div>
+      <div class="tl-item"><span class="tl-month" data-i18n="timeline_m2_month">Жовтень</span><div class="tl-dot-col"><span class="tl-dot"></span><span class="tl-line"></span></div><span class="tl-title" data-i18n="timeline_m2_title">Підготовка документів</span></div>
+      <div class="tl-item"><span class="tl-month" data-i18n="timeline_m3_month">Листопад</span><div class="tl-dot-col"><span class="tl-dot"></span><span class="tl-line"></span></div><span class="tl-title" data-i18n="timeline_m3_title">Подання заявки</span></div>
+      <div class="tl-item"><span class="tl-month" data-i18n="timeline_m4_month">Груд.–берез.</span><div class="tl-dot-col"><span class="tl-dot"></span><span class="tl-line"></span></div><span class="tl-title" data-i18n="timeline_m4_title">Очікування рішення</span></div>
+      <div class="tl-item"><span class="tl-month" data-i18n="timeline_m5_month">Травень</span><div class="tl-dot-col"><span class="tl-dot"></span><span class="tl-line"></span></div><span class="tl-title" data-i18n="timeline_m5_title">Дозвіл на перебування</span></div>
+      <div class="tl-item"><span class="tl-month" data-i18n="timeline_m6_month">Серпень</span><div class="tl-dot-col"><span class="tl-dot"></span></div><span class="tl-title" data-i18n="timeline_m6_title">Переїзд</span></div>
+    </div>
+    <p style="font-size:12.5px;color:var(--on-deep-soft);margin-top:18px;" data-i18n="trust_disclaimer">Вимоги можуть відрізнятися залежно від громадянства, виш­у та індивідуальної ситуації.</p>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-i18n="services_heading">Ми беремо весь процес на себе</h2>
+      <p data-i18n="services_sub">Три напрямки, які визначають, чи вдасться переїзд без зривів.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M7 11v5c0 1.5 2.5 3 5 3s5-1.5 5-3v-5"/></svg></div>
+        <h3 data-i18n="service1_title">Вступ до виш­у</h3>
+        <p data-i18n="service1_desc">—</p>
+        <ul class="svc-details" data-svc="1">
+          <li data-i18n="svc1_item1">Підбір університетів</li>
+          <li data-i18n="svc1_item2">Перевірка вимог</li>
+          <li data-i18n="svc1_item3">Переклад і легалізація документів</li>
+          <li data-i18n="svc1_item4">Подання заявки та комунікація з виш­ом</li>
+        </ul>
+        <button class="svc-toggle" data-svc="1" data-i18n="svc_more">Показати деталі</button>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 2v4M16 2v4M4 10h16"/></svg></div>
+        <h3 data-i18n="service2_title">Дозвіл на перебування</h3>
+        <p data-i18n="service2_desc">—</p>
+        <ul class="svc-details" data-svc="2">
+          <li data-i18n="svc2_item1">Список необхідних документів</li>
+          <li data-i18n="svc2_item2">Запис на прийом</li>
+          <li data-i18n="svc2_item3">Переклад довідок</li>
+          <li data-i18n="svc2_item4">Супровід на співбесіду</li>
+        </ul>
+        <button class="svc-toggle" data-svc="2" data-i18n="svc_more">Показати деталі</button>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></div>
+        <h3 data-i18n="service3_title">Житло</h3>
+        <p data-i18n="service3_desc">—</p>
+        <ul class="svc-details" data-svc="3">
+          <li data-i18n="svc3_item1">Підбір гуртожитку або оренди</li>
+          <li data-i18n="svc3_item2">Перевірка помешкання</li>
+          <li data-i18n="svc3_item3">Підписання договору</li>
+          <li data-i18n="svc3_item4">Допомога із заселенням</li>
+        </ul>
+        <button class="svc-toggle" data-svc="3" data-i18n="svc_more">Показати деталі</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="calc">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-i18n="calc_heading">Скільки коштуватиме навчання?</h2>
+      <p data-i18n="calc_sub">Орієнтовний щомісячний бюджет — обери країну та тип житла.</p>
+    </div>
+    <div class="calc-box">
+      <div class="calc-controls">
+        <div class="form-row">
+          <label data-i18n="calc_country_label">Країна</label>
+          <select id="calc-country"><option value="sk" data-i18n="chip_sk">Словаччина</option><option value="cz" data-i18n="chip_cz">Чехія</option><option value="pl" data-i18n="chip_pl">Польща</option></select>
+        </div>
+        <div class="form-row">
+          <label data-i18n="calc_housing_label">Житло</label>
+          <select id="calc-housing"><option value="dorm" data-i18n="calc_housing_dorm">Гуртожиток</option><option value="private" data-i18n="calc_housing_private">Приватна оренда</option></select>
+        </div>
+        <p class="calc-note" data-i18n="calc_note">Орієнтовні суми, залежать від міста та способу життя.</p>
+      </div>
+      <div class="calc-result">
+        <h4 data-i18n="calc_result_heading">Орієнтовний щомісячний бюджет</h4>
+        <div class="calc-row"><span data-i18n="calc_row_housing">Житло</span><span id="calc-out-housing">—</span></div>
+        <div class="calc-row"><span data-i18n="calc_row_food">Харчування</span><span id="calc-out-food">—</span></div>
+        <div class="calc-row"><span data-i18n="calc_row_transport">Транспорт</span><span id="calc-out-transport">—</span></div>
+        <div class="calc-row"><span data-i18n="calc_row_other">Інше</span><span id="calc-out-other">—</span></div>
+        <div class="calc-total"><span data-i18n="calc_result_heading">Разом</span><span id="calc-out-total">—</span></div>
+        <a href="#contact" class="btn btn-primary btn-sm" style="margin-top:16px;" data-i18n="calc_cta">Хочу точний розрахунок</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap">
+    <div class="section-head"><h2 data-i18n="trust_heading">Чому нам можна довіряти</h2></div>
+    <div class="trust-grid">
+      <div class="trust-item"><span class="tick">✓</span><div><h3 data-i18n="trustn1_title">Офіційні джерела</h3><p data-i18n="trustn1_desc">—</p></div></div>
+      <div class="trust-item"><span class="tick">✓</span><div><h3 data-i18n="trustn2_title">Прозорі ціни</h3><p data-i18n="trustn2_desc">—</p></div></div>
+      <div class="trust-item"><span class="tick">✓</span><div><h3 data-i18n="trustn3_title">Без гарантії зарахування</h3><p data-i18n="trustn3_desc">—</p></div></div>
+      <div class="trust-item"><span class="tick">✓</span><div><h3 data-i18n="trustn4_title">Один контакт на весь процес</h3><p data-i18n="trustn4_desc">—</p></div></div>
+    </div>
+    <div class="trust-meta">
+      <strong data-i18n="trust_verified">Інформацію востаннє перевірено: 18 вересня 2026</strong><br>
+      <span data-i18n="trust_disclaimer">Вимоги можуть відрізнятися залежно від громадянства, виш­у та індивідуальної ситуації.</span>
+    </div>
+  </div>
+</section>
+
+<section class="team">
+  <div class="wrap">
+    <div class="section-head"><h2 data-i18n="team_heading">Хто веде вашу справу</h2><p data-i18n="team_sub">Реальні люди, з якими ви спілкуватиметесь напряму — без кол-центру.</p></div>
+    <div class="team-grid">
+      <div class="team-card"><div class="team-avatar">B</div><h4>Branislav</h4><p class="team-role" data-i18n="team1_role">Засновник</p><p data-i18n="team1_desc">—</p></div>
+      <div class="team-card"><div class="team-avatar">O</div><h4>Olena</h4><p class="team-role" data-i18n="team2_role">Координаторка</p><p data-i18n="team2_desc">—</p></div>
+      <div class="team-card"><div class="team-avatar">A</div><h4>Alexander</h4><p class="team-role" data-i18n="team3_role">Координатор</p><p data-i18n="team3_desc">—</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-strip">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div><div class="stat-num">3</div><div class="stat-label" data-i18n="stat2_label">країни</div></div>
+      <div><div class="stat-num">✓</div><div class="stat-label" data-i18n="stat1_label">особистий супровід</div></div>
+      <div><div class="stat-num">✓</div><div class="stat-label" data-i18n="stat3_label">без кол-центру</div></div>
+      <div><div class="stat-num">✓</div><div class="stat-label" data-i18n="stat4_label">безкоштовна перша консультація</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="wrap">
+    <div class="section-head"><h2 data-i18n="pricing_heading">Ціни</h2><p data-i18n="pricing_sub">Обирайте окрему послугу або повний супровід.</p></div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3 data-i18n="pkg1_name">Вступ</h3>
+        <div class="price">250 € <small data-i18n="price_from">від</small></div>
+        <p class="price-desc" data-i18n="pkg1_desc">—</p>
+        <ul><li data-i18n="pkg1_f1">—</li><li data-i18n="pkg1_f2">—</li><li data-i18n="pkg1_f3">—</li></ul>
+        <a href="#finder" class="btn btn-ghost" data-i18n="price_cta">Дізнатися більше</a>
+      </div>
+      <div class="price-card featured">
+        <span class="price-tag" data-i18n="pkg2_tag">Найпопулярніше</span>
+        <h3 data-i18n="pkg2_name">Перебування</h3>
+        <div class="price">300 € <small data-i18n="price_from">від</small></div>
+        <p class="price-desc" data-i18n="pkg2_desc">—</p>
+        <ul><li data-i18n="pkg2_f1">—</li><li data-i18n="pkg2_f2">—</li><li data-i18n="pkg2_f3">—</li></ul>
+        <a href="#finder" class="btn btn-primary" data-i18n="price_cta">Дізнатися більше</a>
+      </div>
+      <div class="price-card">
+        <h3 data-i18n="pkg3_name">Повний супровід</h3>
+        <div class="price">650 € <small data-i18n="price_from">від</small></div>
+        <p class="price-desc" data-i18n="pkg3_desc">—</p>
+        <ul><li data-i18n="pkg3_f1">—</li><li data-i18n="pkg3_f2">—</li><li data-i18n="pkg3_f3">—</li></ul>
+        <a href="#finder" class="btn btn-ghost" data-i18n="price_cta">Дізнатися більше</a>
+      </div>
+    </div>
+    <p class="price-note" data-i18n="price_note">Вказані ціни орієнтовні.</p>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="section-head"><h2 data-i18n="faq_heading">Часті запитання</h2></div>
+    <div class="faq-list" id="faq-list"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="chat-cta">
+      <div>
+        <h3 data-i18n="chat_heading">Напишіть нам просто зараз</h3>
+        <p data-i18n="chat_sub">Зазвичай відповідаємо протягом кількох годин.</p>
+      </div>
+      <div class="chat-cta-btns">
+        <a class="btn btn-deep" href="https://t.me/studyincee" data-i18n="chat_telegram_cta">Відкрити Telegram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="section-head">
+        <h2 data-i18n="contact_heading">Заповніть форму — і ми з вами зв'яжемося</h2>
+        <p data-i18n="contact_sub">Розкажіть, яку країну та спеціальність розглядаєте.</p>
+      </div>
+      <div class="contact-channels">
+        <a class="channel" href="mailto:studyincee@gmail.com"><span class="channel-icon">✉️</span><span><strong>Email</strong><span>studyincee@gmail.com</span></span></a>
+        <a class="channel" href="https://t.me/studyincee"><span class="channel-icon">✈️</span><span><strong>Telegram</strong><span>@studyincee</span></span></a>
+      </div>
+    </div>
+
+    <form class="mform" id="mform">
+      <p class="mform-progress" id="mform-progress"></p>
+
+      <div class="mform-step active" data-mstep="0">
+        <p class="mform-q" data-i18n="finder_step1_q">Куди хочеш вступити?</p>
+        <div class="mform-opts" data-mgroup="country">
+          <button type="button" class="mform-opt" data-value="sk"><span data-i18n="chip_sk">Словаччина</span></button>
+          <button type="button" class="mform-opt" data-value="cz"><span data-i18n="chip_cz">Чехія</span></button>
+          <button type="button" class="mform-opt" data-value="pl"><span data-i18n="chip_pl">Польща</span></button>
+          <button type="button" class="mform-opt" data-value="notsure"><span data-i18n="finder_opt_notsure">Ще не знаю</span></button>
+        </div>
+      </div>
+      <div class="mform-step" data-mstep="1">
+        <p class="mform-q" data-i18n="finder_step2_q">Що хочеш вивчати?</p>
+        <div class="mform-opts" data-mgroup="field">
+          <button type="button" class="mform-opt" data-value="medicine"><span data-i18n="finder_field_medicine">Медицина</span></button>
+          <button type="button" class="mform-opt" data-value="it"><span data-i18n="finder_field_it">IT</span></button>
+          <button type="button" class="mform-opt" data-value="business"><span data-i18n="finder_field_business">Бізнес</span></button>
+          <button type="button" class="mform-opt" data-value="engineering"><span data-i18n="finder_field_engineering">Інженерія</span></button>
+          <button type="button" class="mform-opt" data-value="economics"><span data-i18n="finder_field_economics">Економіка</span></button>
+          <button type="button" class="mform-opt" data-value="other"><span data-i18n="finder_field_other">Інше</span></button>
+        </div>
+      </div>
+      <div class="mform-step" data-mstep="2">
+        <p class="mform-q" data-i18n="form_origin_q">Звідки ти?</p>
+        <div class="mform-opts" data-mgroup="origin">
+          <button type="button" class="mform-opt" data-value="ua"><span data-i18n="origin_ua">Україна</span></button>
+          <button type="button" class="mform-opt" data-value="kz"><span data-i18n="origin_kz">Казахстан</span></button>
+          <button type="button" class="mform-opt" data-value="ge"><span data-i18n="origin_ge">Грузія</span></button>
+          <button type="button" class="mform-opt" data-value="uz"><span data-i18n="origin_uz">Узбекистан</span></button>
+          <button type="button" class="mform-opt" data-value="other"><span data-i18n="origin_other">Інше</span></button>
+        </div>
+      </div>
+      <div class="mform-step" data-mstep="3">
+        <p class="mform-q" data-i18n="form_contact_method_q">Як з тобою зв'язатися?</p>
+        <div class="mform-opts" data-mgroup="method">
+          <button type="button" class="mform-opt" data-value="telegram"><span data-i18n="contact_method_telegram">Telegram</span></button>
+          <button type="button" class="mform-opt" data-value="email"><span data-i18n="contact_method_email">Email</span></button>
+        </div>
+      </div>
+      <div class="mform-step" data-mstep="4">
+        <p class="mform-q" data-i18n="form_final_q">Останній крок</p>
+        <div class="mform-row"><label data-i18n="form_name_label">Ім'я</label><input id="mf-name" type="text" required data-i18n-placeholder="form_name_placeholder" placeholder="Ваше ім'я"></div>
+        <div class="mform-row"><label data-i18n="form_contact_label">Контакт (email або Telegram)</label><input id="mf-contact" type="text" required data-i18n-placeholder="form_contact_placeholder" placeholder="you@example.com або @username"></div>
+        <div class="mform-row"><label data-i18n="form_message_label">Повідомлення</label><textarea id="mf-message" rows="3" data-i18n-placeholder="form_message_placeholder" placeholder="—"></textarea></div>
+      </div>
+
+      <div class="mform-nav">
+        <button type="button" class="btn btn-ghost btn-sm" id="mform-back" data-i18n="finder_back" style="visibility:hidden;">Назад</button>
+        <button type="button" class="btn btn-primary btn-sm" id="mform-next" data-i18n="finder_next" disabled>Далі</button>
+        <button type="submit" class="btn btn-primary" id="mform-submit" style="display:none;" data-i18n="form_submit">Надіслати заявку</button>
+      </div>
+      <p class="mform-success" id="mform-success" data-i18n="form_success">Дякуємо!</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" data-i18n="footer_text">© 2026 [Назва організації]. Супровід студентів у SK · CZ · PL.</div>
+</footer>
+
+<div class="sticky-bar">
+  <a class="sb-tg" href="https://t.me/studyincee" data-i18n="sticky_telegram">Telegram</a>
+  <a class="sb-start" href="#finder" data-i18n="sticky_start">Почати</a>
+</div>
+
+<script>
+var translations = {
+ua:{
+lang_more:"Ще", nav_universities:"Університети", nav_services:"Послуги", nav_pricing:"Ціни", nav_faq:"FAQ", finder_budget_estimate_label:"Орієнтовний щомісячний бюджет:",
+hero_h1:"Знайди свій шлях до навчання в Центральній Європі",
+hero_lede:"Вступ, дозвіл на перебування та житло — в одному місці. Пройди коротке опитування і дізнайся, що тобі потрібно.",
+hero_cta_primary:"Знайти свої варіанти", hero_cta_secondary:"Переглянути ціни", hero_micro:"Безкоштовно · 60 секунд",
+chip_sk:"Словаччина", chip_cz:"Чехія", chip_pl:"Польща",
+finder_eyebrow:"Інтерактивний підбір",
+finder_heading:"Дізнайся за 60 секунд, що тобі потрібно", finder_sub:"Дай відповідь на кілька запитань — покажемо орієнтовний план.",
+finder_step1_q:"Куди хочеш вступити?", finder_opt_notsure:"Ще не знаю",
+finder_step2_q:"Що хочеш вивчати?", finder_field_medicine:"Медицина", finder_field_it:"IT", finder_field_business:"Бізнес", finder_field_engineering:"Інженерія", finder_field_economics:"Економіка", finder_field_other:"Інше",
+finder_step3_q:"Коли плануєш починати?", finder_year_notsure:"Ще не знаю",
+finder_step4_q:"Орієнтовний бюджет на перший рік",
+finder_back:"Назад", finder_next:"Далі", finder_see_result:"Показати мої варіанти",
+finder_result_need_heading:"Тобі, ймовірно, знадобиться:",
+finder_need_1:"Подання документів до виш­у", finder_need_2:"Визнання попередньої освіти", finder_need_3:"Переклад документів", finder_need_4:"Оформлення дозволу на перебування", finder_need_5:"Пошук житла",
+finder_result_cta:"Отримати безкоштовну консультацію", finder_restart:"Почати заново",
+finder_summary_tpl:"Твій план: {country} · {field} · старт {year} · бюджет {budget}",
+uni_heading:"Знайди університет", uni_sub:"Обери країну та напрям — покажемо приклади університетів.",
+uni_filter_all_country:"Усі країни", uni_filter_all_field:"Усі напрями",
+uni_filter_all_language:"Усі мови", lang_filter_en:"Англійська", lang_filter_sk:"Словацька", lang_filter_cz:"Чеська", lang_filter_pl:"Польська",
+uni_filter_all_degree:"Усі рівні", degree_bachelor:"Бакалавр", degree_master:"Магістр", degree_phd:"PhD",
+uni_note:"Список орієнтовний і не є вичерпним — на консультації підберемо конкретні програми під твій профіль.",
+compare_heading:"Словаччина, Чехія чи Польща?", compare_sub:"Швидке порівняння, щоб було легше обрати.",
+compare_row_tuition:"Вартість навчання", compare_row_living:"Вартість життя", compare_row_english:"Програми англійською", compare_row_cities:"Студентські міста", compare_yes:"✓ Доступні",
+compare_cities_sk:"Братислава, Кошице", compare_cities_cz:"Прага, Брно, Оломоуц", compare_cities_pl:"Варшава, Краків, Вроцлав",
+timeline_heading:"Як виглядає рік вступу", timeline_sub:"Орієнтовний календар — від вибору університету до переїзду.",
+timeline_m1_month:"Вересень", timeline_m1_title:"Вибір університету", timeline_m2_month:"Жовтень", timeline_m2_title:"Підготовка документів",
+timeline_m3_month:"Листопад", timeline_m3_title:"Подання заявки", timeline_m4_month:"Груд.–берез.", timeline_m4_title:"Очікування рішення",
+timeline_m5_month:"Травень", timeline_m5_title:"Дозвіл на перебування", timeline_m6_month:"Серпень", timeline_m6_title:"Переїзд",
+services_heading:"Ми беремо весь процес на себе", services_sub:"Три напрямки, які визначають, чи вдасться переїзд без зривів.",
+service1_title:"Вступ до виш­у", service1_desc:"Підбір програми та університету, переклад і легалізація документів, супровід до зарахування.",
+service2_title:"Дозвіл на перебування", service2_desc:"Повний супровід у чужинецькій поліції: запис, документи, переклад, супровід на співбесіду.",
+service3_title:"Житло", service3_desc:"Перевірене помешкання поруч із виш­ом, договір, допомога з заселенням.",
+svc1_item1:"Підбір університетів", svc1_item2:"Перевірка вимог", svc1_item3:"Переклад і легалізація документів", svc1_item4:"Подання заявки та комунікація з виш­ом",
+svc2_item1:"Список необхідних документів", svc2_item2:"Запис на прийом", svc2_item3:"Переклад довідок", svc2_item4:"Супровід на співбесіду",
+svc3_item1:"Підбір гуртожитку або оренди", svc3_item2:"Перевірка помешкання", svc3_item3:"Підписання договору", svc3_item4:"Допомога із заселенням",
+svc_more:"Показати деталі", svc_less:"Приховати деталі",
+calc_heading:"Скільки коштуватиме навчання?", calc_sub:"Орієнтовний щомісячний бюджет — обери країну та тип житла.",
+calc_country_label:"Країна", calc_housing_label:"Житло", calc_housing_dorm:"Гуртожиток", calc_housing_private:"Приватна оренда",
+calc_result_heading:"Разом на місяць", calc_row_housing:"Житло", calc_row_food:"Харчування", calc_row_transport:"Транспорт", calc_row_other:"Інше",
+calc_note:"Орієнтовні суми, залежать від міста та способу життя.", calc_cta:"Хочу точний розрахунок",
+trust_heading:"Чому нам можна довіряти",
+trustn1_title:"Офіційні джерела", trustn1_desc:"Спираємось на офіційні вимоги університетів та державних органів.",
+trustn2_title:"Прозорі ціни", trustn2_desc:"Ви знаєте, що входить у вартість, ще до оплати.",
+trustn3_title:"Без гарантії зарахування", trustn3_desc:"Ми допомагаємо подати заявку; рішення ухвалює виш.",
+trustn4_title:"Один контакт на весь процес", trustn4_desc:"Не доведеться повторювати свою історію кільком людям.",
+trust_verified:"Інформацію востаннє перевірено: 18 вересня 2026",
+trust_disclaimer:"Вимоги можуть відрізнятися залежно від громадянства, виш­у та індивідуальної ситуації. Перевіряємо актуальні вимоги перед початком заявки.",
+team_heading:"Хто веде вашу справу", team_sub:"Реальні люди, з якими ви спілкуватиметесь напряму — без кол-центру.",
+team1_role:"Засновник", team1_desc:"Загальна координація та зв'язок з університетами.",
+team2_role:"Координаторка", team2_desc:"Супровід студентів на кожному етапі.",
+team3_role:"Координатор", team3_desc:"Супровід студентів на кожному етапі.",
+stat1_label:"особистий супровід", stat2_label:"країни", stat3_label:"без кол-центру", stat4_label:"безкоштовна перша консультація",
+stats_note:"",
+pricing_heading:"Ціни", pricing_sub:"Обирайте окрему послугу або повний супровід.", price_from:"від",
+pkg1_name:"Вступ", pkg1_desc:"Підбір виш­у та подання документів", pkg1_f1:"Підбір університету та програми", pkg1_f2:"Переклад і легалізація документів", pkg1_f3:"Подання заявки до виш­у",
+pkg2_tag:"Рекомендуємо", pkg2_name:"Перебування", pkg2_desc:"Оформлення дозволу в чужинецькій поліції", pkg2_f1:"Запис на прийом і збір документів", pkg2_f2:"Переклад необхідних довідок", pkg2_f3:"Супровід на співбесіду",
+pkg3_name:"Повний супровід", pkg3_desc:"Вступ + дозвіл на перебування + житло", pkg3_f1:"Усі послуги пакетів «Вступ» і «Перебування»", pkg3_f2:"Підбір і бронювання житла", pkg3_f3:"Зустріч і допомога із заселенням",
+price_cta:"Дізнатися більше", price_note:"Вказані ціни орієнтовні. Остаточна вартість залежить від країни, обраного виш­у та переліку послуг.",
+faq_heading:"Часті запитання",
+faq1_q:"Чи можу я подати заявку, не знаючи місцевої мови?", faq1_a:"Так, для більшості англомовних програм місцева мова не обов'язкова на етапі вступу.",
+faq2_q:"Чи можна навчатися англійською?", faq2_a:"Так, у всіх трьох країнах є програми бакалаврату та магістратури англійською.",
+faq3_q:"Скільки грошей мені знадобиться?", faq3_a:"Залежить від країни, міста та способу життя — орієнтир можна порахувати у калькуляторі вище.",
+faq4_q:"Чи допомагаєте ви з житлом?", faq4_a:"Так, підбираємо гуртожиток або приватну оренду й допомагаємо із заселенням.",
+faq5_q:"Чи обов'язково оформлювати дозвіл на перебування?", faq5_a:"Для навчання довше 90 днів — так, і ми супроводжуємо весь цей процес.",
+faq6_q:"Скільки триває подання заявки?", faq6_a:"Залежить від виш­у, зазвичай кілька тижнів на збір документів.",
+faq7_q:"Чи гарантуєте ви зарахування?", faq7_a:"Ні, рішення ухвалює виш; ми робимо заявку максимально сильною.",
+faq8_q:"Що робити, якщо заявку відхилили?", faq8_a:"Розглядаємо альтернативні університети чи програми разом із вами.",
+faq9_q:"Чи працюєте ви зі студентами з України?", faq9_a:"Так, це один з наших основних напрямків.",
+faq10_q:"Чи можна подати заявку дистанційно?", faq10_a:"Так, більшість кроків можна зробити онлайн, до приїзду.",
+chat_heading:"Напишіть нам просто зараз", chat_sub:"Зазвичай відповідаємо протягом кількох годин.", chat_telegram_cta:"Відкрити Telegram", chat_whatsapp_cta:"Написати у WhatsApp",
+contact_heading:"Заповніть форму — і ми з вами зв'яжемося", contact_sub:"Розкажіть, яку країну та спеціальність розглядаєте — відповімо протягом одного робочого дня.",
+form_origin_q:"Звідки ти?", origin_ua:"Україна", origin_kz:"Казахстан", origin_ge:"Грузія", origin_uz:"Узбекистан", origin_other:"Інше",
+form_contact_method_q:"Як з тобою зв'язатися?", contact_method_telegram:"Telegram", contact_method_whatsapp:"WhatsApp", contact_method_email:"Email",
+form_final_q:"Останній крок",
+form_name_label:"Ім'я", form_name_placeholder:"Ваше ім'я", form_contact_label:"Контакт (email або Telegram)", form_contact_placeholder:"you@example.com або @username",
+form_message_label:"Повідомлення", form_message_placeholder:"Яку програму розглядаєш і коли плануєш почати?",
+form_submit:"Надіслати заявку", form_success:"Дякуємо! Має відкритися ваш поштовий клієнт — якщо ні, напишіть нам напряму.",
+footer_text:"© 2026 [Назва організації]. Супровід студентів у Словаччині, Чехії та Польщі.",
+sticky_telegram:"Telegram", sticky_whatsapp:"WhatsApp", sticky_start:"Варіанти"
+},
+ru:{
+lang_more:"Ещё", nav_universities:"Университеты", nav_services:"Услуги", nav_pricing:"Цены", nav_faq:"FAQ", finder_budget_estimate_label:"Ориентировочный ежемесячный бюджет:",
+hero_h1:"Найди свой путь к учёбе в Центральной Европе",
+hero_lede:"Поступление, разрешение на пребывание и жильё — в одном месте. Пройди короткий опрос и узнай, что тебе нужно.",
+hero_cta_primary:"Найти свои варианты", hero_cta_secondary:"Посмотреть цены", hero_micro:"Бесплатно · 60 секунд",
+chip_sk:"Словакия", chip_cz:"Чехия", chip_pl:"Польша",
+finder_eyebrow:"Интерактивный подбор",
+finder_heading:"Узнай за 60 секунд, что тебе нужно", finder_sub:"Ответь на несколько вопросов — покажем ориентировочный план.",
+finder_step1_q:"Куда хочешь поступить?", finder_opt_notsure:"Ещё не знаю",
+finder_step2_q:"Что хочешь изучать?", finder_field_medicine:"Медицина", finder_field_it:"IT", finder_field_business:"Бизнес", finder_field_engineering:"Инженерия", finder_field_economics:"Экономика", finder_field_other:"Другое",
+finder_step3_q:"Когда планируешь начать?", finder_year_notsure:"Ещё не знаю",
+finder_step4_q:"Ориентировочный бюджет на первый год",
+finder_back:"Назад", finder_next:"Далее", finder_see_result:"Показать мои варианты",
+finder_result_need_heading:"Тебе, вероятно, понадобится:",
+finder_need_1:"Подача документов в вуз", finder_need_2:"Признание предыдущего образования", finder_need_3:"Перевод документов", finder_need_4:"Оформление разрешения на пребывание", finder_need_5:"Поиск жилья",
+finder_result_cta:"Получить бесплатную консультацию", finder_restart:"Начать заново",
+finder_summary_tpl:"Твой план: {country} · {field} · старт {year} · бюджет {budget}",
+uni_heading:"Найди университет", uni_sub:"Выбери страну и направление — покажем примеры университетов.",
+uni_filter_all_country:"Все страны", uni_filter_all_field:"Все направления",
+uni_filter_all_language:"Все языки", lang_filter_en:"Английский", lang_filter_sk:"Словацкий", lang_filter_cz:"Чешский", lang_filter_pl:"Польский",
+uni_filter_all_degree:"Все уровни", degree_bachelor:"Бакалавриат", degree_master:"Магистратура", degree_phd:"PhD",
+uni_note:"Список ориентировочный и неполный — на консультации подберём конкретные программы под твой профиль.",
+compare_heading:"Словакия, Чехия или Польша?", compare_sub:"Быстрое сравнение, чтобы было легче выбрать.",
+compare_row_tuition:"Стоимость обучения", compare_row_living:"Стоимость жизни", compare_row_english:"Программы на английском", compare_row_cities:"Студенческие города", compare_yes:"✓ Доступны",
+compare_cities_sk:"Братислава, Кошице", compare_cities_cz:"Прага, Брно, Оломоуц", compare_cities_pl:"Варшава, Краков, Вроцлав",
+timeline_heading:"Как выглядит год поступления", timeline_sub:"Ориентировочный календарь — от выбора университета до переезда.",
+timeline_m1_month:"Сентябрь", timeline_m1_title:"Выбор университета", timeline_m2_month:"Октябрь", timeline_m2_title:"Подготовка документов",
+timeline_m3_month:"Ноябрь", timeline_m3_title:"Подача заявки", timeline_m4_month:"Дек.–март", timeline_m4_title:"Ожидание решения",
+timeline_m5_month:"Май", timeline_m5_title:"Разрешение на пребывание", timeline_m6_month:"Август", timeline_m6_title:"Переезд",
+services_heading:"Мы берём весь процесс на себя", services_sub:"Три направления, которые определяют, получится ли переезд без срывов.",
+service1_title:"Поступление в вуз", service1_desc:"Подбор программы и университета, перевод и легализация документов, сопровождение до зачисления.",
+service2_title:"Разрешение на пребывание", service2_desc:"Полное сопровождение в полиции по делам иностранцев: запись, документы, перевод, собеседование.",
+service3_title:"Жильё", service3_desc:"Проверенное жильё рядом с вузом, договор, помощь с заселением.",
+svc1_item1:"Подбор университетов", svc1_item2:"Проверка требований", svc1_item3:"Перевод и легализация документов", svc1_item4:"Подача заявки и коммуникация с вузом",
+svc2_item1:"Список необходимых документов", svc2_item2:"Запись на приём", svc2_item3:"Перевод справок", svc2_item4:"Сопровождение на собеседование",
+svc3_item1:"Подбор общежития или аренды", svc3_item2:"Проверка жилья", svc3_item3:"Подписание договора", svc3_item4:"Помощь с заселением",
+svc_more:"Показать детали", svc_less:"Скрыть детали",
+calc_heading:"Сколько будет стоить учёба?", calc_sub:"Ориентировочный ежемесячный бюджет — выбери страну и тип жилья.",
+calc_country_label:"Страна", calc_housing_label:"Жильё", calc_housing_dorm:"Общежитие", calc_housing_private:"Частная аренда",
+calc_result_heading:"Итого в месяц", calc_row_housing:"Жильё", calc_row_food:"Питание", calc_row_transport:"Транспорт", calc_row_other:"Другое",
+calc_note:"Ориентировочные суммы, зависят от города и образа жизни.", calc_cta:"Хочу точный расчёт",
+trust_heading:"Почему нам можно доверять",
+trustn1_title:"Официальные источники", trustn1_desc:"Опираемся на официальные требования университетов и госорганов.",
+trustn2_title:"Прозрачные цены", trustn2_desc:"Вы знаете, что входит в стоимость, ещё до оплаты.",
+trustn3_title:"Без гарантии зачисления", trustn3_desc:"Мы помогаем подать заявку; решение принимает вуз.",
+trustn4_title:"Один контакт на весь процесс", trustn4_desc:"Не придётся повторять свою историю нескольким людям.",
+trust_verified:"Информация последний раз проверена: 18 сентября 2026",
+trust_disclaimer:"Требования могут отличаться в зависимости от гражданства, вуза и индивидуальной ситуации. Проверяем актуальные требования перед началом заявки.",
+team_heading:"Кто ведёт ваше дело", team_sub:"Реальные люди, с которыми вы будете общаться напрямую — без колл-центра.",
+team1_role:"Основатель", team1_desc:"Общая координация и связь с университетами.",
+team2_role:"Координатор", team2_desc:"Сопровождение студентов на каждом этапе.",
+team3_role:"Координатор", team3_desc:"Сопровождение студентов на каждом этапе.",
+stat1_label:"личное сопровождение", stat2_label:"страны", stat3_label:"без колл-центра", stat4_label:"бесплатная первая консультация",
+stats_note:"",
+pricing_heading:"Цены", pricing_sub:"Выбирайте отдельную услугу или полное сопровождение.", price_from:"от",
+pkg1_name:"Поступление", pkg1_desc:"Подбор вуза и подача документов", pkg1_f1:"Подбор университета и программы", pkg1_f2:"Перевод и легализация документов", pkg1_f3:"Подача заявки в вуз",
+pkg2_tag:"Рекомендуем", pkg2_name:"Пребывание", pkg2_desc:"Оформление разрешения в полиции по делам иностранцев", pkg2_f1:"Запись на приём и сбор документов", pkg2_f2:"Перевод необходимых справок", pkg2_f3:"Сопровождение на собеседование",
+pkg3_name:"Полное сопровождение", pkg3_desc:"Поступление + разрешение на пребывание + жильё", pkg3_f1:"Все услуги пакетов «Поступление» и «Пребывание»", pkg3_f2:"Подбор и бронирование жилья", pkg3_f3:"Встреча и помощь с заселением",
+price_cta:"Узнать больше", price_note:"Указанные цены ориентировочные. Итоговая стоимость зависит от страны, вуза и перечня услуг.",
+faq_heading:"Частые вопросы",
+faq1_q:"Могу ли я подать заявку, не зная местного языка?", faq1_a:"Да, для большинства англоязычных программ местный язык не обязателен на этапе поступления.",
+faq2_q:"Можно ли учиться на английском?", faq2_a:"Да, во всех трёх странах есть программы бакалавриата и магистратуры на английском.",
+faq3_q:"Сколько денег мне понадобится?", faq3_a:"Зависит от страны, города и образа жизни — ориентир можно посчитать в калькуляторе выше.",
+faq4_q:"Помогаете ли вы с жильём?", faq4_a:"Да, подбираем общежитие или частную аренду и помогаем с заселением.",
+faq5_q:"Обязательно ли оформлять разрешение на пребывание?", faq5_a:"Для учёбы дольше 90 дней — да, и мы сопровождаем весь этот процесс.",
+faq6_q:"Сколько длится подача заявки?", faq6_a:"Зависит от вуза, обычно несколько недель на сбор документов.",
+faq7_q:"Гарантируете ли вы зачисление?", faq7_a:"Нет, решение принимает вуз; мы делаем заявку максимально сильной.",
+faq8_q:"Что делать, если заявку отклонили?", faq8_a:"Рассматриваем альтернативные университеты или программы вместе с вами.",
+faq9_q:"Работаете ли вы со студентами из Украины?", faq9_a:"Да, это одно из наших основных направлений.",
+faq10_q:"Можно ли подать заявку дистанционно?", faq10_a:"Да, большинство шагов можно сделать онлайн, до приезда.",
+chat_heading:"Напишите нам прямо сейчас", chat_sub:"Обычно отвечаем в течение нескольких часов.", chat_telegram_cta:"Открыть Telegram", chat_whatsapp_cta:"Написать в WhatsApp",
+contact_heading:"Заполните форму — и мы с вами свяжемся", contact_sub:"Расскажите, какую страну и специальность рассматриваете — ответим в течение одного рабочего дня.",
+form_origin_q:"Откуда ты?", origin_ua:"Украина", origin_kz:"Казахстан", origin_ge:"Грузия", origin_uz:"Узбекистан", origin_other:"Другое",
+form_contact_method_q:"Как с тобой связаться?", contact_method_telegram:"Telegram", contact_method_whatsapp:"WhatsApp", contact_method_email:"Email",
+form_final_q:"Последний шаг",
+form_name_label:"Имя", form_name_placeholder:"Ваше имя", form_contact_label:"Контакт (email или Telegram)", form_contact_placeholder:"you@example.com или @username",
+form_message_label:"Сообщение", form_message_placeholder:"Какую программу рассматриваешь и когда планируешь начать?",
+form_submit:"Отправить заявку", form_success:"Спасибо! Должен открыться ваш почтовый клиент — если нет, напишите нам напрямую.",
+footer_text:"© 2026 [Название организации]. Сопровождение студентов в Словакии, Чехии и Польше.",
+sticky_telegram:"Telegram", sticky_whatsapp:"WhatsApp", sticky_start:"Варианты"
+},
+en:{
+lang_more:"More", nav_universities:"Universities", nav_services:"Services", nav_pricing:"Pricing", nav_faq:"FAQ", finder_budget_estimate_label:"Estimated monthly budget:",
+hero_h1:"Find your way to study in Central Europe",
+hero_lede:"University admission, residence permit and housing — in one place. Take a short quiz and see what you'll need.",
+hero_cta_primary:"Find my study options", hero_cta_secondary:"See pricing", hero_micro:"Free · 60 seconds",
+chip_sk:"Slovakia", chip_cz:"Czechia", chip_pl:"Poland",
+finder_eyebrow:"Interactive finder",
+finder_heading:"Find out in 60 seconds what you'll need", finder_sub:"Answer a few questions — we'll show an indicative plan.",
+finder_step1_q:"Where do you want to study?", finder_opt_notsure:"Not sure yet",
+finder_step2_q:"What do you want to study?", finder_field_medicine:"Medicine", finder_field_it:"IT", finder_field_business:"Business", finder_field_engineering:"Engineering", finder_field_economics:"Economics", finder_field_other:"Other",
+finder_step3_q:"When are you planning to start?", finder_year_notsure:"Not sure yet",
+finder_step4_q:"Estimated budget for the first year",
+finder_back:"Back", finder_next:"Next", finder_see_result:"Show my options",
+finder_result_need_heading:"You'll likely need:",
+finder_need_1:"University application", finder_need_2:"Recognition of prior education", finder_need_3:"Document translation", finder_need_4:"Residence permit processing", finder_need_5:"Housing search",
+finder_result_cta:"Get a free consultation", finder_restart:"Start over",
+finder_summary_tpl:"Your plan: {country} · {field} · starting {year} · budget {budget}",
+uni_heading:"Find a university", uni_sub:"Choose a country and field — we'll show example universities.",
+uni_filter_all_country:"All countries", uni_filter_all_field:"All fields",
+uni_filter_all_language:"All languages", lang_filter_en:"English", lang_filter_sk:"Slovak", lang_filter_cz:"Czech", lang_filter_pl:"Polish",
+uni_filter_all_degree:"All degrees", degree_bachelor:"Bachelor's", degree_master:"Master's", degree_phd:"PhD",
+uni_note:"This list is indicative and not exhaustive — in a consultation we match specific programmes to your profile.",
+compare_heading:"Slovakia, Czechia or Poland?", compare_sub:"A quick comparison to help you choose.",
+compare_row_tuition:"Tuition cost", compare_row_living:"Cost of living", compare_row_english:"English-taught programmes", compare_row_cities:"Student cities", compare_yes:"✓ Available",
+compare_cities_sk:"Bratislava, Košice", compare_cities_cz:"Prague, Brno, Olomouc", compare_cities_pl:"Warsaw, Kraków, Wrocław",
+timeline_heading:"What an admission year looks like", timeline_sub:"An indicative calendar — from choosing a university to moving in.",
+timeline_m1_month:"September", timeline_m1_title:"Choose a university", timeline_m2_month:"October", timeline_m2_title:"Prepare documents",
+timeline_m3_month:"November", timeline_m3_title:"Submit application", timeline_m4_month:"Dec.–March", timeline_m4_title:"Wait for decision",
+timeline_m5_month:"May", timeline_m5_title:"Residence permit", timeline_m6_month:"August", timeline_m6_title:"Move",
+services_heading:"We take the whole process off your hands", services_sub:"Three areas that usually decide whether the move goes smoothly.",
+service1_title:"University admission", service1_desc:"Matching a programme and university, translating and legalising documents, support to enrolment.",
+service2_title:"Residence permit", service2_desc:"Full support with the foreigners' police: booking, documents, translation, interview.",
+service3_title:"Housing", service3_desc:"Verified accommodation near your university, lease signing, move-in support.",
+svc1_item1:"University matching", svc1_item2:"Requirement checks", svc1_item3:"Document translation and legalisation", svc1_item4:"Application submission and university liaison",
+svc2_item1:"Required document checklist", svc2_item2:"Appointment booking", svc2_item3:"Certificate translation", svc2_item4:"Interview support",
+svc3_item1:"Dorm or rental matching", svc3_item2:"Accommodation checks", svc3_item3:"Lease signing", svc3_item4:"Move-in help",
+svc_more:"Show details", svc_less:"Hide details",
+calc_heading:"How much will studying cost?", calc_sub:"Estimated monthly budget — choose country and housing type.",
+calc_country_label:"Country", calc_housing_label:"Housing", calc_housing_dorm:"Dorm", calc_housing_private:"Private rental",
+calc_result_heading:"Total per month", calc_row_housing:"Housing", calc_row_food:"Food", calc_row_transport:"Transport", calc_row_other:"Other",
+calc_note:"Estimates only, depend on city and lifestyle.", calc_cta:"I want an exact estimate",
+trust_heading:"Why you can trust us",
+trustn1_title:"Official sources", trustn1_desc:"We rely on official university and government requirements.",
+trustn2_title:"Transparent pricing", trustn2_desc:"You know what's included before you pay.",
+trustn3_title:"No admission guarantee", trustn3_desc:"We help you apply; the university decides on admission.",
+trustn4_title:"One point of contact", trustn4_desc:"You don't have to repeat your story to five people.",
+trust_verified:"Information last verified: 18 September 2026",
+trust_disclaimer:"Requirements may vary by nationality, university and individual circumstances. We verify current requirements before starting your application.",
+team_heading:"Who's behind your case", team_sub:"Real people you'll talk to directly — no call centre.",
+team1_role:"Founder", team1_desc:"Overall coordination and liaison with universities.",
+team2_role:"Coordinator", team2_desc:"Supporting students at every step.",
+team3_role:"Coordinator", team3_desc:"Supporting students at every step.",
+stat1_label:"personal support", stat2_label:"countries", stat3_label:"no call centre", stat4_label:"free first consultation",
+stats_note:"",
+pricing_heading:"Pricing", pricing_sub:"Choose a single service or full support.", price_from:"from",
+pkg1_name:"Admission", pkg1_desc:"University matching and application submission", pkg1_f1:"University and programme matching", pkg1_f2:"Document translation and legalisation", pkg1_f3:"Submitting the university application",
+pkg2_tag:"Recommended", pkg2_name:"Residence permit", pkg2_desc:"Processing your permit with the foreigners' police", pkg2_f1:"Appointment booking and document collection", pkg2_f2:"Translation of required certificates", pkg2_f3:"Interview support",
+pkg3_name:"Full support", pkg3_desc:"Admission + residence permit + housing", pkg3_f1:"Everything in Admission and Residence permit", pkg3_f2:"Housing search and booking", pkg3_f3:"Meet-and-greet and move-in help",
+price_cta:"Learn more", price_note:"Prices shown are indicative. The final cost depends on the country, university and chosen services.",
+faq_heading:"Frequently asked questions",
+faq1_q:"Can I apply without knowing the local language?", faq1_a:"Yes, for most English-taught programmes the local language isn't required at the application stage.",
+faq2_q:"Can I study in English?", faq2_a:"Yes, all three countries offer bachelor's and master's programmes in English.",
+faq3_q:"How much money will I need?", faq3_a:"It depends on the country, city and lifestyle — use the calculator above for an estimate.",
+faq4_q:"Do you help with housing?", faq4_a:"Yes, we match dorms or private rentals and help with move-in.",
+faq5_q:"Do I need a residence permit?", faq5_a:"For stays over 90 days — yes, and we support the whole process.",
+faq6_q:"How long does the application take?", faq6_a:"Depends on the university, usually a few weeks to gather documents.",
+faq7_q:"Do you guarantee admission?", faq7_a:"No, the university decides; we help make your application as strong as possible.",
+faq8_q:"What if my application is rejected?", faq8_a:"We look at alternative universities or programmes together with you.",
+faq9_q:"Do you work with students from Ukraine?", faq9_a:"Yes, it's one of our main focus areas.",
+faq10_q:"Can I apply remotely?", faq10_a:"Yes, most steps can be done online before you arrive.",
+chat_heading:"Message us right now", chat_sub:"We usually reply within a few hours.", chat_telegram_cta:"Open Telegram", chat_whatsapp_cta:"Message on WhatsApp",
+contact_heading:"Fill in the form and we'll get back to you", contact_sub:"Tell us which country and field you're considering — we reply within one business day.",
+form_origin_q:"Where are you from?", origin_ua:"Ukraine", origin_kz:"Kazakhstan", origin_ge:"Georgia", origin_uz:"Uzbekistan", origin_other:"Other",
+form_contact_method_q:"How should we contact you?", contact_method_telegram:"Telegram", contact_method_whatsapp:"WhatsApp", contact_method_email:"Email",
+form_final_q:"Last step",
+form_name_label:"Name", form_name_placeholder:"Your name", form_contact_label:"Contact (email or Telegram)", form_contact_placeholder:"you@example.com or @username",
+form_message_label:"Message", form_message_placeholder:"Which programme are you considering, and when do you plan to start?",
+form_submit:"Send request", form_success:"Thank you! Your email app should have opened — if not, write to us directly.",
+footer_text:"© 2026 [Organisation name]. Support for students in Slovakia, Czechia and Poland.",
+sticky_telegram:"Telegram", sticky_whatsapp:"WhatsApp", sticky_start:"Options"
+},
+kk:{
+lang_more:"Тағы", nav_universities:"Университеттер", nav_services:"Қызметтер", nav_pricing:"Бағалар", nav_faq:"FAQ", finder_budget_estimate_label:"Шамалас айлық бюджет:",
+hero_h1:"Орталық Еуропада оқу жолыңды тап",
+hero_lede:"Университетке түсу, тұру рұқсаты және баспана — бір жерде. Қысқа сауалнамадан өтіп, не керек екенін біл.",
+hero_cta_primary:"Нұсқаларымды табу", hero_cta_secondary:"Бағаларды көру", hero_micro:"Тегін · 60 секунд",
+chip_sk:"Словакия", chip_cz:"Чехия", chip_pl:"Польша",
+finder_eyebrow:"Интерактивті іріктеу",
+finder_heading:"60 секундта не керек екенін біл", finder_sub:"Бірнеше сұраққа жауап бер — шамалас жоспарды көрсетеміз.",
+finder_step1_q:"Қай жерге түскің келеді?", finder_opt_notsure:"Әлі білмеймін",
+finder_step2_q:"Нені оқығың келеді?", finder_field_medicine:"Медицина", finder_field_it:"IT", finder_field_business:"Бизнес", finder_field_engineering:"Инженерия", finder_field_economics:"Экономика", finder_field_other:"Басқа",
+finder_step3_q:"Қашан бастауды жоспарлайсың?", finder_year_notsure:"Әлі білмеймін",
+finder_step4_q:"Бірінші жылға шамалас бюджет",
+finder_back:"Артқа", finder_next:"Келесі", finder_see_result:"Нұсқаларымды көрсету",
+finder_result_need_heading:"Саған, ықтимал, керек болады:",
+finder_need_1:"Университетке құжат тапсыру", finder_need_2:"Бұрынғы білімді тану", finder_need_3:"Құжаттарды аудару", finder_need_4:"Тұру рұқсатын рәсімдеу", finder_need_5:"Баспана іздеу",
+finder_result_cta:"Тегін кеңес алу", finder_restart:"Қайта бастау",
+finder_summary_tpl:"Сенің жоспарың: {country} · {field} · бастау {year} · бюджет {budget}",
+uni_heading:"Университет тап", uni_sub:"Елді және бағытты таңда — университет мысалдарын көрсетеміз.",
+uni_filter_all_country:"Барлық елдер", uni_filter_all_field:"Барлық бағыттар",
+uni_filter_all_language:"Барлық тілдер", lang_filter_en:"Ағылшын", lang_filter_sk:"Словак", lang_filter_cz:"Чех", lang_filter_pl:"Поляк",
+uni_filter_all_degree:"Барлық деңгейлер", degree_bachelor:"Бакалавриат", degree_master:"Магистратура", degree_phd:"PhD",
+uni_note:"Тізім шамалас және толық емес — кеңесте сенің бейініңе сай нақты бағдарламаларды таңдаймыз.",
+compare_heading:"Словакия, Чехия әлде Польша?", compare_sub:"Таңдауды жеңілдету үшін жылдам салыстыру.",
+compare_row_tuition:"Оқу ақысы", compare_row_living:"Өмір сүру құны", compare_row_english:"Ағылшын тіліндегі бағдарламалар", compare_row_cities:"Студенттік қалалар", compare_yes:"✓ Қолжетімді",
+compare_cities_sk:"Братислава, Кошице", compare_cities_cz:"Прага, Брно, Оломоуц", compare_cities_pl:"Варшава, Краков, Вроцлав",
+timeline_heading:"Түсу жылы қалай өтеді", timeline_sub:"Университет таңдаудан қоныстануға дейінгі шамалас күнтізбе.",
+timeline_m1_month:"Қыркүйек", timeline_m1_title:"Университет таңдау", timeline_m2_month:"Қазан", timeline_m2_title:"Құжат дайындау",
+timeline_m3_month:"Қараша", timeline_m3_title:"Өтінім тапсыру", timeline_m4_month:"Желт.–наур.", timeline_m4_title:"Шешімді күту",
+timeline_m5_month:"Мамыр", timeline_m5_title:"Тұру рұқсаты", timeline_m6_month:"Тамыз", timeline_m6_title:"Көшу",
+services_heading:"Барлық процесті өзімізге аламыз", services_sub:"Көшудің сәтті өтуін анықтайтын үш бағыт.",
+service1_title:"Университетке түсу", service1_desc:"Бағдарлама мен университетті таңдау, құжаттарды аудару және заңдастыру, қабылданғанға дейінгі сүйемелдеу.",
+service2_title:"Тұру рұқсаты", service2_desc:"Шетелдіктер полициясында толық сүйемелдеу: жазылу, құжаттар, аударма, сұхбат.",
+service3_title:"Баспана", service3_desc:"Университетке жақын тексерілген баспана, шарт, қоныстануға көмек.",
+svc1_item1:"Университеттерді таңдау", svc1_item2:"Талаптарды тексеру", svc1_item3:"Құжаттарды аудару және заңдастыру", svc1_item4:"Өтінім тапсыру және университетпен байланыс",
+svc2_item1:"Қажетті құжаттар тізімі", svc2_item2:"Қабылдауға жазылу", svc2_item3:"Анықтамаларды аудару", svc2_item4:"Сұхбатқа сүйемелдеу",
+svc3_item1:"Жатақхана немесе жалдау таңдау", svc3_item2:"Баспананы тексеру", svc3_item3:"Шарт жасасу", svc3_item4:"Қоныстануға көмек",
+svc_more:"Толығырақ көрсету", svc_less:"Жасыру",
+calc_heading:"Оқу қанша тұрады?", calc_sub:"Айлық шамалас бюджет — ел мен баспана түрін таңда.",
+calc_country_label:"Ел", calc_housing_label:"Баспана", calc_housing_dorm:"Жатақхана", calc_housing_private:"Жеке жалдау",
+calc_result_heading:"Айына барлығы", calc_row_housing:"Баспана", calc_row_food:"Тамақтану", calc_row_transport:"Көлік", calc_row_other:"Басқа",
+calc_note:"Шамалас сомалар, қалаға және өмір салтына байланысты.", calc_cta:"Нақты есеп қажет",
+trust_heading:"Бізге неге сенуге болады",
+trustn1_title:"Ресми дереккөздер", trustn1_desc:"Университеттер мен мемлекеттік органдардың ресми талаптарына сүйенеміз.",
+trustn2_title:"Ашық бағалар", trustn2_desc:"Төлемге дейін не кіретінін білесің.",
+trustn3_title:"Түсу кепілдігі жоқ", trustn3_desc:"Өтінім тапсыруға көмектесеміз; шешімді университет қабылдайды.",
+trustn4_title:"Бүкіл процеске бір байланыс", trustn4_desc:"Тарихыңды бірнеше адамға қайталаудың қажеті жоқ.",
+trust_verified:"Ақпарат соңғы рет тексерілді: 18 қыркүйек 2026",
+trust_disclaimer:"Талаптар азаматтыққа, университетке және жеке жағдайға байланысты өзгеруі мүмкін.",
+team_heading:"Ісіңді кім жүргізеді", team_sub:"Сенімен тікелей сөйлесетін нақты адамдар — кол-центрсіз.",
+team1_role:"Негізін қалаушы", team1_desc:"Жалпы үйлестіру және университеттермен байланыс.",
+team2_role:"Үйлестіруші", team2_desc:"Студенттерге әр кезеңде қолдау.",
+team3_role:"Үйлестіруші", team3_desc:"Студенттерге әр кезеңде қолдау.",
+stat1_label:"жеке қолдау", stat2_label:"ел", stat3_label:"кол-центрсіз", stat4_label:"тегін алғашқы кеңес",
+stats_note:"",
+pricing_heading:"Бағалар", pricing_sub:"Жеке қызметті немесе толық сүйемелдеуді таңда.", price_from:"бастап",
+pkg1_name:"Түсу", pkg1_desc:"Университет таңдау және құжат тапсыру", pkg1_f1:"Университет пен бағдарламаны таңдау", pkg1_f2:"Құжаттарды аудару және заңдастыру", pkg1_f3:"Университетке өтінім тапсыру",
+pkg2_tag:"Ұсынамыз", pkg2_name:"Тұру рұқсаты", pkg2_desc:"Шетелдіктер полициясында рұқсатты рәсімдеу", pkg2_f1:"Қабылдауға жазылу және құжат жинау", pkg2_f2:"Қажетті анықтамаларды аудару", pkg2_f3:"Сұхбатқа сүйемелдеу",
+pkg3_name:"Толық сүйемелдеу", pkg3_desc:"Түсу + тұру рұқсаты + баспана", pkg3_f1:"«Түсу» және «Тұру рұқсаты» пакеттерінің барлық қызметтері", pkg3_f2:"Баспана іздеу және брондау", pkg3_f3:"Қарсы алу және қоныстануға көмек",
+price_cta:"Толығырақ білу", price_note:"Көрсетілген бағалар шамамен. Түпкілікті құны елге, университетке және қызметтерге байланысты.",
+faq_heading:"Жиі қойылатын сұрақтар",
+faq1_q:"Жергілікті тілді білмей өтінім бере аламын ба?", faq1_a:"Иә, ағылшын тіліндегі көп бағдарламаларға түсу кезеңінде жергілікті тіл міндетті емес.",
+faq2_q:"Ағылшын тілінде оқуға бола ма?", faq2_a:"Иә, үш елде де бакалавриат пен магистратура ағылшын тілінде бар.",
+faq3_q:"Маған қанша ақша керек?", faq3_a:"Елге, қалаға және өмір салтына байланысты — жоғарыдағы калькуляторда есептеп көр.",
+faq4_q:"Баспанамен көмектесесіздер ме?", faq4_a:"Иә, жатақхана немесе жеке жалдауды таңдап, қоныстануға көмектесеміз.",
+faq5_q:"Тұру рұқсаты міндетті ме?", faq5_a:"90 күннен көп оқуға — иә, біз бұл процестің барлығын сүйемелдейміз.",
+faq6_q:"Өтінім тапсыру қанша уақыт алады?", faq6_a:"Университетке байланысты, әдетте құжат жинауға бірнеше апта.",
+faq7_q:"Түсуге кепілдік бересіздер ме?", faq7_a:"Жоқ, шешімді университет қабылдайды; біз өтінімді барынша күшті етеміз.",
+faq8_q:"Өтінім қабылданбаса не істеу керек?", faq8_a:"Сенімен бірге балама университеттер немесе бағдарламаларды қарастырамыз.",
+faq9_q:"Украина студенттерімен жұмыс істейсіздер ме?", faq9_a:"Иә, бұл біздің негізгі бағыттарымыздың бірі.",
+faq10_q:"Қашықтан өтінім бере аламын ба?", faq10_a:"Иә, көп қадамдарды келгенге дейін онлайн жасауға болады.",
+chat_heading:"Дәл қазір хабарласыңыз", chat_sub:"Әдетте бірнеше сағат ішінде жауап береміз.", chat_telegram_cta:"Telegram ашу", chat_whatsapp_cta:"WhatsApp-қа жазу",
+contact_heading:"Форманы толтыр — біз саған хабарласамыз", contact_sub:"Қай елді және мамандықты қарастырып жатқаныңды жаз — бір жұмыс күні ішінде жауап береміз.",
+form_origin_q:"Сен қайдансың?", origin_ua:"Украина", origin_kz:"Қазақстан", origin_ge:"Грузия", origin_uz:"Өзбекстан", origin_other:"Басқа",
+form_contact_method_q:"Сенімен қалай байланысу керек?", contact_method_telegram:"Telegram", contact_method_whatsapp:"WhatsApp", contact_method_email:"Email",
+form_final_q:"Соңғы қадам",
+form_name_label:"Аты", form_name_placeholder:"Атың", form_contact_label:"Байланыс (email немесе Telegram)", form_contact_placeholder:"you@example.com немесе @username",
+form_message_label:"Хабарлама", form_message_placeholder:"Қандай бағдарламаны қарастырып жатырсың және қашан бастайсың?",
+form_submit:"Өтінім жіберу", form_success:"Рақмет! Пошта қосымшаң ашылуы керек — ашылмаса, бізге тікелей жаз.",
+footer_text:"© 2026 [Ұйым атауы]. Словакия, Чехия және Польшадағы студенттерге қолдау.",
+sticky_telegram:"Telegram", sticky_whatsapp:"WhatsApp", sticky_start:"Нұсқалар"
+},
+uz:{
+lang_more:"Yana", nav_universities:"Universitetlar", nav_services:"Xizmatlar", nav_pricing:"Narxlar", nav_faq:"FAQ", finder_budget_estimate_label:"Taxminiy oylik byudjet:",
+hero_h1:"Markaziy Yevropada o'qish yo'lingni top",
+hero_lede:"Universitetga kirish, turar joy ruxsatnomasi va uy-joy — bir joyda. Qisqa so'rovnomadan o't va nima kerakligini bil.",
+hero_cta_primary:"Variantlarimni topish", hero_cta_secondary:"Narxlarni ko'rish", hero_micro:"Bepul · 60 soniya",
+chip_sk:"Slovakiya", chip_cz:"Chexiya", chip_pl:"Polsha",
+finder_eyebrow:"Interaktiv tanlov",
+finder_heading:"60 soniyada nima kerakligini bil", finder_sub:"Bir nechta savolga javob ber — taxminiy rejani ko'rsatamiz.",
+finder_step1_q:"Qayerga kirmoqchisan?", finder_opt_notsure:"Hali bilmayman",
+finder_step2_q:"Nimani o'qimoqchisan?", finder_field_medicine:"Tibbiyot", finder_field_it:"IT", finder_field_business:"Biznes", finder_field_engineering:"Muhandislik", finder_field_economics:"Iqtisodiyot", finder_field_other:"Boshqa",
+finder_step3_q:"Qachon boshlashni rejalashtirasan?", finder_year_notsure:"Hali bilmayman",
+finder_step4_q:"Birinchi yil uchun taxminiy byudjet",
+finder_back:"Orqaga", finder_next:"Keyingi", finder_see_result:"Variantlarimni ko'rsatish",
+finder_result_need_heading:"Senga, ehtimol, kerak bo'ladi:",
+finder_need_1:"Universitetga hujjat topshirish", finder_need_2:"Oldingi ta'limni tan olish", finder_need_3:"Hujjatlarni tarjima qilish", finder_need_4:"Turar joy ruxsatnomasini rasmiylashtirish", finder_need_5:"Uy-joy izlash",
+finder_result_cta:"Bepul konsultatsiya olish", finder_restart:"Qaytadan boshlash",
+finder_summary_tpl:"Sening rejang: {country} · {field} · boshlanish {year} · byudjet {budget}",
+uni_heading:"Universitet top", uni_sub:"Mamlakat va yo'nalishni tanla — universitet misollarini ko'rsatamiz.",
+uni_filter_all_country:"Barcha mamlakatlar", uni_filter_all_field:"Barcha yo'nalishlar",
+uni_filter_all_language:"Barcha tillar", lang_filter_en:"Ingliz", lang_filter_sk:"Slovak", lang_filter_cz:"Chex", lang_filter_pl:"Polyak",
+uni_filter_all_degree:"Barcha darajalar", degree_bachelor:"Bakalavriat", degree_master:"Magistratura", degree_phd:"PhD",
+uni_note:"Ro'yxat taxminiy va to'liq emas — konsultatsiyada profilingga mos dasturlarni tanlaymiz.",
+compare_heading:"Slovakiya, Chexiya yoki Polsha?", compare_sub:"Tanlashni osonlashtirish uchun tezkor taqqoslash.",
+compare_row_tuition:"O'qish narxi", compare_row_living:"Yashash narxi", compare_row_english:"Ingliz tilidagi dasturlar", compare_row_cities:"Talabalar shaharlari", compare_yes:"✓ Mavjud",
+compare_cities_sk:"Bratislava, Koshitse", compare_cities_cz:"Praga, Brno, Olomouts", compare_cities_pl:"Varshava, Krakov, Vrotslav",
+timeline_heading:"Kirish yili qanday ko'rinadi", timeline_sub:"Universitet tanlashdan ko'chishgacha taxminiy taqvim.",
+timeline_m1_month:"Sentabr", timeline_m1_title:"Universitet tanlash", timeline_m2_month:"Oktabr", timeline_m2_title:"Hujjat tayyorlash",
+timeline_m3_month:"Noyabr", timeline_m3_title:"Ariza topshirish", timeline_m4_month:"Dek.–mart", timeline_m4_title:"Qarorni kutish",
+timeline_m5_month:"May", timeline_m5_title:"Turar joy ruxsatnomasi", timeline_m6_month:"Avgust", timeline_m6_title:"Ko'chish",
+services_heading:"Butun jarayonni o'z zimmamizga olamiz", services_sub:"Ko'chishning muvaffaqiyatli o'tishini belgilaydigan uchta yo'nalish.",
+service1_title:"Universitetga kirish", service1_desc:"Dastur va universitetni tanlash, hujjatlarni tarjima va legalizatsiya qilish, qabul qilinguncha hamrohlik.",
+service2_title:"Turar joy ruxsatnomasi", service2_desc:"Chet elliklar politsiyasida to'liq hamrohlik: yozilish, hujjatlar, tarjima, suhbat.",
+service3_title:"Uy-joy", service3_desc:"Universitetga yaqin tekshirilgan turar joy, shartnoma, joylashishga yordam.",
+svc1_item1:"Universitetlarni tanlash", svc1_item2:"Talablarni tekshirish", svc1_item3:"Hujjatlarni tarjima va legalizatsiya qilish", svc1_item4:"Ariza topshirish va universitet bilan aloqa",
+svc2_item1:"Kerakli hujjatlar ro'yxati", svc2_item2:"Qabulga yozilish", svc2_item3:"Ma'lumotnomalarni tarjima qilish", svc2_item4:"Suhbatga hamrohlik",
+svc3_item1:"Yotoqxona yoki ijara tanlash", svc3_item2:"Turar joyni tekshirish", svc3_item3:"Shartnoma tuzish", svc3_item4:"Joylashishga yordam",
+svc_more:"Batafsil ko'rsatish", svc_less:"Yashirish",
+calc_heading:"O'qish qancha turadi?", calc_sub:"Oylik taxminiy byudjet — mamlakat va uy-joy turini tanla.",
+calc_country_label:"Mamlakat", calc_housing_label:"Uy-joy", calc_housing_dorm:"Yotoqxona", calc_housing_private:"Xususiy ijara",
+calc_result_heading:"Oyiga jami", calc_row_housing:"Uy-joy", calc_row_food:"Ovqatlanish", calc_row_transport:"Transport", calc_row_other:"Boshqa",
+calc_note:"Taxminiy summalar, shahar va turmush tarziga bog'liq.", calc_cta:"Aniq hisob kerak",
+trust_heading:"Nega bizga ishonish mumkin",
+trustn1_title:"Rasmiy manbalar", trustn1_desc:"Universitet va davlat organlarining rasmiy talablariga tayanamiz.",
+trustn2_title:"Shaffof narxlar", trustn2_desc:"To'lovdan oldin nima kirishini bilasan.",
+trustn3_title:"Kirish kafolati yo'q", trustn3_desc:"Ariza topshirishga yordam beramiz; qarorni universitet qabul qiladi.",
+trustn4_title:"Butun jarayon uchun bitta aloqa", trustn4_desc:"Tarixingni bir necha odamga takrorlash shart emas.",
+trust_verified:"Ma'lumot oxirgi marta tekshirildi: 18 sentabr 2026",
+trust_disclaimer:"Talablar fuqarolik, universitet va shaxsiy vaziyatga qarab farq qilishi mumkin.",
+team_heading:"Ishingni kim yuritadi", team_sub:"Sen bilan to'g'ridan-to'g'ri gaplashadigan haqiqiy odamlar — call-markazsiz.",
+team1_role:"Asoschi", team1_desc:"Umumiy muvofiqlashtirish va universitetlar bilan aloqa.",
+team2_role:"Muvofiqlashtiruvchi", team2_desc:"Talabalarga har bosqichda yordam.",
+team3_role:"Muvofiqlashtiruvchi", team3_desc:"Talabalarga har bosqichda yordam.",
+stat1_label:"shaxsiy yordam", stat2_label:"mamlakat", stat3_label:"call-markazsiz", stat4_label:"bepul birinchi konsultatsiya",
+stats_note:"",
+pricing_heading:"Narxlar", pricing_sub:"Alohida xizmatni yoki to'liq hamrohlikni tanla.", price_from:"dan",
+pkg1_name:"Kirish", pkg1_desc:"Universitet tanlash va hujjat topshirish", pkg1_f1:"Universitet va dasturni tanlash", pkg1_f2:"Hujjatlarni tarjima va legalizatsiya qilish", pkg1_f3:"Universitetga ariza topshirish",
+pkg2_tag:"Tavsiya etamiz", pkg2_name:"Turar joy ruxsatnomasi", pkg2_desc:"Chet elliklar politsiyasida ruxsatnomani rasmiylashtirish", pkg2_f1:"Qabulga yozilish va hujjat yig'ish", pkg2_f2:"Kerakli ma'lumotnomalarni tarjima qilish", pkg2_f3:"Suhbatga hamrohlik",
+pkg3_name:"To'liq hamrohlik", pkg3_desc:"Kirish + turar joy ruxsatnomasi + uy-joy", pkg3_f1:"«Kirish» va «Turar joy ruxsatnomasi» paketlarining barcha xizmatlari", pkg3_f2:"Uy-joy izlash va bron qilish", pkg3_f3:"Kutib olish va joylashishga yordam",
+price_cta:"Batafsil bilish", price_note:"Ko'rsatilgan narxlar taxminiy. Yakuniy narx mamlakat, universitet va xizmatlarga bog'liq.",
+faq_heading:"Ko'p so'raladigan savollar",
+faq1_q:"Mahalliy tilni bilmasdan ariza topshira olamanmi?", faq1_a:"Ha, ko'pchilik ingliz tilidagi dasturlar uchun kirish bosqichida mahalliy til shart emas.",
+faq2_q:"Ingliz tilida o'qish mumkinmi?", faq2_a:"Ha, uchala mamlakatda ham bakalavriat va magistratura ingliz tilida mavjud.",
+faq3_q:"Menga qancha pul kerak bo'ladi?", faq3_a:"Mamlakat, shahar va turmush tarziga bog'liq — yuqoridagi kalkulyatorda hisoblab ko'r.",
+faq4_q:"Uy-joy bilan yordam berasizlarmi?", faq4_a:"Ha, yotoqxona yoki xususiy ijarani tanlaymiz va joylashishga yordam beramiz.",
+faq5_q:"Turar joy ruxsatnomasi shartmi?", faq5_a:"90 kundan ko'p o'qish uchun — ha, va biz butun bu jarayonga hamrohlik qilamiz.",
+faq6_q:"Ariza topshirish qancha davom etadi?", faq6_a:"Universitetga bog'liq, odatda hujjat yig'ishga bir necha hafta.",
+faq7_q:"Kirishga kafolat berasizlarmi?", faq7_a:"Yo'q, qarorni universitet qabul qiladi; biz arizani imkon qadar kuchli qilamiz.",
+faq8_q:"Ariza rad etilsa nima qilish kerak?", faq8_a:"Sen bilan birga muqobil universitet yoki dasturlarni ko'rib chiqamiz.",
+faq9_q:"Ukraina talabalari bilan ishlaysizlarmi?", faq9_a:"Ha, bu bizning asosiy yo'nalishlarimizdan biri.",
+faq10_q:"Masofadan ariza topshira olamanmi?", faq10_a:"Ha, ko'pchilik qadamlarni kelishdan oldin onlayn bajarish mumkin.",
+chat_heading:"Hozir yozing", chat_sub:"Odatda bir necha soat ichida javob beramiz.", chat_telegram_cta:"Telegram ochish", chat_whatsapp_cta:"WhatsApp-ga yozish",
+contact_heading:"Formani to'ldir — biz senga bog'lanamiz", contact_sub:"Qaysi mamlakat va mutaxassislikni ko'rib chiqayotganingni yoz — bir ish kuni ichida javob beramiz.",
+form_origin_q:"Sen qayerlik san?", origin_ua:"Ukraina", origin_kz:"Qozog'iston", origin_ge:"Gruziya", origin_uz:"O'zbekiston", origin_other:"Boshqa",
+form_contact_method_q:"Sen bilan qanday bog'lanish kerak?", contact_method_telegram:"Telegram", contact_method_whatsapp:"WhatsApp", contact_method_email:"Email",
+form_final_q:"Oxirgi qadam",
+form_name_label:"Ism", form_name_placeholder:"Isming", form_contact_label:"Aloqa (email yoki Telegram)", form_contact_placeholder:"you@example.com yoki @username",
+form_message_label:"Xabar", form_message_placeholder:"Qaysi dasturni ko'rib chiqayapsan va qachon boshlaysan?",
+form_submit:"Ariza yuborish", form_success:"Rahmat! Pochta ilovang ochilishi kerak — ochilmasa, bizga to'g'ridan-to'g'ri yoz.",
+footer_text:"© 2026 [Tashkilot nomi]. Slovakiya, Chexiya va Polshadagi talabalarga yordam.",
+sticky_telegram:"Telegram", sticky_whatsapp:"WhatsApp", sticky_start:"Variantlar"
+},
+ka:{
+lang_more:"მეტი", nav_universities:"უნივერსიტეტები", nav_services:"სერვისები", nav_pricing:"ფასები", nav_faq:"FAQ", finder_budget_estimate_label:"ორიენტირებული ყოველთვიური ბიუჯეტი:",
+hero_h1:"იპოვე შენი გზა ცენტრალურ ევროპაში სასწავლებლად",
+hero_lede:"ჩარიცხვა, ბინადრობის ნებართვა და საცხოვრებელი — ერთ ადგილას. გაიარე მოკლე კითხვარი და გაარკვიე, რა გჭირდება.",
+hero_cta_primary:"ვარიანტების პოვნა", hero_cta_secondary:"ფასების ნახვა", hero_micro:"უფასო · 60 წამი",
+chip_sk:"სლოვაკეთი", chip_cz:"ჩეხეთი", chip_pl:"პოლონეთი",
+finder_eyebrow:"ინტერაქტიული შერჩევა",
+finder_heading:"გაარკვიე 60 წამში, რა გჭირდება", finder_sub:"უპასუხე რამდენიმე კითხვას — ორიენტირებულ გეგმას გაჩვენებთ.",
+finder_step1_q:"სად გინდა ჩარიცხვა?", finder_opt_notsure:"ჯერ არ ვიცი",
+finder_step2_q:"რისი სწავლა გინდა?", finder_field_medicine:"მედიცინა", finder_field_it:"IT", finder_field_business:"ბიზნესი", finder_field_engineering:"ინჟინერია", finder_field_economics:"ეკონომიკა", finder_field_other:"სხვა",
+finder_step3_q:"როდის აპირებ დაწყებას?", finder_year_notsure:"ჯერ არ ვიცი",
+finder_step4_q:"პირველი წლის ორიენტირებული ბიუჯეტი",
+finder_back:"უკან", finder_next:"შემდეგი", finder_see_result:"ვარიანტების ჩვენება",
+finder_result_need_heading:"სავარაუდოდ, დაგჭირდება:",
+finder_need_1:"უნივერსიტეტში დოკუმენტების შეტანა", finder_need_2:"წინა განათლების აღიარება", finder_need_3:"დოკუმენტების თარგმნა", finder_need_4:"ბინადრობის ნებართვის გაფორმება", finder_need_5:"საცხოვრებლის ძებნა",
+finder_result_cta:"უფასო კონსულტაციის მიღება", finder_restart:"თავიდან დაწყება",
+finder_summary_tpl:"შენი გეგმა: {country} · {field} · დაწყება {year} · ბიუჯეტი {budget}",
+uni_heading:"იპოვე უნივერსიტეტი", uni_sub:"აირჩიე ქვეყანა და მიმართულება — უნივერსიტეტების მაგალითებს გაჩვენებთ.",
+uni_filter_all_country:"ყველა ქვეყანა", uni_filter_all_field:"ყველა მიმართულება",
+uni_filter_all_language:"ყველა ენა", lang_filter_en:"ინგლისური", lang_filter_sk:"სლოვაკური", lang_filter_cz:"ჩეხური", lang_filter_pl:"პოლონური",
+uni_filter_all_degree:"ყველა საფეხური", degree_bachelor:"ბაკალავრიატი", degree_master:"მაგისტრატურა", degree_phd:"PhD",
+uni_note:"სია ორიენტირებულია და არასრულია — კონსულტაციაზე შენს პროფილს მოვარგებთ კონკრეტულ პროგრამებს.",
+compare_heading:"სლოვაკეთი, ჩეხეთი თუ პოლონეთი?", compare_sub:"სწრაფი შედარება არჩევანის გასაადვილებლად.",
+compare_row_tuition:"სწავლის ღირებულება", compare_row_living:"ცხოვრების ღირებულება", compare_row_english:"ინგლისურენოვანი პროგრამები", compare_row_cities:"სტუდენტური ქალაქები", compare_yes:"✓ ხელმისაწვდომია",
+compare_cities_sk:"ბრატისლავა, კოშიცე", compare_cities_cz:"პრაღა, ბრნო, ოლომოუცი", compare_cities_pl:"ვარშავა, კრაკოვი, ვროცლავი",
+timeline_heading:"როგორ გამოიყურება ჩარიცხვის წელი", timeline_sub:"ორიენტირებული კალენდარი — უნივერსიტეტის შერჩევიდან გადასახლებამდე.",
+timeline_m1_month:"სექტემბერი", timeline_m1_title:"უნივერსიტეტის შერჩევა", timeline_m2_month:"ოქტომბერი", timeline_m2_title:"დოკუმენტების მომზადება",
+timeline_m3_month:"ნოემბერი", timeline_m3_title:"განაცხადის შეტანა", timeline_m4_month:"დეკ.–მარტი", timeline_m4_title:"გადაწყვეტილების მოლოდინი",
+timeline_m5_month:"მაისი", timeline_m5_title:"ბინადრობის ნებართვა", timeline_m6_month:"აგვისტო", timeline_m6_title:"გადასახლება",
+services_heading:"მთელ პროცესს ჩვენ ვიღებთ თავზე", services_sub:"სამი მიმართულება, რომელიც განსაზღვრავს გადასვლის წარმატებას.",
+service1_title:"უნივერსიტეტში ჩარიცხვა", service1_desc:"პროგრამისა და უნივერსიტეტის შერჩევა, დოკუმენტების თარგმნა და ლეგალიზაცია, თანხლება ჩარიცხვამდე.",
+service2_title:"ბინადრობის ნებართვა", service2_desc:"სრული თანხლება უცხოელთა პოლიციაში: ჩაწერა, დოკუმენტები, თარგმანი, გასაუბრება.",
+service3_title:"საცხოვრებელი", service3_desc:"უნივერსიტეტთან ახლოს შემოწმებული საცხოვრებელი, ხელშეკრულება, დასახლებაში დახმარება.",
+svc1_item1:"უნივერსიტეტების შერჩევა", svc1_item2:"მოთხოვნების შემოწმება", svc1_item3:"დოკუმენტების თარგმნა და ლეგალიზაცია", svc1_item4:"განაცხადის შეტანა და უნივერსიტეტთან კომუნიკაცია",
+svc2_item1:"საჭირო დოკუმენტების სია", svc2_item2:"ვიზიტზე ჩაწერა", svc2_item3:"ცნობების თარგმნა", svc2_item4:"გასაუბრებაზე თანხლება",
+svc3_item1:"საერთო საცხოვრებლის ან ქირავნობის შერჩევა", svc3_item2:"საცხოვრებლის შემოწმება", svc3_item3:"ხელშეკრულების გაფორმება", svc3_item4:"დასახლებაში დახმარება",
+svc_more:"დეტალების ჩვენება", svc_less:"დამალვა",
+calc_heading:"რა ღირს სწავლა?", calc_sub:"ყოველთვიური ორიენტირებული ბიუჯეტი — აირჩიე ქვეყანა და საცხოვრებლის ტიპი.",
+calc_country_label:"ქვეყანა", calc_housing_label:"საცხოვრებელი", calc_housing_dorm:"საერთო საცხოვრებელი", calc_housing_private:"კერძო ქირავნობა",
+calc_result_heading:"ჯამში თვეში", calc_row_housing:"საცხოვრებელი", calc_row_food:"კვება", calc_row_transport:"ტრანსპორტი", calc_row_other:"სხვა",
+calc_note:"ორიენტირებული თანხები, დამოკიდებულია ქალაქსა და ცხოვრების წესზე.", calc_cta:"ზუსტი გათვლა მინდა",
+trust_heading:"რატომ შეგვიძლია ვენდოთ",
+trustn1_title:"ოფიციალური წყაროები", trustn1_desc:"ვეყრდნობით უნივერსიტეტებისა და სახელმწიფო ორგანოების ოფიციალურ მოთხოვნებს.",
+trustn2_title:"გამჭვირვალე ფასები", trustn2_desc:"იცი, რა შედის ღირებულებაში გადახდამდე.",
+trustn3_title:"ჩარიცხვის გარანტია არ არის", trustn3_desc:"ვეხმარებით განაცხადის შეტანაში; გადაწყვეტილებას იღებს უნივერსიტეტი.",
+trustn4_title:"ერთი კონტაქტი მთელი პროცესისთვის", trustn4_desc:"არ დაგჭირდება შენი ისტორიის რამდენჯერმე გამეორება.",
+trust_verified:"ინფორმაცია ბოლოს შემოწმდა: 18 სექტემბერი 2026",
+trust_disclaimer:"მოთხოვნები შეიძლება განსხვავდებოდეს მოქალაქეობის, უნივერსიტეტისა და ინდივიდუალური სიტუაციის მიხედვით.",
+team_heading:"ვინ აწარმოებს შენს საქმეს", team_sub:"რეალური ადამიანები, რომლებთანაც პირდაპირ ისაუბრებ — საკონტაქტო ცენტრის გარეშე.",
+team1_role:"დამფუძნებელი", team1_desc:"ზოგადი კოორდინაცია და უნივერსიტეტებთან კავშირი.",
+team2_role:"კოორდინატორი", team2_desc:"სტუდენტების მხარდაჭერა ყოველ ეტაპზე.",
+team3_role:"კოორდინატორი", team3_desc:"სტუდენტების მხარდაჭერა ყოველ ეტაპზე.",
+stat1_label:"პირადი მხარდაჭერა", stat2_label:"ქვეყანა", stat3_label:"საკონტაქტო ცენტრის გარეშე", stat4_label:"უფასო პირველი კონსულტაცია",
+stats_note:"",
+pricing_heading:"ფასები", pricing_sub:"აირჩიე ცალკეული სერვისი ან სრული თანხლება.", price_from:"დან",
+pkg1_name:"ჩარიცხვა", pkg1_desc:"უნივერსიტეტის შერჩევა და დოკუმენტების შეტანა", pkg1_f1:"უნივერსიტეტისა და პროგრამის შერჩევა", pkg1_f2:"დოკუმენტების თარგმნა და ლეგალიზაცია", pkg1_f3:"განაცხადის შეტანა უნივერსიტეტში",
+pkg2_tag:"გირჩევთ", pkg2_name:"ბინადრობის ნებართვა", pkg2_desc:"ნებართვის გაფორმება უცხოელთა პოლიციაში", pkg2_f1:"ვიზიტზე ჩაწერა და დოკუმენტების შეგროვება", pkg2_f2:"საჭირო ცნობების თარგმნა", pkg2_f3:"გასაუბრებაზე თანხლება",
+pkg3_name:"სრული თანხლება", pkg3_desc:"ჩარიცხვა + ბინადრობის ნებართვა + საცხოვრებელი", pkg3_f1:"«ჩარიცხვა» და «ბინადრობის ნებართვა» პაკეტების ყველა სერვისი", pkg3_f2:"საცხოვრებლის ძებნა და დაჯავშნა", pkg3_f3:"დახვედრა და დასახლებაში დახმარება",
+price_cta:"გაიგეთ მეტი", price_note:"ფასები ორიენტირებულია. საბოლოო ღირებულება დამოკიდებულია ქვეყანაზე, უნივერსიტეტსა და სერვისებზე.",
+faq_heading:"ხშირად დასმული კითხვები",
+faq1_q:"შემიძლია განაცხადის შეტანა ადგილობრივი ენის ცოდნის გარეშე?", faq1_a:"დიახ, ინგლისურენოვანი პროგრამების უმეტესობისთვის ადგილობრივი ენა სავალდებულო არ არის ჩარიცხვის ეტაპზე.",
+faq2_q:"შესაძლებელია ინგლისურად სწავლა?", faq2_a:"დიახ, სამივე ქვეყანაში არის ბაკალავრიატისა და მაგისტრატურის პროგრამები ინგლისურად.",
+faq3_q:"რამდენი ფული დამჭირდება?", faq3_a:"დამოკიდებულია ქვეყანაზე, ქალაქსა და ცხოვრების წესზე — ორიენტირისთვის გამოიყენე ზემოთ კალკულატორი.",
+faq4_q:"ეხმარებით საცხოვრებლის საკითხში?", faq4_a:"დიახ, ვირჩევთ საერთო საცხოვრებელს ან კერძო ქირავნობას და ვეხმარებით დასახლებაში.",
+faq5_q:"სავალდებულოა ბინადრობის ნებართვა?", faq5_a:"90 დღეზე მეტი ხნით სწავლისთვის — დიახ, და ჩვენ ვახლავართ მთელ ამ პროცესს.",
+faq6_q:"რამდენ ხანს გრძელდება განაცხადის შეტანა?", faq6_a:"დამოკიდებულია უნივერსიტეტზე, ჩვეულებრივ რამდენიმე კვირა სჭირდება დოკუმენტების შეგროვებას.",
+faq7_q:"იძლევით ჩარიცხვის გარანტიას?", faq7_a:"არა, გადაწყვეტილებას იღებს უნივერსიტეტი; ჩვენ ვხდით განაცხადს რაც შეიძლება ძლიერს.",
+faq8_q:"რა ვქნა, თუ განაცხადი უარყოფილია?", faq8_a:"შენთან ერთად განვიხილავთ ალტერნატიულ უნივერსიტეტებსა თუ პროგრამებს.",
+faq9_q:"მუშაობთ უკრაინელ სტუდენტებთან?", faq9_a:"დიახ, ეს ჩვენი ერთ-ერთი მთავარი მიმართულებაა.",
+faq10_q:"შემიძლია დისტანციურად განაცხადის შეტანა?", faq10_a:"დიახ, ნაბიჯების უმეტესობის გაკეთება შესაძლებელია ონლაინ, ჩამოსვლამდე.",
+chat_heading:"მოგვწერეთ ახლავე", chat_sub:"ჩვეულებრივ ვპასუხობთ რამდენიმე საათში.", chat_telegram_cta:"Telegram-ის გახსნა", chat_whatsapp_cta:"WhatsApp-ზე მისაწერად",
+contact_heading:"შეავსე ფორმა — ჩვენ დაგიკავშირდებით", contact_sub:"მოგვწერე, რომელ ქვეყანასა და სპეციალობას განიხილავ — პასუხს გავცემთ ერთი სამუშაო დღის განმავლობაში.",
+form_origin_q:"საიდან ხარ?", origin_ua:"უკრაინა", origin_kz:"ყაზახეთი", origin_ge:"საქართველო", origin_uz:"უზბეკეთი", origin_other:"სხვა",
+form_contact_method_q:"როგორ დაგიკავშირდეთ?", contact_method_telegram:"Telegram", contact_method_whatsapp:"WhatsApp", contact_method_email:"Email",
+form_final_q:"ბოლო ნაბიჯი",
+form_name_label:"სახელი", form_name_placeholder:"შენი სახელი", form_contact_label:"კონტაქტი (email ან Telegram)", form_contact_placeholder:"you@example.com ან @username",
+form_message_label:"შეტყობინება", form_message_placeholder:"რომელ პროგრამას განიხილავ და როდის აპირებ დაწყებას?",
+form_submit:"განაცხადის გაგზავნა", form_success:"მადლობა! შენი ელფოსტის აპლიკაცია უნდა გაიხსნას — თუ არა, მოგვწერეთ პირდაპირ.",
+footer_text:"© 2026 [ორგანიზაციის სახელი]. სტუდენტების თანხლება სლოვაკეთში, ჩეხეთში და პოლონეთში.",
+sticky_telegram:"Telegram", sticky_whatsapp:"WhatsApp", sticky_start:"ვარიანტები"
+}
+};
+
+var fieldLabelKey = {medicine:'finder_field_medicine',it:'finder_field_it',business:'finder_field_business',engineering:'finder_field_engineering',economics:'finder_field_economics',other:'finder_field_other'};
+var countryLabelKey = {sk:'chip_sk',cz:'chip_cz',pl:'chip_pl',notsure:'finder_opt_notsure'};
+var langFilterKeyMap = {sk:'lang_filter_sk', cz:'lang_filter_cz', pl:'lang_filter_pl'};
+
+var universities = [
+  {name:"Comenius University in Bratislava", city:"Bratislava", country:"sk", fields:["medicine","business","other"], languages:["sk","en"], degrees:["bachelor","master","phd"]},
+  {name:"Slovak University of Technology", city:"Bratislava", country:"sk", fields:["engineering","it"], languages:["sk","en"], degrees:["bachelor","master","phd"]},
+  {name:"University of Economics in Bratislava", city:"Bratislava", country:"sk", fields:["business","economics"], languages:["sk","en"], degrees:["bachelor","master","phd"]},
+  {name:"Technical University of Košice", city:"Košice", country:"sk", fields:["engineering","it"], languages:["sk","en"], degrees:["bachelor","master","phd"]},
+  {name:"Charles University", city:"Prague", country:"cz", fields:["medicine","other"], languages:["cz","en"], degrees:["bachelor","master","phd"]},
+  {name:"Czech Technical University in Prague", city:"Prague", country:"cz", fields:["engineering","it"], languages:["cz","en"], degrees:["bachelor","master","phd"]},
+  {name:"Masaryk University", city:"Brno", country:"cz", fields:["business","economics","other"], languages:["cz","en"], degrees:["bachelor","master","phd"]},
+  {name:"University of Warsaw", city:"Warsaw", country:"pl", fields:["business","economics","other"], languages:["pl","en"], degrees:["bachelor","master","phd"]},
+  {name:"Jagiellonian University", city:"Kraków", country:"pl", fields:["medicine","other"], languages:["pl","en"], degrees:["bachelor","master","phd"]},
+  {name:"AGH University of Kraków", city:"Kraków", country:"pl", fields:["engineering","it"], languages:["pl","en"], degrees:["bachelor","master","phd"]}
+];
+
+var costTable = {
+  sk:{dorm:{h:[150,250],f:[200,250],t:[20,30],o:[100,150]}, private:{h:[350,500],f:[200,250],t:[20,30],o:[100,150]}},
+  cz:{dorm:{h:[180,280],f:[220,280],t:[25,35],o:[120,160]}, private:{h:[400,600],f:[220,280],t:[25,35],o:[120,160]}},
+  pl:{dorm:{h:[150,250],f:[200,260],t:[20,30],o:[100,140]}, private:{h:[350,550],f:[200,260],t:[20,30],o:[100,140]}}
+};
+
+var currentLang = 'ua';
+
+function applyLang(lang){
+  currentLang = lang;
+  var dict = translations[lang] || translations.ua;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) el.textContent = dict[key];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el){
+    var key = el.getAttribute('data-i18n-placeholder');
+    if (dict[key] !== undefined) el.setAttribute('placeholder', dict[key]);
+  });
+  document.querySelectorAll('#lang-switch > button[data-lang]').forEach(function(btn){
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+  document.documentElement.setAttribute('lang', lang === 'ua' ? 'uk' : lang);
+  try { localStorage.setItem('site-lang', lang); } catch(e) {}
+  renderUniGrid(); renderFaq(); updateFinderSummary(); updateCalc();
+}
+
+document.getElementById('lang-switch').addEventListener('click', function(e){
+  var btn = e.target.closest('button[data-lang]');
+  if (btn) { applyLang(btn.getAttribute('data-lang')); document.getElementById('lang-more-panel').classList.remove('open'); }
+});
+document.getElementById('lang-more-btn').addEventListener('click', function(e){
+  e.stopPropagation();
+  document.getElementById('lang-more-panel').classList.toggle('open');
+});
+document.addEventListener('click', function(){ document.getElementById('lang-more-panel').classList.remove('open'); });
+
+(function(){
+  var saved = 'ua';
+  try { var s = localStorage.getItem('site-lang'); if (s && translations[s]) saved = s; } catch(e) {}
+  applyLang(saved);
+})();
+
+/* ---------- Finder wizard ---------- */
+var finderSteps = document.querySelectorAll('.finder-step');
+var finderIdx = 0;
+var finderSel = {country:null, field:null, year:null, budget:null};
+var finderGroups = ['country','field','year','budget'];
+
+function buildProgress(container, total){
+  container.innerHTML = '';
+  for (var i=0;i<total;i++){ var s=document.createElement('i'); container.appendChild(s); }
+}
+buildProgress(document.getElementById('finder-progress'), finderSteps.length);
+
+document.querySelectorAll('.finder-options').forEach(function(group){
+  group.addEventListener('click', function(e){
+    var btn = e.target.closest('.finder-opt');
+    if (!btn) return;
+    group.querySelectorAll('.finder-opt').forEach(function(b){ b.classList.remove('sel'); });
+    btn.classList.add('sel');
+    finderSel[group.getAttribute('data-group')] = btn.getAttribute('data-value');
+    document.getElementById('finder-next').disabled = false;
+  });
+});
+
+function showFinderStep(i){
+  finderSteps.forEach(function(s){ s.classList.toggle('active', parseInt(s.getAttribute('data-step'))===i); });
+  var prog = document.getElementById('finder-progress').children;
+  for (var j=0;j<prog.length;j++){ prog[j].classList.toggle('done', j<=i); }
+  document.getElementById('finder-back').style.visibility = i===0 ? 'hidden' : 'visible';
+  var group = finderGroups[i];
+  document.getElementById('finder-next').disabled = !finderSel[group];
+  var nextBtn = document.getElementById('finder-next');
+  if (i === finderSteps.length-1){ nextBtn.setAttribute('data-i18n','finder_see_result'); }
+  else { nextBtn.setAttribute('data-i18n','finder_next'); }
+  nextBtn.textContent = translations[currentLang][nextBtn.getAttribute('data-i18n')];
+  document.getElementById('finder-nav').style.display = 'flex';
+  document.getElementById('finder-result').classList.remove('active');
+  document.querySelector('.finder-wrap').querySelectorAll('.finder-step').forEach(function(s){ s.style.display = ''; });
+}
+
+document.getElementById('finder-next').addEventListener('click', function(){
+  if (finderIdx < finderSteps.length-1){ finderIdx++; showFinderStep(finderIdx); }
+  else { showFinderResult(); }
+});
+document.getElementById('finder-back').addEventListener('click', function(){
+  if (finderIdx>0){ finderIdx--; showFinderStep(finderIdx); }
+});
+document.getElementById('finder-restart').addEventListener('click', function(){
+  finderSel = {country:null, field:null, year:null, budget:null};
+  document.querySelectorAll('.finder-opt').forEach(function(b){ b.classList.remove('sel'); });
+  finderIdx = 0;
+  document.getElementById('finder-nav').style.display='flex';
+  showFinderStep(0);
+});
+
+function updateFinderSummary(){
+  var el = document.getElementById('finder-summary-text');
+  if (!el || !finderSel.country) return;
+  var dict = translations[currentLang];
+  var countryTxt = finderSel.country==='notsure' ? dict.finder_opt_notsure : dict[countryLabelKey[finderSel.country]];
+  var fieldTxt = finderSel.field ? dict[fieldLabelKey[finderSel.field]] : '';
+  var yearTxt = finderSel.year==='notsure' ? dict.finder_year_notsure : finderSel.year;
+  var budgetMap = {b1:'€3 000–5 000', b2:'€5 000–8 000', b3:'€8 000–12 000', b4:'€12 000+'};
+  var budgetTxt = budgetMap[finderSel.budget] || '';
+  var tpl = dict.finder_summary_tpl || '{country} · {field} · {year} · {budget}';
+  el.textContent = tpl.replace('{country}', countryTxt||'').replace('{field}', fieldTxt||'').replace('{year}', yearTxt||'').replace('{budget}', budgetTxt||'');
+
+  var line = document.getElementById('finder-budget-line');
+  if (line){
+    if (finderSel.country && finderSel.country!=='notsure' && costTable[finderSel.country]){
+      var d = costTable[finderSel.country].dorm, p = costTable[finderSel.country].private;
+      var min = Math.min(d.h[0],p.h[0])+d.f[0]+d.t[0]+d.o[0];
+      var max = Math.max(d.h[1],p.h[1])+d.f[1]+d.t[1]+d.o[1];
+      line.textContent = (dict.finder_budget_estimate_label||'') + ' €'+min+'–'+max;
+    } else { line.textContent = ''; }
+  }
+}
+
+function showFinderResult(){
+  document.querySelector('.finder-wrap').querySelectorAll('.finder-step').forEach(function(s){ s.style.display='none'; });
+  document.getElementById('finder-nav').style.display = 'none';
+  document.getElementById('finder-result').classList.add('active');
+  updateFinderSummary();
+}
+showFinderStep(0);
+
+/* ---------- University finder ---------- */
+var uniActiveCountry = 'all', uniActiveField = 'all', uniActiveLanguage = 'all', uniActiveDegree = 'all';
+var degreeLabelKey = {bachelor:'degree_bachelor', master:'degree_master', phd:'degree_phd'};
+var langFlagKey = {en:'🇬🇧', sk:'🇸🇰', cz:'🇨🇿', pl:'🇵🇱'};
+document.getElementById('uni-country-filters').addEventListener('click', function(e){
+  var b = e.target.closest('.flt'); if (!b) return;
+  this.querySelectorAll('.flt').forEach(function(x){ x.classList.remove('active'); });
+  b.classList.add('active'); uniActiveCountry = b.getAttribute('data-country'); renderUniGrid();
+});
+document.getElementById('uni-field-filters').addEventListener('click', function(e){
+  var b = e.target.closest('.flt'); if (!b) return;
+  this.querySelectorAll('.flt').forEach(function(x){ x.classList.remove('active'); });
+  b.classList.add('active'); uniActiveField = b.getAttribute('data-field'); renderUniGrid();
+});
+document.getElementById('uni-language-filters').addEventListener('click', function(e){
+  var b = e.target.closest('.flt'); if (!b) return;
+  this.querySelectorAll('.flt').forEach(function(x){ x.classList.remove('active'); });
+  b.classList.add('active'); uniActiveLanguage = b.getAttribute('data-language'); renderUniGrid();
+});
+document.getElementById('uni-degree-filters').addEventListener('click', function(e){
+  var b = e.target.closest('.flt'); if (!b) return;
+  this.querySelectorAll('.flt').forEach(function(x){ x.classList.remove('active'); });
+  b.classList.add('active'); uniActiveDegree = b.getAttribute('data-degree'); renderUniGrid();
+});
+function renderUniGrid(){
+  var grid = document.getElementById('uni-grid'); if (!grid) return;
+  var dict = translations[currentLang];
+  var list = universities.filter(function(u){
+    return (uniActiveCountry==='all' || u.country===uniActiveCountry)
+      && (uniActiveField==='all' || u.fields.indexOf(uniActiveField)!==-1)
+      && (uniActiveLanguage==='all' || u.languages.indexOf(uniActiveLanguage)!==-1)
+      && (uniActiveDegree==='all' || u.degrees.indexOf(uniActiveDegree)!==-1);
+  });
+  grid.innerHTML = list.map(function(u){
+    var flag = u.country==='sk' ? '🇸🇰' : u.country==='cz' ? '🇨🇿' : '🇵🇱';
+    var fieldTags = u.fields.map(function(f){ return '<span>'+dict[fieldLabelKey[f]]+'</span>'; }).join('');
+    var langTags = u.languages.map(function(l){ return '<span>'+langFlagKey[l]+' '+(l==='en'?'EN':dict[langFilterKeyMap[l]])+'</span>'; }).join('');
+    var degreeTags = u.degrees.map(function(d){ return '<span>'+dict[degreeLabelKey[d]]+'</span>'; }).join('');
+    return '<div class="uni-card"><h4>'+flag+' '+u.name+'</h4><p class="uni-city">'+u.city+'</p><div class="uni-tags">'+fieldTags+langTags+'</div><div class="uni-tags" style="margin-top:6px;">'+degreeTags+'</div></div>';
+  }).join('');
+}
+
+/* ---------- Services expand ---------- */
+document.querySelectorAll('.svc-toggle').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var n = btn.getAttribute('data-svc');
+    var list = document.querySelector('.svc-details[data-svc="'+n+'"]');
+    var open = list.classList.toggle('open');
+    btn.setAttribute('data-i18n', open ? 'svc_less' : 'svc_more');
+    btn.textContent = translations[currentLang][open ? 'svc_less' : 'svc_more'];
+  });
+});
+
+/* ---------- Calculator ---------- */
+function updateCalc(){
+  var country = document.getElementById('calc-country').value;
+  var housing = document.getElementById('calc-housing').value;
+  var d = costTable[country][housing];
+  function fmt(range){ return '€'+range[0]+'–'+range[1]; }
+  document.getElementById('calc-out-housing').textContent = fmt(d.h);
+  document.getElementById('calc-out-food').textContent = fmt(d.f);
+  document.getElementById('calc-out-transport').textContent = fmt(d.t);
+  document.getElementById('calc-out-other').textContent = fmt(d.o);
+  var min = d.h[0]+d.f[0]+d.t[0]+d.o[0], max = d.h[1]+d.f[1]+d.t[1]+d.o[1];
+  document.getElementById('calc-out-total').textContent = '€'+min+'–'+max;
+}
+document.getElementById('calc-country').addEventListener('change', updateCalc);
+document.getElementById('calc-housing').addEventListener('change', updateCalc);
+updateCalc();
+
+/* ---------- FAQ ---------- */
+function renderFaq(){
+  var list = document.getElementById('faq-list'); if (!list) return;
+  var dict = translations[currentLang];
+  var html = '';
+  for (var i=1;i<=10;i++){
+    html += '<div class="faq-item"><button type="button" class="faq-q"><span>'+dict['faq'+i+'_q']+'</span><span class="plus">+</span></button><div class="faq-a">'+dict['faq'+i+'_a']+'</div></div>';
+  }
+  list.innerHTML = html;
+  list.querySelectorAll('.faq-q').forEach(function(q){
+    q.addEventListener('click', function(){ q.parentElement.classList.toggle('open'); });
+  });
+}
+
+/* ---------- Multi-step contact form ---------- */
+var mformSteps = document.querySelectorAll('.mform-step');
+var mformIdx = 0;
+var mformSel = {country:null, field:null, origin:null, method:null};
+var mformGroups = ['country','field','origin','method'];
+
+document.querySelectorAll('.mform-opts').forEach(function(group){
+  group.addEventListener('click', function(e){
+    var btn = e.target.closest('.mform-opt'); if (!btn) return;
+    group.querySelectorAll('.mform-opt').forEach(function(b){ b.classList.remove('sel'); });
+    btn.classList.add('sel');
+    mformSel[group.getAttribute('data-mgroup')] = btn.getAttribute('data-value');
+    document.getElementById('mform-next').disabled = false;
+  });
+});
+
+function showMformStep(i){
+  mformSteps.forEach(function(s){ s.classList.toggle('active', parseInt(s.getAttribute('data-mstep'))===i); });
+  document.getElementById('mform-back').style.visibility = i===0 ? 'hidden' : 'visible';
+  var isLast = i === mformSteps.length-1;
+  document.getElementById('mform-next').style.display = isLast ? 'none' : 'inline-flex';
+  document.getElementById('mform-submit').style.display = isLast ? 'inline-flex' : 'none';
+  if (!isLast){
+    var group = mformGroups[i];
+    document.getElementById('mform-next').disabled = !mformSel[group];
+  }
+  var dict = translations[currentLang];
+  document.getElementById('mform-progress').textContent = (i+1)+' / '+mformSteps.length;
+}
+document.getElementById('mform-next').addEventListener('click', function(){
+  if (mformIdx < mformSteps.length-1){ mformIdx++; showMformStep(mformIdx); }
+});
+document.getElementById('mform-back').addEventListener('click', function(){
+  if (mformIdx>0){ mformIdx--; showMformStep(mformIdx); }
+});
+showMformStep(0);
+
+document.getElementById('mform').addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = document.getElementById('mf-name').value;
+  var contact = document.getElementById('mf-contact').value;
+  var message = document.getElementById('mf-message').value;
+  var subject = 'STUDY CEE — nova zayavka';
+  var body = 'Name: '+name+'\nContact: '+contact+'\nCountry: '+(mformSel.country||'')+'\nField: '+(mformSel.field||'')+'\nOrigin: '+(mformSel.origin||'')+'\nPreferred contact: '+(mformSel.method||'')+'\nMessage: '+message;
+  window.location.href = 'mailto:studyincee@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+  document.getElementById('mform-success').classList.add('show');
+});
+</script>
+
+</body>
+</html>
